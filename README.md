@@ -1,6 +1,6 @@
 # TicTacTea
 
-YikYak's back!
+YikYak's back! Write a post where you are. Anyone around you can see your post, and you can see others' posts on a map. Interact with your community by commenting and upvoting the spiciest of tea pots haaaha
 
 ## Team Members
 

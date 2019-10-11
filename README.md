@@ -8,7 +8,7 @@ YikYak's back!
 
 Discussion time: 2PM
 
-![Alex Zhao](https://avatars2.githubusercontent.com/u/10901793?s=200&v=4)
+![Alex Zhao](https://avatars2.githubusercontent.com/u/10901793?s=150&v=4)
 
 ### Richard Yang ([@ryang72](https://github.com/ryang72))
 

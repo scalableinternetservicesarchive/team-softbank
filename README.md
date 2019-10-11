@@ -1,24 +1,13 @@
-# README
+# TicTacTea
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[description here]
 
-Things you may want to cover:
+## Team Members
 
-* Ruby version
+### Alex Zhao (@zhaoalex)
 
-* System dependencies
+Discussion time: 2PM
 
-* Configuration
+[photo]
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### [your names here]

@@ -26,4 +26,4 @@ Discussion time: 2PM
 
 Discussion time: 2PM
 
-[photo]
+<img height="150px" src="https://github.com/chanely99/chanely99.github.io/blob/master/face.jpg"/>

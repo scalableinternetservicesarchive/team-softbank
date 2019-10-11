@@ -16,11 +16,11 @@ Discussion time: 2PM
 
 <img height="150px" src="https://media.licdn.com/dms/image/C4E03AQGElu_0OyAiDw/profile-displayphoto-shrink_200_200/0?e=1576108800&v=beta&t=_LE6tVRbn12FC5DMZVo_lnngmDa9JzTymLKnS4dYK3Q"/>
 
-### Kristie Lim ()
+### Kristie Lim ([@kristielim](https://github.com/kristielim))
 
 Discussion time: 2PM
 
-[photo]
+<img height="150px" src="https://media.licdn.com/dms/image/C5603AQEuXp8KDc7_0w/profile-displayphoto-shrink_200_200/0?e=1576108800&v=beta&t=uvz0S8ocohkAhJFzMCvVg0fKS-G5x3RgXU9wvvsChXQ"/>
 
 ### Chanel Young ()
 

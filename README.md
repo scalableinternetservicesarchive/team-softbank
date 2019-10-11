@@ -8,6 +8,6 @@
 
 Discussion time: 2PM
 
-[photo]
+![Alex Zhao](https://avatars2.githubusercontent.com/u/10901793?s=200&v=4)
 
 ### [your names here]

@@ -22,7 +22,7 @@ Discussion time: 2PM
 
 <img height="150px" src="https://media.licdn.com/dms/image/C5603AQEuXp8KDc7_0w/profile-displayphoto-shrink_200_200/0?e=1576108800&v=beta&t=uvz0S8ocohkAhJFzMCvVg0fKS-G5x3RgXU9wvvsChXQ"/>
 
-### Chanel Young ()
+### Chanel Young ([@chanely99](https://github.com/chanely99))
 
 Discussion time: 2PM
 

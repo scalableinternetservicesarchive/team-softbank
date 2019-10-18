@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - 'spec/**/*'
+    - 'db/**'
   TargetRubyVersion: 2.6
 
 Metrics/LineLength:

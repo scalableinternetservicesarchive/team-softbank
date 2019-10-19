@@ -2,6 +2,10 @@ AllCops:
   Exclude:
     - 'spec/**/*'
     - 'db/**'
+    - 'bin/**'
+    - 'app/javascript/**'
+    - 'config/**'
+
   TargetRubyVersion: 2.6
 
 Metrics/LineLength:

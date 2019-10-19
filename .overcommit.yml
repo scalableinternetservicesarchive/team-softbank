@@ -18,9 +18,10 @@
 PreCommit:
   RuboCop:
     enabled: true
-  #    on_warn: fail # Treat all warnings as failures
+    on_fail: warn
   EsLint:
     enabled: true
+    on_fail: warn
 
 CommitMsg:
   CapitalizedSubject:

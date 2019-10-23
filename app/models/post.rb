@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  author     :string           not null
 #  body       :text
-#  likes      :integer          default("0")
+#  likes      :integer
 #  location   :point
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

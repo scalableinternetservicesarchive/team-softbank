@@ -1,10 +1,14 @@
 AllCops:
   Exclude:
     - 'spec/**/*'
-    - 'db/**'
-    - 'bin/**'
+    - 'test/**/*'
+    - 'db/**/*'
+    - 'bin/**/*'
     - 'app/javascript/**'
-    - 'config/**'
+    - 'node_modules/**/*'
+    - 'config/**/*'
+    - 'lib/tasks/**/*'
+    - 'lib/assets/**/*'
 
   TargetRubyVersion: 2.6
 
@@ -12,4 +16,7 @@ Metrics/LineLength:
   Max: 120
 
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
   Enabled: false

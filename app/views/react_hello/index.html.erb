@@ -1,1 +1,9 @@
 <%= react_component 'DummyHello', name: 'React' %>
+<% if user_signed_in? %>
+  <div>Signed in as... <%= current_user.email %></div>
+  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+<% end %>
+<% if not user_signed_in? %>
+  <%= link_to 'Login in Here!', '/users/login' %>
+<% end %>

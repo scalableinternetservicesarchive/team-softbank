@@ -23,12 +23,15 @@ class PostsController < ApplicationController
   end
 
   private
+
   def find_post
     @post = Post.find(params[:id])
   end
+
   def find_user
     @user = User.find_by_email(params[current_user.email])
-   end
+  end
+
   def post_params
     params.require(:post).permit(:title, :body)
   end

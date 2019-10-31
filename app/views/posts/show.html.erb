@@ -1,3 +1,18 @@
+<% if user_signed_in? %>
+  <div>Signed in as... <%= current_user.email %></div>
+<%end%>
 <h1><%= @post.title %></h1>
-<h2><%= @post.author %></h2>
+<h3><%= @post.author %></h3>
+<h4>spice level: <%= @post.likes.count %></h4>
+<% if user_signed_in? %>
+  <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+  <% if pre_like %>
+    <%= button_to 'dilute', post_like_path(@post, pre_like), method: :delete %>
+  <% else %>
+    <%= button_to 'enrich', post_likes_path(@post), method: :post %>
+  <% end %>
+<% end %>
 <p><%= @post.body %></p>
+<% if current_user.email == @post.author %>
+  <%= button_to 'DELETE THIS POST', @post, method: :delete %>
+<% end %>

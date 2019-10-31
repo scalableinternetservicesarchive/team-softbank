@@ -22,4 +22,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  # user has many posts, once account is deleted all posts made should
+  # be deleted as well
+  has_many :post, dependent: :destroy
+  has_many :likes, dependent: :destroy
 end

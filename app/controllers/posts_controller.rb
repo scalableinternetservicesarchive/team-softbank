@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :find_user, only: [:create]
+  before_action :find_post, only: [:destroy]
   def index
     @posts = Post.all
   end
@@ -8,16 +10,25 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params) # TODO: author, location
-    @post.likes = 0
-    @post.author = 'garbo'
+    @post = current_user.post.new(post_params) # TODO: author, location
+    @post.author = current_user.email
     @post.save!
 
     redirect_to @post
   end
 
-  private
+  def destroy
+    @post.destroy
+    redirect_to '/posts/'
+  end
 
+  private
+  def find_post
+    @post = Post.find(params[:id])
+  end
+  def find_user
+    @user = User.find_by_email(params[current_user.email])
+   end
   def post_params
     params.require(:post).permit(:title, :body)
   end

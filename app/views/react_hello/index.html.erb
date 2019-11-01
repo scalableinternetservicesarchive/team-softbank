@@ -5,5 +5,5 @@
   <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
 <% end %>
 <% if not user_signed_in? %>
-  <%= link_to 'Login in Here!', '/users/login' %>
+  <%= link_to 'Login in Here!', '/users/sign_in' %>
 <% end %>

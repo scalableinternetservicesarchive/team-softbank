@@ -1,3 +1,9 @@
+<% if user_signed_in? %>
+  <div>Signed in as... <%= current_user.email %></div>
+<%end%>
 <h1><%= @post.title %></h1>
-<h2><%= @post.author %></h2>
+<h4>spice level: <%= @post.likes %></h4>
 <p><%= @post.body %></p>
+<% if current_user.id == @post.user_id %>
+  <%= button_to 'DELETE THIS POST', @post, method: :delete %>
+<% end %>

@@ -1,7 +1,10 @@
+<% if user_signed_in? %>
+  <div>Signed in as... <%= current_user.email %></div>
+<%end%>
 <% @posts.each do |post| %>
   <div>
     <h1><%= post.title %></h1>
-    <h2><%= post.author %></h2>
+    <h3>spice level: <%= post.likes %></h3>
     <p><%= link_to 'Full post', post_path(post) %></p>
   </div>
 <% end %>

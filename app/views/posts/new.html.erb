@@ -1,15 +1,22 @@
-<%= form_with scope: :post, url: posts_path, local: true do |form| %>
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
+<% if user_signed_in? %>
+  <div>Signed in as... <%= current_user.email %></div>
+  <%= form_with scope: :post, url: posts_path, local: true do |form| %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <p>
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
+    </p>
 
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
+    <p>
+      <%= form.label :body %><br>
+      <%= form.text_area :body %>
+    </p>
 
-  <p>
-    <%= form.submit %>
-  </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
+<% end %>
+<% if not user_signed_in? %>
+  <%= link_to 'Login to make a post!', '/users/login' %>
 <% end %>

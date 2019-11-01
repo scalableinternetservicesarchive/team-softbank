@@ -1,3 +1,33 @@
+<% if user_signed_in? %>
+  <div>Signed in as... <%= current_user.email %></div>
+<%end%>
 <h1><%= @post.title %></h1>
-<h2><%= @post.author %></h2>
+<h4>spice level: <%= @post.likes %></h4>
 <p><%= @post.body %></p>
+<% if current_user.id == @post.user_id %>
+  <%= button_to 'DELETE THIS POST', @post, method: :delete %>
+<% end %>
+<div>add comment here!</div>
+<%= form_with method: "post", url: post_comments_path(post_id: @post.id), local: true do |form| %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :post_id, value: @post.id %>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<% if @comments.nil? %>
+  <div>No comments...</div>
+<% end %>
+
+<% if not @comments.nil? %>
+  <% @comments.each do |comment| %>
+    <div>
+      <p><%= comment.body %></p>
+    </div>
+  <% end %>
+<% end %>

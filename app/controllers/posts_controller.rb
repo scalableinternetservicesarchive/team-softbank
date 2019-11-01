@@ -5,11 +5,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comments = Comment.where(post_id: @post.id)
+    @comments = @post.comments
   end
 
   def create
-    @user = User.find_by_email(params[current_user.email])
     @post = Post.new(post_params) # TODO: author, location
     @post.likes = 0
     @post.user_id = current_user.id

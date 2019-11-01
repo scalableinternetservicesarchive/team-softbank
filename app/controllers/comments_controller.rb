@@ -1,11 +1,7 @@
 class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
-    @user = User.find(params[:user_id])
     @comment = Comment.new(post_id: params[:post_id], user_id: params[:user_id], body: params[:body])
-    @comment.user_id = @user.id
-    @comment.post_id = @post.id
-
     if @comment.save
       flash[:notice] = 'Comment was successfully created.'
       redirect_to(@post)
@@ -16,9 +12,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
+    post_path = '/posts/' + @comment.post_id
     @comment.destroy
-    redirect_to(@post)
+    redirect_to(post_path)
   end
 end

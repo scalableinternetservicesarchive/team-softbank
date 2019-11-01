@@ -17,8 +17,8 @@
 
 FactoryBot.define do
   factory :comment do
-    user_id { 1 }
-    post_id { 1 }
-    body { "MyString" }
+    sequence(:user_id) { |n| n }
+    sequence(:post_id) { |n| n }
+    body { "fakecommentbody" }
   end
 end

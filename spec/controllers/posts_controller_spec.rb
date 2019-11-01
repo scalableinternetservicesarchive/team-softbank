@@ -28,4 +28,16 @@ RSpec.describe PostsController, type: :controller do
       end
     end
   end
+
+  describe 'POST #destroy' do
+    let(:create_params) { { post: { title: 'faketitle', body: 'fakebody'} } }
+    let(:destroy_params) { { post: { id: 1} } }
+
+    context 'with valid params' do
+      it 'creates and destroys a post successfully' do
+        post :create, params: create_params
+        expect { post :destroy, params: destroy_params }.to change(Post, :count).by -1
+      end
+    end
+  end
 end

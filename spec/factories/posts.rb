@@ -14,9 +14,10 @@
 
 FactoryBot.define do
   factory :post do
-    sequence(:author) { |n| "user#{n}" }
     body { 'fakebody' }
     likes { 0 }
     location { ActiveRecord::Point.new(0, 0) }
+    title { 'faketitle' }
+    sequence(:user_id) { |n| n }
   end
 end

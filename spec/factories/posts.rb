@@ -6,10 +6,11 @@
 #  author     :string           not null
 #  body       :text
 #  likes      :integer
-#  location   :point
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  title      :string
+#  longitude  :decimal(10, 6)
+#  latitude   :decimal(10, 6)
 #
 # Indexes
 #

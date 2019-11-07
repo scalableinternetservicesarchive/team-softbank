@@ -6,10 +6,11 @@
 #  author     :string           not null
 #  body       :text
 #  likes      :integer
-#  location   :point
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  title      :string
+#  longitude  :decimal(10, 6)
+#  latitude   :decimal(10, 6)
 #
 # Indexes
 #
@@ -17,4 +18,9 @@
 #
 
 class Post < ApplicationRecord
+    acts_as_mappable :default_units => :miles,
+                   :default_formula => :sphere,
+                   :distance_field_name => :distance,
+                   :lat_column_name => :latitude,
+                   :lng_column_name => :longitude
 end

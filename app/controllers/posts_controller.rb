@@ -26,13 +26,12 @@ class PostsController < ApplicationController
   end
 
   private
-    def post_params
-      params.require(:post).permit(:title, :body)
-    end
 
-    def check_logged_in
-      unless user_signed_in?
-        redirect_to '/'
-      end
-    end
+  def post_params
+    params.require(:post).permit(:title, :body)
+  end
+
+  def check_logged_in
+    redirect_to '/' unless user_signed_in?
+  end
 end

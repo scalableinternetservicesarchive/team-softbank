@@ -1,11 +1,10 @@
 <%= render 'shared/header' %>
-
 <%= link_to 'New post', '/posts/new' %>
-                                     
+
 <% @posts.each do |post| %>
   <div>
     <h1><%= post.title %></h1>
     <h3>spice level: <%= post.likes %></h3>
     <p><%= link_to 'Full post', post_path(post) %></p>
-  </div>
+  </div> 
 <% end %>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?><tsung loglevel="notice" version="1.0">
+<tsung>
+	 <clients>
+	 	<client host="localhost" use_controller_vm="true" maxusers="15000"/>
+	 </clients>
+	 <servers>
+	 	<server host="ec2-52-24-226-72.us-west-2.compute.amazonaws.com" port="80" type="tcp"/>
+	 </servers>
+	 <load>
+		 <arrivalphase phase="1" duration="10" unit="second">
+		 	<users arrivalrate="1" unit="second"/>
+		 </arrivalphase>
+		 <arrivalphase phase="2" duration="10" unit="second">
+		 	<users arrivalrate="4" unit="second"/>
+		 </arrivalphase>
+		 <arrivalphase phase="3" duration="10" unit="second">
+		 	<users arrivalrate="16" unit="second"/>
+		 </arrivalphase>
+		 <arrivalphase phase="4" duration="10" unit="second">
+		 	<users arrivalrate="64" unit="second"/>
+		 </arrivalphase>
+		 <arrivalphase phase="5" duration="10" unit="second">
+		 	<users arrivalrate="256" unit="second"/>
+		 </arrivalphase>
+		 <arrivalphase phase="6" duration="10" unit="second">
+		 	<users arrivalrate="1024" unit="second"/>
+		 </arrivalphase>
+	 </load>
+	 <options>
+	 	<option name="connect_timeout" value="5000" />
+	 	<option type="ts_http" name="user_agent">
+		 <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511
+		Firefox/1.0.4</user_agent>
+		 </option>
+	 </options>
+	 <sessions>
+	 	<session name="open-app-view-posts" probability="100">
+	 		<!-- start out at the homepage. -->
+		    <request>
+		    	<http url='/posts' version='1.1' method='GET'></http>
+		    </request>
+		    <!-- wait for up to 2 seconds, user is amazed by how cool the app is -->
+		    <thinktime value="2" random="true"></thinktime>
+		    <!-- visit the posts page  -->
+		    <request>
+		    	<http url='/posts' version='1.1' method='GET'></http>
+		    </request>
+		    <!-- wait for up to 10 seconds, user is looking at posts -->
+		    <thinktime value="10" random="true"></thinktime>
+	 	</session>
+	 </sessions>
+</tsung>

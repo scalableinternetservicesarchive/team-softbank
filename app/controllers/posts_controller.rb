@@ -23,6 +23,17 @@ class PostsController < ApplicationController
     redirect_to '/posts/'
   end
 
+  def toggle_like_post
+    @post = Post.find(params[:post_id])
+    @user = User.find(params[:user_id])
+    if @user.voted_for? @post
+      @post.unliked_by @user
+    else
+      @post.liked_by @user
+    end
+    redirect_to @post
+  end
+
   private
 
   def post_params

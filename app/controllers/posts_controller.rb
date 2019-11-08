@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  # before_action :check_logged_in, only: [:create]
+
   def index
     @posts = Post.all
   end
@@ -38,5 +40,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def check_logged_in
+    redirect_to '/' unless user_signed_in?
   end
 end

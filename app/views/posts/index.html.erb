@@ -1,7 +1,7 @@
-<% if user_signed_in? %>
-  <div>Signed in as... <%= current_user.email %></div>
-  <div> <%= link_to('Logout', destroy_user_session_path, method: :delete) %> </div>
-<%end%>
+<%= render 'shared/header' %>
+
+<%= link_to 'New post', '/posts/new' %>
+                                     
 <% @posts.each do |post| %>
   <div>
     <h1><%= post.title %></h1>

@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   # before_action :check_logged_in, only: [:create]
   # geocode_ip_address
   # before_action :location, only: [:index, :new, :create]
+  respond_to :html, :js
 
   def index
     # @posts = Post.all
@@ -60,6 +61,15 @@ class PostsController < ApplicationController
 
   def update_location
     session[:html5_geoloc] = [params[:latitude], params[:longitude]]
+    @location = session[:html5_geoloc]
+    @posts = Post.within(
+      5, # TODO: param
+      units: :miles,
+      origin: @location
+    ).by_distance(origin: @location)
+    respond_to do |format|
+      format.js {render layout: false} # Add this line to you respond_to block
+    end
   end
 
   private

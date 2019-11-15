@@ -7,6 +7,7 @@ function onSuccess(pos) {
 }
 
 function onError() {
+  // TODO: send error ajax so we can fallback?
   console.log('error getting location');
 }
 

@@ -1,7 +1,7 @@
 function onPostSuccess(pos) {
   const { latitude, longitude } = pos.coords;
 
-  $.post('/posts/update_location', { latitude, longitude }).done(res =>
+  $.post('/posts/update_location', { latitude, longitude }).done(_ =>
     console.log(`posted successfully`)
   );
 }
@@ -16,6 +16,6 @@ function postHTML5Loc() {
     console.log('computing location');
     navigator.geolocation.getCurrentPosition(onPostSuccess, onPostError);
   } else {
-    onError();
+    onPostError();
   }
 }

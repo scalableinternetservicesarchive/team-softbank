@@ -19,6 +19,6 @@ function setHTML5Loc() {
     $('#locfield').text('Computing location, please wait...');
     navigator.geolocation.getCurrentPosition(onSetSuccess, onSetError);
   } else {
-    onError();
+    onSetError();
   }
 }

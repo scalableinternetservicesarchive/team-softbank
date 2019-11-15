@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/usr/local/share/tsung/tsung-1.0.dtd" [] >
+<tsung loglevel="notice">
+  <!-- Client side setup -->
+  <clients>
+    <client host="localhost" use_controller_vm="true" maxusers='15000'/>
+  </clients>
+
+  <!-- Server side setup -->
+  <servers>
+    <server host="localhost:3000" port="8080" type="tcp"></server>
+  </servers>
+
+
+  <load>
+    <arrivalphase phase="1" duration="10" unit="second">
+        <users arrivalrate="1" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="2" duration="10" unit="second">
+		<users arrivalrate="4" unit="second"/>
+    </arrivalphase>
+	<arrivalphase phase="3" duration="10" unit="second">
+		<users arrivalrate="16" unit="second"/>
+	</arrivalphase>
+  </load>
+
+  <options>
+    <!-- Set connection timeout to 2 seconds -->
+    <option name="global_ack_timeout" value="2000"></option>
+
+    <option type="ts_http" name="user_agent">
+      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
+    </option>
+  </options>
+
+  <sessions>
+    <session name="open-app-view-posts" probability="30" type="ts_http">
+      <!-- start out at the homepage. -->
+		  <request>
+		    	<http url='/' version='1.1' method='GET'></http>
+      </request>
+      <!-- wait for up to 2 seconds, user is amazed by how cool the app is -->
+      <thinktime value="2" random="true"></thinktime>
+      <!-- visit the posts page  -->
+      <request>
+        <http url='/posts/' version='1.1' method='GET'></http>
+      </request>
+      <!-- wait for up to 10 seconds, user is looking at posts -->
+      <thinktime value="10" random="true"></thinktime>
+    </session>
+    <session name="http-example" probability="20" type="ts_http">
+      <!-- start out at the homepage. -->
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+      <!-- wait for up to 2 seconds, user is amazed by how cool the app is -->
+      <thinktime value="2" random="true"></thinktime>
+	 		<!-- visit the page for post with id 1  -->
+	 		<request>
+	 			<http url='/posts/1' version='1.1' method='GET'></http> 
+	 		</request>
+	 		<!-- wait up to 5 seconds, user is reading the post-->
+	 		<thinktime value="5" random="true"></thinktime>
+    </session>
+    <session name="sign-in" probability="50" type="ts_http">
+      <request>
+		    	<http url='/users/sign_up' version='1.1' method='GET'></http>
+      </request>
+      <!-- random username and password -->
+      <setdynvars sourcetype="random_string" start="1000" end="9999999">
+          <var name="random_username" />
+      </setdynvars>
+      <setdynvars sourcetype="random_string" start="1000" end="9999999">
+        <var name="random_password" />
+      </setdynvars>
+      <!-- Log in -->
+      <request subst="true">
+          <http
+            url='/'
+            version='1.1'
+            method='POST'
+            contents='user%5Bemail%5D=%%%%_random_username%%@gmail.com&amp;user%5Bpassword%5D=%%_random_password%%&amp;user%5Bpassword_confirmation%5D=%%_random_password%%&amp;commit=Sign+up'>
+          </http>
+      </request>
+      <!-- Wait for a bit, be impressed by the cool login page-->
+      <thinktime value="2" random="true"></thinktime>
+      <!-- Wait for a bit, think about a comment to write -->
+      <thinktime value="3" random="true"></thinktime>
+      <!-- Write comment on the post-->
+      <request subst="true">
+        <dyn_variable name="new_post_url" re="[Ll]ocation: (http://.*)\r"/>
+        <http
+          url='/'
+          version='1.1'
+          method='POST'
+          contents='comment%5Bbody%5D=%%this-is-a-comment&amp;commit=Save'>
+        </http>
+      </request>
+      <!--wait for a bit, rethink the post -->
+      <thinktime value="3" random="true"></thinktime>
+      <!-- delete the post-->
+      <request subst="true">
+        <http url="%%_created_submission_url%%" method="DELETE"></http>
+      </request>
+      <!-- log out in shame-->
+      <request subst="true">
+        <http
+          url='/users/sign_out'
+          version='1.1'
+          method='DELETE'>
+        </http>
+      </request>
+    </session>
+  </sessions>
+</tsung>

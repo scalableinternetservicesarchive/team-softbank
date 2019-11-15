@@ -60,6 +60,8 @@ class PostsController < ApplicationController
   end
 
   def update_location
+    # TODO: check if session is identical
+    # TODO: add a cookie and a check jquery-side for scaling
     session[:html5_geoloc] = [params[:latitude], params[:longitude]]
     @location = session[:html5_geoloc]
     @posts = Post.within(

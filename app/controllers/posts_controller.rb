@@ -9,7 +9,7 @@ class PostsController < ApplicationController
       5, # TODO: param
       units: :miles,
       origin: @location
-    ).by_distance(:origin => @location)
+    ).by_distance(origin: @location)
   end
 
   def show

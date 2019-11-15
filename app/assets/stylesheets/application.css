@@ -13,9 +13,9 @@
  *= require_tree .
  *= require_self
  */
-@import 'specture-exp.min.css';
-@import 'specture-icons.min.css';
-@import 'specture.min.css';
+@import 'spectre-exp.min.css';
+@import 'spectre-icons.min.css';
+@import 'spectre.min.css';
 
 html {
     height: 100%;

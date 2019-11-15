@@ -13,3 +13,46 @@
  *= require_tree .
  *= require_self
  */
+@import 'specture-exp.min.css';
+@import 'specture-icons.min.css';
+@import 'specture.min.css';
+
+html {
+    height: 100%;
+}
+body {
+    padding: 10px;
+    height: 100%;
+}
+.navbar {
+    padding: 5px;
+}
+.login-box {
+    width: 350px;
+    height: 400px;
+}
+.login-box-form {
+    height: 300px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.login-box-form * {
+    padding: 5px;
+}
+.login-box-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75%;
+}
+.login-box-inside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.login-helper-links {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}

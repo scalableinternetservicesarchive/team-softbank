@@ -1,6 +1,8 @@
 <%= render 'shared/header' %>
 
 <% if user_signed_in? %>
+  <p id='locfield'></p>
+
   <%= form_with scope: :post, url: posts_path, local: true do |form| %>
     <%= form.hidden_field :user_id, value: current_user.id %>
     <p>
@@ -13,7 +15,8 @@
       <%= form.text_area :body %>
     </p>
 
-    <p>Location: <%= @location.first %>, <%= @location.last %></p>
+    <%= form.hidden_field :latitude %>
+    <%= form.hidden_field :longitude %>
 
     <p>
       <%= form.submit %>
@@ -22,3 +25,5 @@
 <% else %>
   <%= link_to 'Login to make a post!', '/users/sign_in' %>
 <% end %>
+
+<%= javascript_tag 'setHTML5Loc()' %>

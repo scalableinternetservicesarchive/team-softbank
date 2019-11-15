@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-header">
+    <div class="card-title h5"><%= post.title %></div>
+    <div class="card-subtitle text-gray">location: <%= post.latitude %>, <%= post.longitude %></div>
+  </div>
+  <div class="card-body">
+    <span>spice level: <%= post.votes_for.size %></span>
+  </div>
+  <div class="card-footer">
+    <%= link_to 'Full post', post_path(post), class: "btn btn-primary" %>
+  </div>
+</div>

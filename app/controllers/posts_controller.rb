@@ -1,11 +1,14 @@
 class PostsController < ApplicationController
   # before_action :check_logged_in, only: [:create]
-  geocode_ip_address
-  before_action :location, only: [:index, :new, :create]
+  # geocode_ip_address
+  # before_action :location, only: [:index, :new, :create]
+  respond_to :html, :js
 
   def index
     # @posts = Post.all
-    logger.info @location
+    @location = session[:html5_geoloc]
+    @location ||= [0, 0]
+
     @posts = Post.within(
       5, # TODO: param
       units: :miles,
@@ -14,6 +17,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    # TODO: check user loc
     @post = Post.find(params[:id])
     @comments = @post.comments
   end
@@ -22,7 +26,18 @@ class PostsController < ApplicationController
     @post = Post.new(post_params) # TODO: author?
     @post.likes = 0
     @post.user_id = current_user.id
-    @post.latitude, @post.longitude = @location
+
+    if post_params[:latitude] == 'error'
+      # TODO: remove ip geocoding altogether
+      # or find a way to use it as fallback
+      # esp cause we might need to fallback for load testing
+      @post.latitude, @post.longitude = @location
+    else
+      # TODO: check if present
+      # and store in session and cookie
+      # this we can hold off until we scale
+    end
+
     @post.save!
 
     redirect_to @post
@@ -44,18 +59,31 @@ class PostsController < ApplicationController
     redirect_to @post
   end
 
+  def update_location
+    # TODO: check if session is identical
+    # TODO: add a cookie and a check jquery-side for scaling
+    session[:html5_geoloc] = [params[:latitude], params[:longitude]]
+    @location = session[:html5_geoloc]
+    @posts = Post.within(
+      5, # TODO: param
+      units: :miles,
+      origin: @location
+    ).by_distance(origin: @location)
+    respond_to do |format|
+      format.js { render layout: false }
+    end
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :latitude, :longitude)
   end
 
-  def location
-    logger.info session[:geo_location]
-    @location = session[:geo_location].instance_values.slice('lat', 'lng').values
-    @location ||= [0, 0] # TODO: something better
-    if @location.empty? then @location = [0, 0] end
-  end
+  # def location
+  #   @location = session[:geo_location].slice('lat', 'lng').values
+  #   @location ||= [0, 0] # TODO: something better
+  # end
 
   def check_logged_in
     redirect_to '/' unless user_signed_in?

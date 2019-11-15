@@ -16,10 +16,10 @@
 <% end %>
 
 <% if user_signed_in? %>
+  <p id="curloc">Computing location...</p>
   <div id="postcards">
     <% @posts.each do |post| %>
       <%= render partial: 'postcard', locals: { post: post } %>
     <% end %>
   </div>
 <% end %>
-<p id="curloc">Computing location...</p>

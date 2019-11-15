@@ -32,7 +32,7 @@ class PostsController < ApplicationController
       # and store in session and cookie
       # this we can hold off until we scale
     end
-    
+
     @post.save!
 
     redirect_to @post

@@ -1,25 +1,24 @@
-function onSuccess(pos) {
+function onSetSuccess(pos) {
   const { latitude, longitude } = pos.coords;
 
-  document.getElementById('post_latitude').value = latitude;
-  document.getElementById('post_longitude').value = longitude;
+  $('#post_latitude').val(latitude);
+  $('#post_longitude').val(longitude);
 
-  document.getElementById('locfield').innerText = '';
+  $('#locfield').text('');
 }
 
-function onError() {
-  document.getElementById('post_latitude').value = 'error';
-  document.getElementById('post_longitude').value = 'error';
+function onSetError() {
+  $('#post_latitude').val('error');
+  $('#post_longitude').val('error');
 
-  document.getElementById('locfield').innerText = 'Error getting location';
+  $('#locfield').text('Error getting location');
 }
 
 function setHTML5Loc() {
   if ('geolocation' in navigator) {
-    document.getElementById('locfield').innerText =
-      'Computing location, please wait...';
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    $('#locfield').text('Computing location, please wait...');
+    navigator.geolocation.getCurrentPosition(onSetSuccess, onSetError);
   } else {
-    onError();
+    onSetError();
   }
 }

@@ -22,7 +22,6 @@ class PostsController < ApplicationController
     @post.likes = 0
     @post.user_id = current_user.id
     @post.latitude, @post.longitude = @location
-    puts @location.inspect
     @post.save!
 
     redirect_to @post

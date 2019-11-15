@@ -8,6 +8,7 @@
       params: { post_id: @post.id }%>
    spice level: <%= @post.votes_for.size %>
 </h4>
+<h4><%= @post.latitude %>, <%= @post.longitude %></h4>
 <p><%= @post.body %></p>
 
 <% if user_signed_in? %>

@@ -1,8 +1,15 @@
 class PostsController < ApplicationController
   # before_action :check_logged_in, only: [:create]
+  geocode_ip_address
+  before_action :location, only: [:index, :new, :create]
 
   def index
-    @posts = Post.all
+    # @posts = Post.all
+    @posts = Post.within(
+      5, # TODO: param
+      units: :miles,
+      origin: @location
+    ).by_distance(origin: @location)
   end
 
   def show
@@ -11,9 +18,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params) # TODO: author, location
+    @post = Post.new(post_params) # TODO: author?
     @post.likes = 0
     @post.user_id = current_user.id
+    @post.latitude, @post.longitude = @location
     @post.save!
 
     redirect_to @post
@@ -39,6 +47,11 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def location
+    @location = session[:geo_location].slice('lat', 'lng').values
+    @location ||= [0, 0] # TODO: something better
   end
 
   def check_logged_in

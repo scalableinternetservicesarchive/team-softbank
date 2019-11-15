@@ -64,7 +64,7 @@ Rails.application.configure do
 
   class ActionDispatch::Request
     def remote_ip
-      "23.243.51.30"
+      '23.243.51.30'
     end
   end
 end

@@ -1,17 +1,19 @@
 function onSetSuccess(pos) {
   const { latitude, longitude } = pos.coords;
-
-  $('#post_latitude').val(latitude);
-  $('#post_longitude').val(longitude);
-
-  $('#locfield').text('');
+  setLocHTML(latitude, longitude);
 }
 
 function onSetError() {
-  $('#post_latitude').val('error');
-  $('#post_longitude').val('error');
+  // let's stub a fake location
+  const { latitude, longitude } = genRandomLoc();
+  setLocHTML(latitude, longitude);
+}
 
-  $('#locfield').text('Error getting location');
+function setLocHTML(latitude, longitude) {
+  $('#post_latitude').val(latitude);
+  $('#post_longitude').val(longitude);
+
+  $('#locfield').text(`Your location: ${latitude}, ${longitude}`);
 }
 
 function setHTML5Loc() {

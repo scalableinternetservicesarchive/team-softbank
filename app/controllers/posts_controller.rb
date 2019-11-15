@@ -70,7 +70,7 @@ class PostsController < ApplicationController
       origin: @location
     ).by_distance(origin: @location)
     respond_to do |format|
-      format.js {render layout: false} # Add this line to you respond_to block
+      format.js { render layout: false }
     end
   end
 

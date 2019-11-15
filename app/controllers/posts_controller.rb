@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def index
     # @posts = Post.all
+    logger.info @location
     @posts = Post.within(
       5, # TODO: param
       units: :miles,
@@ -50,8 +51,10 @@ class PostsController < ApplicationController
   end
 
   def location
-    @location = session[:geo_location].slice('lat', 'lng').values
+    logger.info session[:geo_location]
+    @location = session[:geo_location].instance_values.slice('lat', 'lng').values
     @location ||= [0, 0] # TODO: something better
+    if @location.empty? then @location = [0, 0] end
   end
 
   def check_logged_in

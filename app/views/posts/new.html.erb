@@ -16,9 +16,9 @@
     <p>Location: <%= @location.first %>, <%= @location.last %></p>
 
     <p>
-      <%= form.submit %>
+      <%= form.submit "Make Post", class: "btn btn-primary" %>
     </p>
   <% end %>
 <% else %>
-  <%= link_to 'Login to make a post!', '/users/sign_in' %>
+  <%= link_to 'Login to make a post!', '/users/sign_in', class: "btn btn-primary" %>
 <% end %>

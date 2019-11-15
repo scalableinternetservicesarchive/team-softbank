@@ -8,11 +8,15 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application' %>
+
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
   </head>
 
   <body>
-    <p class='notice'><%= notice %></p>
-    <p class='alert'><%= alert %></p>
+    <span class='notice'><%= notice %></span>
+    <span class='alert'><% alert %></span>
     <%= yield %>
   </body>
 </html>

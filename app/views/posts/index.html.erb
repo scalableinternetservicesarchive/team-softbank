@@ -1,13 +1,33 @@
 <%= render 'shared/header' %>
-<%= link_to 'New post', '/posts/new' %>
 
-<p>Your location: <%= @location.first %>, <%= @location.last %></p>
-
-<% @posts.each do |post| %>
-  <div>
-    <h1><%= post.title %></h1>
-    <h3>spice level: <%= post.votes_for.size %></h3>
-    <h3><%= post.latitude %>, <%= post.longitude %></h3>
-    <p><%= link_to 'Full post', post_path(post) %></p>
+<% if not user_signed_in? %>
+  <div class="empty">
+    <div class="empty-icon">
+      <i class="icon icon-location"></i>
+    </div>
+    <p class="empty-title h5">You need to sign in or sign up to view posts.</p>
+    <p class="empty-subtitle">Click the button to make an account.</p>
+    <div class="empty-action">
+      <%= link_to 'Sign up', '/users/sign_up', class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>
+
+<% if user_signed_in? %>
+  <%= link_to 'New post', '/posts/new', class: "btn btn-primary" %>
+  <% @posts.each do |post| %>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title h5"><%= post.title %></div>
+        <div class="card-subtitle text-gray">location: <%= post.latitude %>, <%= post.longitude %></div>
+      </div>
+      <div class="card-body">
+        <span>spice level: <%= post.votes_for.size %></span>
+      </div>
+      <div class="card-footer">
+        <%= link_to 'Full post', post_path(post), class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+<p>Your location: <%= @location.first %>, <%= @location.last %></p>

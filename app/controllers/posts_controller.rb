@@ -21,7 +21,18 @@ class PostsController < ApplicationController
     @post = Post.new(post_params) # TODO: author?
     @post.likes = 0
     @post.user_id = current_user.id
-    @post.latitude, @post.longitude = @location
+
+    if post_params[:latitude] == 'error'
+      # TODO: remove ip geocoding altogether
+      # or find a way to use it as fallback
+      # esp cause we might need to fallback for load testing
+      @post.latitude, @post.longitude = @location
+    else
+      # TODO: check if present
+      # and store in session and cookie
+      # this we can hold off until we scale
+    end
+    
     @post.save!
 
     redirect_to @post
@@ -46,7 +57,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :latitude, :longitude)
   end
 
   def location

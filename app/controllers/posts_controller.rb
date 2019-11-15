@@ -1,14 +1,14 @@
 class PostsController < ApplicationController
   # before_action :check_logged_in, only: [:create]
   geocode_ip_address
-  before_action :get_location, only: [:index, :new, :create]
+  before_action :location, only: [:index, :new, :create]
 
   def index
     # @posts = Post.all
     @posts = Post.within(
       5, # TODO: param
-      :units => :miles,
-      :origin => @location
+      units: :miles,
+      origin: @location
     )
   end
 
@@ -40,8 +40,8 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body)
   end
 
-  def get_location
-    @location = session[:geo_location].slice("lat", "lng").values
+  def location
+    @location = session[:geo_location].slice('lat', 'lng').values
     @location ||= [0, 0] # TODO: something better
   end
 

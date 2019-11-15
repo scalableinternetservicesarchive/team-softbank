@@ -1,29 +1,20 @@
 <%= render 'shared/header' %>
-<div class="card">
-  <div class="card-header">
-    <div class="card-title h5"><%= @post.title %></div>
-    <div class="card-subtitle text-gray"><%= @post.latitude %>, <%= @post.longitude %></div>
-    <div>
-      <% if user_signed_in? %>
-        <%=button_to (current_user.liked? @post) ? "despice: #{@post.votes_for.size}" : "spice: #{@post.votes_for.size}",
-          post_toggle_like_post_url(post_id: @post.id),
-          method: :post,
-          params: { post_id: @post.id },
-          class: (current_user.liked? @post) ? "btn btn-error" : "btn btn-success" %>
-      <% end %>
-    </div>
+
+<h1><%= @post.title %></h1>
+<% if post.image.attached? %>
+  <div class="card-image">
+      <%= image_tag @post.image, class: 'img-responsive'  %>
   </div>
-  <div class="card-body">
-    <p><%= @post.body %></p>
-  </div>
-  <div class="card-footer">
-    <% if user_signed_in? %>
-      <% if current_user.id == @post.user_id %>
-        <%= button_to 'Delete Post', @post, method: :delete, class: "btn btn-error" %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+<% end %>
+<h4>
+  <%= button_to (current_user.liked? @post) ? 'despice' : 'spice',
+      post_toggle_like_post_url(post_id: @post.id),
+      method: :post,
+      params: { post_id: @post.id }%>
+   spice level: <%= @post.votes_for.size %>
+</h4>
+<h4><%= @post.latitude %>, <%= @post.longitude %></h4>
+<p><%= @post.body %></p>
 
 <% if user_signed_in? %>
 

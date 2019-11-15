@@ -19,8 +19,9 @@
             <%= form.text_area :body %>
           </p>
 
-          <%= form.hidden_field :latitude %>
-          <%= form.hidden_field :longitude %>
+    <%= form.hidden_field :latitude %>
+    <%= form.hidden_field :longitude %>
+    <%= form.file_field :image %><br>
 
           <p>
             <%= form.submit "Make Post", class: "btn btn-primary" %>

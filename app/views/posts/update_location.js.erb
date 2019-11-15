@@ -1,0 +1,8 @@
+// note: $().html().text() allows for XSS but since this data comes from Rails it should be fine
+
+const decodedHtml = $('<div/>')
+  .html("<%= j (@posts.map { |post| render partial: 'postcard', locals: { post: post } }.join()) %>")
+  .text();
+
+$("#postcards").html(decodedHtml);
+$("#curloc").text("Your location: <%= j (@location.first) %>, <%= j (@location.last) %>");

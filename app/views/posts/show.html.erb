@@ -1,7 +1,14 @@
 <%= render 'shared/header' %>
 
 <h1><%= @post.title %></h1>
-<h4>spice level: <%= @post.likes %></h4>
+<h4>
+  <%= button_to (current_user.liked? @post) ? 'despice' : 'spice',
+      post_toggle_like_post_url(post_id: @post.id),
+      method: :post,
+      params: { post_id: @post.id }%>
+   spice level: <%= @post.votes_for.size %>
+</h4>
+<h4><%= @post.latitude %>, <%= @post.longitude %></h4>
 <p><%= @post.body %></p>
 
 <% if user_signed_in? %>
@@ -31,6 +38,13 @@
 <% else %>
   <% @comments.each do |comment| %>
     <div>
+      <span>
+        <%= button_to (current_user.liked? comment) ? 'despice' : 'spice',
+            post_comment_toggle_like_comment_url(post_id: @post.id, comment_id: comment.id),
+            method: :post,
+            params: { comment_id: comment.id } %>
+        <p>spice level: <%= comment.votes_for.size %></p>
+      </span>
       <p><%= comment.body %></p>
     </div>
   <% end %>

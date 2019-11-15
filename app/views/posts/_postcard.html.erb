@@ -1,0 +1,6 @@
+<div>
+  <h1><%= post.title %></h1>
+  <h3>spice level: <%= post.votes_for.size %></h3>
+  <h3><%= post.latitude %>, <%= post.longitude %></h3>
+  <p><%= link_to 'Full post', post_path(post) %></p>
+</div>

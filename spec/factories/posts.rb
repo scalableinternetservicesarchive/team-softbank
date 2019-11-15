@@ -5,11 +5,16 @@
 #  id         :integer          not null, primary key
 #  body       :text
 #  likes      :integer
-#  location   :point
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  title      :string
 #  user_id    :integer
+#  latitude   :decimal(10, 6)
+#  longitude  :decimal(10, 6)
+#
+# Indexes
+#
+#  index_posts_on_latitude_and_longitude  (latitude,longitude)
 #
 
 FactoryBot.define do

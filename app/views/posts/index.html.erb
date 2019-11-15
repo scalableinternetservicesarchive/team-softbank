@@ -1,13 +1,12 @@
+<%= javascript_tag 'postHTML5Loc()' %>
+
 <%= render 'shared/header' %>
 <%= link_to 'New post', '/posts/new' %>
 
-<p>Your location: <%= @location.first %>, <%= @location.last %></p>
+<p id="curloc">Computing location...</p>
 
-<% @posts.each do |post| %>
-  <div>
-    <h1><%= post.title %></h1>
-    <h3>spice level: <%= post.votes_for.size %></h3>
-    <h3><%= post.latitude %>, <%= post.longitude %></h3>
-    <p><%= link_to 'Full post', post_path(post) %></p>
-  </div>
-<% end %>
+<div id="postcards">
+  <% @posts.each do |post| %>
+    <%= render partial: 'postcard', locals: { post: post } %>
+  <% end %>
+</div>

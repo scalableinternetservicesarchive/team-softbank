@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   devise_for :users
+  get 'profile', controller: :profiles
   get 'react_hello/index'
   post 'posts/update_location'
 

@@ -7,7 +7,10 @@
   </section>
   <section class="navbar-section">
     <% if user_signed_in? %>
-      <span><%= current_user.email%></span>
+      <span>
+        <%= current_user.email %>
+        <%= link_to 'Profile', '/profile' %>
+      </span>
       <!-- eventually add a link to the map -->
       <%= link_to 'Sign out', '/users/sign_out', :method => :delete, class: "btn btn-link" %>
     <% end %>

@@ -1,0 +1,7 @@
+<%= render 'shared/header' %>
+
+<% if user_signed_in? %>
+  <h1>Profile</h1>
+<% else %>
+  <h1>This shouldn't appear...</h1>
+<% end %>

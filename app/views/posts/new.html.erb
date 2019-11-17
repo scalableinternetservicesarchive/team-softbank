@@ -18,7 +18,7 @@
       <%= form.label :body %><br>
       <%= form.text_area :body %>
     </p>
-    <%= form.file_field :image %><br>
+    <%= form.file_field :image, accept: 'image/*' %><br>
 
     <%= form.hidden_field :latitude %>
     <%= form.hidden_field :longitude %>

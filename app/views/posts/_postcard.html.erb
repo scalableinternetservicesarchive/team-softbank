@@ -5,7 +5,7 @@
   </div>
   <% if post.image.attached? %>
   <div class="card-image">
-      <%= image_tag post.image, class: 'img-responsive'  %>
+      <%= image_tag post.image, class: 'img-responsive', alt: 'post image', style:"height: 100px"  %>
   </div>
   <% end %>
   <div class="card-body">

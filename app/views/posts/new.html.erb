@@ -14,13 +14,14 @@
             <%= form.text_field :title %>
           </p>
 
-          <p>
-            <%= form.label :body %><br>
-            <%= form.text_area :body %>
-          </p>
+    <p>
+      <%= form.label :body %><br>
+      <%= form.text_area :body %>
+    </p>
+    <%= form.file_field :image %><br>
 
-          <%= form.hidden_field :latitude %>
-          <%= form.hidden_field :longitude %>
+    <%= form.hidden_field :latitude %>
+    <%= form.hidden_field :longitude %>
 
           <p>
             <%= form.submit "Make Post", class: "btn btn-primary" %>

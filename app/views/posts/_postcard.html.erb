@@ -3,6 +3,11 @@
     <div class="card-title h5"><%= post.title %></div>
     <div class="card-subtitle text-gray">location: <%= post.latitude %>, <%= post.longitude %></div>
   </div>
+  <% if post.image.attached? %>
+  <div class="card-image">
+      <%= image_tag post.image, class: 'img-responsive', alt: 'post image', style:"height: 100px"  %>
+  </div>
+  <% end %>
   <div class="card-body">
     <span>spice level: <%= post.votes_for.size %></span>
   </div>

@@ -32,8 +32,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'acts_as_votable'
 gem 'devise'
 gem 'geokit-rails'
-
-gem "aws-sdk-s3", require: false
+gem 'aws-sdk-s3', require: false
 
 gem 'react-rails'
 

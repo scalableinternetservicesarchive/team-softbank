@@ -1,7 +1,7 @@
 <%= render 'shared/header' %>
 
 <h1><%= @post.title %></h1>
-<% if post.image.attached? %>
+<% if @post.image.attached? %>
   <div class="card-image">
       <%= image_tag @post.image, class: 'img-responsive'  %>
   </div>

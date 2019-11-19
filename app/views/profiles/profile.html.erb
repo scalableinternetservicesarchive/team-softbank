@@ -2,6 +2,38 @@
 
 <% if user_signed_in? %>
   <h1>Profile</h1>
+  <div>
+    <h5>Total Given Spice: <%= current_user.votes.size %></h5>
+    <h5>Total Recieved Spice: <%= @total_recieved_spice %></h5>
+  </div>
+  <div>
+    <h2>Your Posts</h2>
+    <% @posts.each do |post| %>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title h5"><%= post.title %></div>
+          <div class="card-subtitle text-gray">location: <%= post.latitude %>, <%= post.longitude %></div>
+        </div>
+        <% if post.image.attached? %>
+        <div class="card-image">
+            <%= image_tag post.image, class: 'img-responsive', alt: 'post image', style:"height: 100px"  %>
+        </div>
+        <% end %>
+        <div class="card-body">
+          <span>spice level: <%= post.votes_for.size %></span>
+        </div>
+        <div class="card-footer">
+          <%= link_to 'Full post', post_path(post), class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <h2>Your Comments</h2>
+    <% @comments.each do |comment| %>
+        <div><%= comment.body %></div>
+    <% end %>
+  </div>
 <% else %>
   <h1>This shouldn't appear...</h1>
 <% end %>

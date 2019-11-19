@@ -1,6 +1,8 @@
 <%= render 'shared/header' %>
-<p id='locfield'></p>
+
 <% if user_signed_in? %>
+  <p id='locfield'></p>
+
   <div class="login-box-wrapper">
     <div class="panel login-box">
       <div class="panel-header">
@@ -14,14 +16,14 @@
             <%= form.text_field :title %>
           </p>
 
-    <p>
-      <%= form.label :body %><br>
-      <%= form.text_area :body %>
-    </p>
-    <%= form.file_field :image %><br>
+          <p>
+            <%= form.label :body %><br>
+            <%= form.text_area :body %>
+          </p>
+          <%= form.file_field :image, accept: 'image/*' %><br>
 
-    <%= form.hidden_field :latitude %>
-    <%= form.hidden_field :longitude %>
+          <%= form.hidden_field :latitude %>
+          <%= form.hidden_field :longitude %>
 
           <p>
             <%= form.submit "Make Post", class: "btn btn-primary" %>
@@ -30,6 +32,9 @@
       </div>
     </div>
   </div>
+
+  <%= javascript_tag 'setHTML5Loc()' %>
+
 <% else %>
   <div class="empty">
     <div class="empty-icon">
@@ -42,4 +47,3 @@
     </div>
   </div>
 <% end %>
-<%= javascript_tag 'setHTML5Loc()' %>

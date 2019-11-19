@@ -9,29 +9,20 @@
   <div>
     <h2>Your Posts</h2>
     <% @posts.each do |post| %>
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title h5"><%= post.title %></div>
-          <div class="card-subtitle text-gray">location: <%= post.latitude %>, <%= post.longitude %></div>
-        </div>
-        <% if post.image.attached? %>
-        <div class="card-image">
-            <%= image_tag post.image, class: 'img-responsive', alt: 'post image', style:"height: 100px"  %>
-        </div>
-        <% end %>
-        <div class="card-body">
-          <span>spice level: <%= post.votes_for.size %></span>
-        </div>
-        <div class="card-footer">
-          <%= link_to 'Full post', post_path(post), class: "btn btn-primary" %>
-        </div>
-      </div>
+      <%= render partial: 'shared/postcard', locals: { post: post } %>
     <% end %>
   </div>
   <div>
     <h2>Your Comments</h2>
     <% @comments.each do |comment| %>
-        <div><%= comment.body %></div>
+        <div class="card">
+          <div class="card-body">
+            <%= comment.body %>
+          </div>
+          <div class="card-footer">
+            <%= link_to 'Full Post', "/posts/#{comment.post_id}", class: "btn btn-primary" %>
+          </div>
+        </div>
     <% end %>
   </div>
 <% else %>

@@ -10,7 +10,9 @@
   <%= button_to (current_user.liked? @post) ? 'despice' : 'spice',
       post_toggle_like_post_url(post_id: @post.id),
       method: :post,
-      params: { post_id: @post.id }%>
+      params: { post_id: @post.id },
+      class: (current_user.liked? @post) ? 'btn btn-error' : 'btn btn-success'
+    %>
    spice level: <%= @post.votes_for.size %>
 </h4>
 <h4><%= @post.latitude %>, <%= @post.longitude %></h4>

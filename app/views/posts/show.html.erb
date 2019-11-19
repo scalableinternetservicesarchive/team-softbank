@@ -3,25 +3,29 @@
 <h1><%= @post.title %></h1>
 <% if @post.image.attached? %>
   <div class="card-image">
-      <%= image_tag @post.image, class: 'img-responsive', alt: 'post image', style:"height: 300px" %>
+      <%= image_tag @post.image, class: 'img-responsive', alt: 'post image', style: "height: 300px" %>
   </div>
 <% end %>
 <h4>
   <%= button_to (current_user.liked? @post) ? 'despice' : 'spice',
-      post_toggle_like_post_url(post_id: @post.id),
-      method: :post,
-      params: { post_id: @post.id },
-      class: (current_user.liked? @post) ? 'btn btn-error' : 'btn btn-success'
-    %>
+    post_toggle_like_post_url(post_id: @post.id),
+    method: :post,
+    params: { post_id: @post.id },
+    class: (current_user.liked? @post) ? 'btn btn-error' : 'btn btn-success'
+  %>
    spice level: <%= @post.votes_for.size %>
 </h4>
 <h4><%= @post.latitude %>, <%= @post.longitude %></h4>
 <p><%= @post.body %></p>
+<h4>spice level: <%= @post.votes_for.size %></h4>
 
 <% if user_signed_in? %>
+  <%= button_to (current_user.liked? @post) ? 'despice' : 'spice',
+      post_toggle_like_post_url(post_id: @post.id),
+      method: :post,
+      params: { post_id: @post.id } %>
 
   <div>Write Comment: </div>
-
   <%= form_with method: "post", url: post_comments_path(post_id: @post.id), local: true do |form| %>
     <%= form.hidden_field :user_id, value: current_user.id %>
     <%= form.hidden_field :post_id, value: @post.id %>
@@ -37,7 +41,7 @@
   <p>Login to make a comment!</p>
 <% end %>
 
-<% if @comments.nil? %>
+<% if @comments.blank? %>
   <div>No comments...</div>
 <% else %>
   <div>Comments: </div>

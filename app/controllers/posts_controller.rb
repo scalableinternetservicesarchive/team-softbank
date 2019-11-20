@@ -26,7 +26,6 @@ class PostsController < ApplicationController
     # NOTE: we assume lat/long are always present due to the stub!
     # TODO: store in session and cookie
     # this we can hold off until we scale
-    end
 
     @post.save!
 

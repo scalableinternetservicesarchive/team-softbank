@@ -1,24 +1,21 @@
 class PostsController < ApplicationController
   # before_action :check_logged_in, only: [:create]
   # geocode_ip_address
-  # before_action :location, only: [:index, :new, :create]
+  before_action :location, only: [:index, :show]
   respond_to :html, :js
 
   def index
-    # @posts = Post.all
-    @location = session[:html5_geoloc]
-    @location ||= [0, 0]
-
-    @posts = Post.within(
-      5, # TODO: param
-      units: :miles,
-      origin: @location
-    ).by_distance(origin: @location)
+    @posts = Post.within_location(@location).by_distance(origin: @location)
   end
 
   def show
     # TODO: check user loc
     @post = Post.find(params[:id])
+
+    # if @post.publicly_viewable? || @posts.include?(@post)
+    #   puts "does this work"
+    # end
+
     @comments = @post.comments
   end
 
@@ -64,11 +61,7 @@ class PostsController < ApplicationController
     # TODO: add a cookie and a check jquery-side for scaling
     session[:html5_geoloc] = [params[:latitude], params[:longitude]]
     @location = session[:html5_geoloc]
-    @posts = Post.within(
-      5, # TODO: param
-      units: :miles,
-      origin: @location
-    ).by_distance(origin: @location)
+    @posts = Post.within_location(@location).by_distance(origin: @location)
     respond_to do |format|
       format.js { render layout: false }
     end
@@ -80,10 +73,10 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body, :latitude, :longitude, :image)
   end
 
-  # def location
-  #   @location = session[:geo_location].slice('lat', 'lng').values
-  #   @location ||= [0, 0] # TODO: something better
-  # end
+  def location
+    @location = session[:html5_geoloc]
+    @location ||= [0, 0] # TODO: something better
+  end
 
   def check_logged_in
     redirect_to '/' unless user_signed_in?

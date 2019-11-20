@@ -13,4 +13,6 @@ Rails.application.routes.draw do
     end
     post 'toggle_like_post'
   end
+
+  get 'spiciest', controller: :spiciest
 end

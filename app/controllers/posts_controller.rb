@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   # before_action :check_logged_in, only: [:create]
-  # geocode_ip_address
   before_action :location, only: [:index, :show]
   respond_to :html, :js
 
@@ -24,16 +23,9 @@ class PostsController < ApplicationController
     @post.likes = 0
     @post.user_id = current_user.id
 
-    if post_params[:latitude] == 'error'
-      # TODO: remove ip geocoding altogether
-      # or find a way to use it as fallback
-      # esp cause we might need to fallback for load testing
-      @post.latitude, @post.longitude = @location
-    else
-      # TODO: check if present
-      # and store in session and cookie
-      # this we can hold off until we scale
-    end
+    # NOTE: we assume lat/long are always present due to the stub!
+    # TODO: store in session and cookie
+    # this we can hold off until we scale
 
     @post.save!
 

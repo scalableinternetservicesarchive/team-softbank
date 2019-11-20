@@ -3,7 +3,7 @@
 <h1><%= @post.title %></h1>
 <% if @post.image.attached? %>
   <div class="card-image">
-      <%= image_tag @post.image, class: 'img-responsive', alt: 'post image', style: "height: 300px" %>
+    <%= image_tag @post.image, class: 'img-responsive', alt: 'post image', style: "height: 300px" %>
   </div>
 <% end %>
 <h4><%= @post.latitude %>, <%= @post.longitude %></h4>

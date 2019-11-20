@@ -15,7 +15,7 @@
   <div class="card-body">
     <span>spice level: <%= post.votes_for.size %></span>
     <br/>
-    <span><%= post.comments.size %> comments</span>
+    <span><%= post.comments.size %> comment<%= 's' unless post.comments.size == 1 %></span>
   </div>
   <div class="card-footer">
     <%= link_to 'Full post', post_path(post), class: "btn btn-primary" %>

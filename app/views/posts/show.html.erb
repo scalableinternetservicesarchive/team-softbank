@@ -14,7 +14,8 @@
   <%= button_to (current_user.liked? @post) ? 'despice' : 'spice',
       post_toggle_like_post_url(post_id: @post.id),
       method: :post,
-      params: { post_id: @post.id } %>
+      params: { post_id: @post.id },
+      class: (current_user.liked? @post) ? 'btn btn-error' : 'btn btn-success' %>
 
   <div>Write Comment: </div>
   <%= form_with method: "post", url: post_comments_path(post_id: @post.id), local: true do |form| %>

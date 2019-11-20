@@ -4,6 +4,7 @@
     <% if user_signed_in? %>
       <%= link_to 'New Post', '/posts/new', class: "btn btn-link" %>
     <% end %>
+    <%= link_to 'Spiciest Posts', '/spiciest', class: 'btn btn-link' %>
   </section>
   <section class="navbar-section">
     <% if user_signed_in? %>

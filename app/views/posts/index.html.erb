@@ -1,8 +1,12 @@
 <%= render 'shared/header' %>
 
 <% if user_signed_in? %>
-  <%= javascript_tag 'postHTML5Loc()' %>
-  <p id="curloc">Computing location...</p>
+  <% if @location == [0,0] %>
+    <p id="curloc">Computing location...</p>
+    <%= javascript_tag 'postHTML5Loc()' %>
+  <% else %>
+    <p id="curloc">Your location: <%= j (@location.first) %>, <%= j (@location.last) %></p>
+  <% end %>
   <div>
     <%= form_tag posts_path, :controller => 'posts', :action => 'index', :method => 'get' do %>
       Sort by: 

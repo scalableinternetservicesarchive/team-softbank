@@ -3,7 +3,12 @@
 <% if user_signed_in? %>
   <%= javascript_tag 'postHTML5Loc()' %>
   <p id="curloc">Computing location...</p>
-
+  <div>
+    <%= form_tag posts_path, :controller => 'posts', :action => 'index', :method => 'get' do %>
+      Sort by: 
+      <%= select_tag :sort, options_for_select(['distance', 'spice'], @sort), :onChange=>'this.form.submit();' %>
+    <% end %>
+  </div>
   <div id="postcards">
     <% @posts.each do |post| %>
       <%= render partial: 'postcard', locals: { post: post } %>

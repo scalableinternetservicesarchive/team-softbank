@@ -30,7 +30,7 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   scope :spiciest, -> { order('likes DESC').limit(50) }
-  scope :within_location, -> (location) { within(5, units: :miles, origin: location) }
+  scope :within_location, ->(location) { within(5, units: :miles, origin: location) }
 
   def publicly_viewable?
     Post.spiciest.include?(self)

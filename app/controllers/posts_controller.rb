@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   # before_action :check_logged_in, only: [:create]
   # geocode_ip_address
-  before_action :set_location, only: [:index, :show]
+  before_action :location, only: [:index, :show]
   respond_to :html, :js
 
   def index
@@ -73,7 +73,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body, :latitude, :longitude, :image)
   end
 
-  def set_location
+  def location
     @location = session[:html5_geoloc]
     @location ||= [0, 0] # TODO: something better
   end

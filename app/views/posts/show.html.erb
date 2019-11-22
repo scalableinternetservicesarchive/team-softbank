@@ -1,23 +1,23 @@
 <%= render 'shared/header' %>
 
 <h1><%= @post.title %></h1>
-<h4>
+<% if @post.image.attached? %>
+  <div class="card-image">
+    <%= image_tag @post.image, class: 'img-responsive', alt: 'post image', style: "height: 300px" %>
+  </div>
+<% end %>
+<h4><%= @post.latitude %>, <%= @post.longitude %></h4>
+<p><%= @post.body %></p>
+<h4>spice level: <%= @post.votes_for.size %></h4>
+
+<% if user_signed_in? %>
   <%= button_to (current_user.liked? @post) ? 'despice' : 'spice',
       post_toggle_like_post_url(post_id: @post.id),
       method: :post,
-      params: { post_id: @post.id }%>
-   spice level: <%= @post.votes_for.size %>
-</h4>
-<h4><%= @post.latitude %>, <%= @post.longitude %></h4>
-<p><%= @post.body %></p>
+      params: { post_id: @post.id },
+      class: (current_user.liked? @post) ? 'btn btn-error' : 'btn btn-success' %>
 
-<% if user_signed_in? %>
-  <% if current_user.id == @post.user_id %>
-    <%= button_to 'DELETE THIS POST', @post, method: :delete %>
-  <% end %>
-
-  <div>add comment here!</div>
-
+  <div>Write Comment: </div>
   <%= form_with method: "post", url: post_comments_path(post_id: @post.id), local: true do |form| %>
     <%= form.hidden_field :user_id, value: current_user.id %>
     <%= form.hidden_field :post_id, value: @post.id %>
@@ -26,26 +26,29 @@
       <%= form.text_area :body %>
     </p>
     <p>
-      <%= form.submit %>
+      <%= form.submit "Post Comment", class: "btn btn-success" %>
     </p>
   <% end %>
 <% else %>
   <p>Login to make a comment!</p>
 <% end %>
 
-<% if @comments.nil? %>
+<% if @comments.blank? %>
   <div>No comments...</div>
 <% else %>
+  <div>Comments: </div>
   <% @comments.each do |comment| %>
-    <div>
-      <span>
-        <%= button_to (current_user.liked? comment) ? 'despice' : 'spice',
+    <div class="card">
+      <div class="card-body">
+        <p><%= comment.body %></p>
+        <% if user_signed_in? %>
+          <%= button_to (current_user.liked? comment) ? "despice: #{comment.votes_for.size}" : "spice: #{comment.votes_for.size}",
             post_comment_toggle_like_comment_url(post_id: @post.id, comment_id: comment.id),
             method: :post,
-            params: { comment_id: comment.id } %>
-        <p>spice level: <%= comment.votes_for.size %></p>
-      </span>
-      <p><%= comment.body %></p>
+            params: { comment_id: comment.id },
+            class: (current_user.liked? comment) ? 'btn btn-error' : 'btn btn-success' %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 <% end %>

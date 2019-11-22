@@ -1,14 +1,23 @@
-
-<%= javascript_tag 'postHTML5Loc()' %>
-
 <%= render 'shared/header' %>
-<%= link_to 'New post', '/posts/new' %>
 
-<p id="curloc">Computing location...</p>
+<% if user_signed_in? %>
+  <%= javascript_tag 'postHTML5Loc()' %>
+  <p id="curloc">Computing location...</p>
 
-<div id="postcards">
-  <% @posts.each do |post| %>
-    <%= render partial: 'postcard', locals: { post: post } %>
-  <% end %>
-</div>
-
+  <div id="postcards">
+    <% @posts.each do |post| %>
+      <%= render partial: 'shared/postcard', locals: { post: post } %>
+    <% end %>
+  </div>
+<% else %>
+  <div class="empty">
+    <div class="empty-icon">
+      <i class="icon icon-location"></i>
+    </div>
+    <p class="empty-title h5">You need to sign in or sign up to view posts.</p>
+    <p class="empty-subtitle">Click the button to make an account.</p>
+    <div class="empty-action">
+      <%= link_to 'Sign up', '/users/sign_up', class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

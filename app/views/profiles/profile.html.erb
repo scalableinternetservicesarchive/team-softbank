@@ -1,0 +1,30 @@
+<%= render 'shared/header' %>
+
+<% if user_signed_in? %>
+  <h1>Profile</h1>
+  <div>
+    <h5>Total Given Spice: <%= current_user.votes.size %></h5>
+    <h5>Total Recieved Spice: <%= @total_recieved_spice %></h5>
+  </div>
+  <div>
+    <h2>Your Posts</h2>
+    <% @posts.each do |post| %>
+      <%= render partial: 'shared/postcard', locals: { post: post } %>
+    <% end %>
+  </div>
+  <div>
+    <h2>Your Comments</h2>
+    <% @comments.each do |comment| %>
+      <div class="card">
+        <div class="card-body">
+          <%= comment.body %>
+        </div>
+        <div class="card-footer">
+          <%= link_to 'Full Post', "/posts/#{comment.post_id}", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <h1>This shouldn't appear...</h1>
+<% end %>

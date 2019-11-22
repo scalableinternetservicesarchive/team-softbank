@@ -1,6 +1,23 @@
-<% if user_signed_in? %>
-  <div>
-    Signed in as... <%= current_user.email %>
-    <%= link_to 'Sign out', '/users/sign_out', :method => :delete %>
-  </div>
-<% end %>
+<header class="navbar">
+  <section class="navbar-section">
+    <%= link_to 'TicTacTea', '/', class: "navbar-brand mr-2" %>
+    <% if user_signed_in? %>
+      <%= link_to 'New Post', '/posts/new', class: "btn btn-link" %>
+    <% end %>
+    <%= link_to 'Spiciest Posts', '/spiciest', class: 'btn btn-link' %>
+  </section>
+  <section class="navbar-section">
+    <% if user_signed_in? %>
+      <span>
+        <%= current_user.email %>
+        <%= link_to 'Profile', '/profile' %>
+      </span>
+      <!-- eventually add a link to the map -->
+      <%= link_to 'Sign out', '/users/sign_out', :method => :delete, class: "btn btn-link" %>
+    <% end %>
+    <% if not user_signed_in? %>
+      <%= link_to 'Sign In', '/users/sign_in', class: "btn btn-link" %>
+      <%= link_to 'Sign Up', '/users/sign_up', class: "btn btn-link" %>
+    <% end %>
+  </section>
+</header>

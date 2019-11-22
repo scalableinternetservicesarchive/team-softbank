@@ -37,6 +37,6 @@ class Post < ApplicationRecord
   end
 
   def within?(latlng)
-    self.distance_to(latlng) < 5.0
+    distance_to(latlng) < 5.0
   end
 end

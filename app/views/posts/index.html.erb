@@ -1,16 +1,16 @@
 <%= render 'shared/header' %>
 
 <% if user_signed_in? %>
-  <% if @location == [0,0] %>
+  <% if @location == [0, 0] %>
     <p id="curloc">Computing location...</p>
     <%= javascript_tag 'postHTML5Loc()' %>
   <% else %>
-    <p id="curloc">Your location: <%= j (@location.first) %>, <%= j (@location.last) %></p>
+    <p id="curloc">Your location: <%= @location.first %>, <%= @location.last %></p>
   <% end %>
   <div>
-    <%= form_tag posts_path, :controller => 'posts', :action => 'index', :method => 'get' do %>
-      Sort by: 
-      <%= select_tag :sort, options_for_select(['brewing near you', 'spiciest', 'freshest'], @sort), :onChange=>'this.form.submit();' %>
+    <%= form_tag posts_path, :method => 'get' do %>
+      Sort by:
+      <%= select_tag :sort, options_for_select(['Brewing Near You', 'Spiciest', 'Freshest'], @sort), :onChange=>'this.form.submit();' %>
     <% end %>
   </div>
   <div id="postcards">

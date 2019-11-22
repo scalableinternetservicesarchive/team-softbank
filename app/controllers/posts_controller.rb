@@ -8,18 +8,12 @@ class PostsController < ApplicationController
     @location = session[:html5_geoloc]
     @location ||= [0, 0]
     @sort = params[:sort]
-    if @sort == 'spice'
-      @posts = Post.within(
-        5, # TODO: param
-        units: :miles,
-        origin: @location
-      ).order('likes DESC')
+    if @sort == 'spiciest'
+      @posts = Post.within_location(@location).order('likes DESC')
+    elsif @sort == 'freshest'
+      @posts = Post.within_location(@location).order('created_at DESC')
     else
-      @posts = Post.within(
-        5, # TODO: param
-        units: :miles,
-        origin: @location
-      ).by_distance(origin: @location)
+      @posts = Post.within_location(@location).by_distance(origin: @location)
     end
   end
 

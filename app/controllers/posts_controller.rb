@@ -4,10 +4,11 @@ class PostsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @posts = case params[:sort]
-             when 'Spiciest'
+    @sort = params[:sort]
+    @posts = case @sort
+             when 'spiciest'
                Post.within_location(@location).order('likes DESC')
-             when 'Freshest'
+             when 'freshest'
                Post.within_location(@location).order('created_at DESC')
              else
                Post.within_location(@location).by_distance(origin: @location)
@@ -20,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params) # TODO: author?
+    @post = Post.new(post_params)
     @post.likes = 0
     @post.user_id = current_user.id
 

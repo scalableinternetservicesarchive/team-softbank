@@ -7,12 +7,12 @@
   <% else %>
     <p id="curloc">Your location: <%= @location.first %>, <%= @location.last %></p>
   <% end %>
-  <div>
-    <%= form_tag posts_path, :method => 'get' do %>
-      Sort by:
-      <%= select_tag :sort, options_for_select(['Brewing Near You', 'Spiciest', 'Freshest'], @sort), :onChange=>'this.form.submit();' %>
-    <% end %>
-  </div>
+
+  <%= form_tag posts_path, :method => 'get' do %>
+    Sort by:
+    <%= select_tag :sort, options_for_select({'Brewing Near You' => 'brewing', 'Spiciest' => 'spiciest', 'Freshest' => 'freshest'}, @sort), :onChange=>'this.form.submit();' %>
+  <% end %>
+
   <div id="postcards">
     <% @posts.each do |post| %>
       <%= render partial: 'shared/postcard', locals: { post: post } %>

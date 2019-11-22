@@ -1,55 +1,13 @@
 <%= render 'shared/header' %>
 
-<h1><%= @post.title %></h1>
-<% if @post.image.attached? %>
-  <div class="card-image">
-      <%= image_tag @post.image, class: 'img-responsive', alt: 'post image', style: "height: 300px" %>
-  </div>
-<% end %>
-<h4><%= @post.latitude %>, <%= @post.longitude %></h4>
-<p><%= @post.body %></p>
-<h4>spice level: <%= @post.votes_for.size %></h4>
-
-<% if user_signed_in? %>
-  <%= button_to (current_user.liked? @post) ? 'despice' : 'spice',
-      post_toggle_like_post_url(post_id: @post.id),
-      method: :post,
-      params: { post_id: @post.id } %>
-
-  <div>Write Comment: </div>
-  <%= form_with method: "post", url: post_comments_path(post_id: @post.id), local: true do |form| %>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-    <%= form.hidden_field :post_id, value: @post.id %>
-    <p>
-      <%= form.label :body %><br>
-      <%= form.text_area :body %>
-    </p>
-    <p>
-      <%= form.submit "Post Comment", class: "btn btn-success" %>
-    </p>
-  <% end %>
+<% if @post.publicly_viewable? %>
+  <%= render partial: 'postbody', locals: { post: @post, comments: @comments } %>
+<% elsif !user_signed_in? %>
+  <%= render 'shared/notsignedin' %>
+<% elsif @post.within?(@location) %>
+  <%= render partial: 'postbody', locals: { post: @post, comments: @comments } %>
 <% else %>
-  <p>Login to make a comment!</p>
+  <%# fetch user loc? %>
+  <%# or maybe we can just be lazy: user will sign in, get redirected to /posts, and obtain location %>
+  <%# instead of redirecting back to the post itself %>
 <% end %>
-
-<% if @comments.blank? %>
-  <div>No comments...</div>
-<% else %>
-  <div>Comments: </div>
-  <% @comments.each do |comment| %>
-    <div class="card">
-      <div class="card-body">
-        <p><%= comment.body %></p>
-        <% if user_signed_in? %>
-          <%= button_to (current_user.liked? comment) ? "despice: #{comment.votes_for.size}" : "spice: #{comment.votes_for.size}",
-            post_comment_toggle_like_comment_url(post_id: @post.id, comment_id: comment.id),
-            method: :post,
-            params: { comment_id: comment.id },
-            class: (current_user.liked? comment) ? 'btn btn-error' : 'btn btn-success' %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
-<% end %>
-
-<%= link_to 'Back', '/posts/' %>

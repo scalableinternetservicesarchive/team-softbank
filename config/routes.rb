@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'profile', controller: :profiles
-  get 'react_hello/index'
   post 'posts/update_location'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -13,4 +12,6 @@ Rails.application.routes.draw do
     end
     post 'toggle_like_post'
   end
+
+  get 'spiciest', controller: :spiciest
 end

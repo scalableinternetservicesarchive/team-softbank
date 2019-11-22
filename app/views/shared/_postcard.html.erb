@@ -4,12 +4,18 @@
     <div class="card-subtitle text-gray">location: <%= post.latitude %>, <%= post.longitude %></div>
   </div>
   <% if post.image.attached? %>
-  <div class="card-image">
+    <div class="card-image">
       <%= image_tag post.image, class: 'img-responsive', alt: 'post image', style:"height: 100px"  %>
-  </div>
+    </div>
+  <% else %>
+    <div class="card-image">
+      <%= image_tag "teapoticon.png", class: 'img-responsive', alt: 'post image', style:"height: 100px"  %>
+    </div>
   <% end %>
   <div class="card-body">
     <span>spice level: <%= post.votes_for.size %></span>
+    <br/>
+    <span><%= post.comments.size %> comment<%= 's' unless post.comments.size == 1 %></span>
   </div>
   <div class="card-footer">
     <%= link_to 'Full post', post_path(post), class: "btn btn-primary" %>

@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   # before_action :check_logged_in, only: [:create]
-  # geocode_ip_address
-  # before_action :location, only: [:index, :new, :create]
+  before_action :location, only: [:index, :show]
   respond_to :html, :js
 
   def index
@@ -25,7 +24,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    # TODO: check user loc
     @post = Post.find(params[:id])
     @comments = @post.comments
   end
@@ -35,16 +33,9 @@ class PostsController < ApplicationController
     @post.likes = 0
     @post.user_id = current_user.id
 
-    if post_params[:latitude] == 'error'
-      # TODO: remove ip geocoding altogether
-      # or find a way to use it as fallback
-      # esp cause we might need to fallback for load testing
-      @post.latitude, @post.longitude = @location
-    else
-      # TODO: check if present
-      # and store in session and cookie
-      # this we can hold off until we scale
-    end
+    # NOTE: we assume lat/long are always present due to the stub!
+    # TODO: store in session and cookie
+    # this we can hold off until we scale
 
     @post.save!
 
@@ -77,11 +68,7 @@ class PostsController < ApplicationController
     # TODO: add a cookie and a check jquery-side for scaling
     session[:html5_geoloc] = [params[:latitude], params[:longitude]]
     @location = session[:html5_geoloc]
-    @posts = Post.within(
-      5, # TODO: param
-      units: :miles,
-      origin: @location
-    ).by_distance(origin: @location)
+    @posts = Post.within_location(@location).by_distance(origin: @location)
     respond_to do |format|
       format.js { render layout: false }
     end
@@ -93,10 +80,10 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :body, :latitude, :longitude, :image)
   end
 
-  # def location
-  #   @location = session[:geo_location].slice('lat', 'lng').values
-  #   @location ||= [0, 0] # TODO: something better
-  # end
+  def location
+    @location = session[:html5_geoloc]
+    @location ||= [0, 0] # TODO: something better
+  end
 
   def check_logged_in
     redirect_to '/' unless user_signed_in?

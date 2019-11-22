@@ -28,4 +28,15 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments
   has_one_attached :image
+
+  scope :spiciest, -> { order('likes DESC').limit(50) }
+  scope :within_location, ->(location) { within(5, units: :miles, origin: location) }
+
+  def publicly_viewable?
+    Post.spiciest.include?(self)
+  end
+
+  def within?(latlng)
+    distance_to(latlng) < 5.0
+  end
 end

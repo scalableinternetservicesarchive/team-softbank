@@ -14,7 +14,7 @@ comments = []
 50.times do
   u = User.create!(
     email: Faker::Internet.unique.email,
-    password: Faker::Internet.password(min_length: 6) # not encrypted but whatever
+    password: '123456'
   )
   users.push(u.id)
 

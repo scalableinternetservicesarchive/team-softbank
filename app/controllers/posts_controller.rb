@@ -8,13 +8,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    # TODO: check user loc
     @post = Post.find(params[:id])
-
-    # if @post.publicly_viewable? || @posts.include?(@post)
-    #   puts "does this work"
-    # end
-
     @comments = @post.comments
   end
 

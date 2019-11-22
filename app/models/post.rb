@@ -35,4 +35,8 @@ class Post < ApplicationRecord
   def publicly_viewable?
     Post.spiciest.include?(self)
   end
+
+  def within?(latlng)
+    self.distance_to(latlng) < 5.0
+  end
 end

@@ -4,7 +4,23 @@ class PostsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @posts = Post.within_location(@location).by_distance(origin: @location)
+    # @posts = Post.all
+    @location = session[:html5_geoloc]
+    @location ||= [0, 0]
+    @sort = params[:sort]
+    if @sort == 'spice'
+      @posts = Post.within(
+        5, # TODO: param
+        units: :miles,
+        origin: @location
+      ).order('likes DESC')
+    else
+      @posts = Post.within(
+        5, # TODO: param
+        units: :miles,
+        origin: @location
+      ).by_distance(origin: @location)
+    end
   end
 
   def show
@@ -36,8 +52,13 @@ class PostsController < ApplicationController
     @post = Post.find(params[:post_id])
     if current_user.liked? @post
       @post.unliked_by current_user
+      # Update likes field for sorting by likes
+      @post.likes -= 1
+      @post.save!
     else
       @post.liked_by current_user
+      @post.likes += 1
+      @post.save!
     end
     redirect_to @post
   end

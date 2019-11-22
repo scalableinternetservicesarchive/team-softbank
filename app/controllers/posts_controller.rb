@@ -4,14 +4,14 @@ class PostsController < ApplicationController
   respond_to :html, :js
 
   def index
-    case params[:sort]
-    when 'Spiciest'
-      @posts = Post.within_location(@location).order('likes DESC')
-    when 'Freshest'
-      @posts = Post.within_location(@location).order('created_at DESC')
-    else
-      @posts = Post.within_location(@location).by_distance(origin: @location)
-    end
+    @posts = case params[:sort]
+             when 'Spiciest'
+               Post.within_location(@location).order('likes DESC')
+             when 'Freshest'
+               Post.within_location(@location).order('created_at DESC')
+             else
+               Post.within_location(@location).by_distance(origin: @location)
+             end
   end
 
   def show

@@ -22,7 +22,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.likes = 0
     @post.user_id = current_user.id
 
     # NOTE: we assume lat/long are always present due to the stub!
@@ -44,10 +43,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:post_id])
     if current_user.liked? @post
       @post.unliked_by current_user
-      @post.likes -= 1
+      @post.like_count -= 1
     else
       @post.liked_by current_user
-      @post.likes += 1
+      @post.like_count += 1
     end
     @post.save!
     redirect_to @post

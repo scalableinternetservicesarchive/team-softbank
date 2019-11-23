@@ -21,7 +21,6 @@ comments = []
   50.times do
     p = Post.create!(
       user_id: u.id,
-      likes: 0,
       title: Faker::TvShows::SiliconValley.quote,
       body: Faker::Hipster.paragraph(sentence_count: 5),
       latitude: rand(33.69..34.12),

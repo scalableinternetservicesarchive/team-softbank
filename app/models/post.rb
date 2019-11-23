@@ -30,7 +30,7 @@ class Post < ApplicationRecord
   has_many :likes, -> { Like.post }, foreign_key: :type_id, inverse_of: :post
   has_one_attached :image
 
-  scope :spiciest, -> { order('likes DESC').limit(50) }
+  scope :spiciest, -> { order('like_count DESC').limit(50) }
   scope :within_location, ->(location) { within(5, units: :miles, origin: location) }
 
   def publicly_viewable?

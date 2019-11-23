@@ -1,23 +1,23 @@
 # == Schema Information
 #
-# Table name: comments
+# Table name: likes
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
-#  post_id    :integer
-#  body       :string
+#  type       :integer          default("0"), not null
+#  type_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  like_count :integer          default("0")
 #
 # Indexes
 #
-#  index_comments_on_post_id  (post_id)
-#  index_comments_on_user_id  (user_id)
+#  index_likes_on_type              (type)
+#  index_likes_on_type_and_type_id  (type,type_id)
+#  index_likes_on_user_id           (user_id)
 #
 
 require 'rails_helper'
 
-RSpec.describe Comment, type: :model do
+RSpec.describe Like, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

@@ -8,6 +8,7 @@
 #  body       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  like_count :integer          default("0")
 #
 # Indexes
 #

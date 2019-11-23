@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  body       :text
-#  likes      :integer
+#  like_count :integer          default("0")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  title      :string
@@ -24,9 +24,10 @@ class Post < ApplicationRecord
                    lat_column_name: :latitude,
                    lng_column_name: :longitude
 
-  acts_as_votable
+  # acts_as_votable
   belongs_to :user
   has_many :comments
+  has_many :likes, -> { Like.post }, foreign_key: :type_id, inverse_of: :post
   has_one_attached :image
 
   scope :spiciest, -> { order('likes DESC').limit(50) }

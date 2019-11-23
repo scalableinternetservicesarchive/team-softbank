@@ -26,4 +26,8 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes
   # acts_as_voter
+
+  def liked?(record)
+    record.likes.exists?(user_id: self.id)
+  end
 end

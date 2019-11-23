@@ -28,6 +28,6 @@ class User < ApplicationRecord
   # acts_as_voter
 
   def liked?(record)
-    record.likes.exists?(user_id: self.id)
+    record.likes.exists?(user_id: id)
   end
 end

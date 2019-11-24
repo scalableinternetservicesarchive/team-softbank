@@ -10,4 +10,6 @@
   <%# fetch user loc? %>
   <%# or maybe we can just be lazy: user will sign in, get redirected to /posts, and obtain location %>
   <%# instead of redirecting back to the post itself %>
+  <%# this laziness doesn't work if user is signed in and tries to go to a post directly! %>
+  <%= render partial: 'shared/unviewable' %>
 <% end %>

@@ -3,33 +3,31 @@ module Likable
     Like.create!(
       user_id: user.id,
       like_type: like_enum,
-      type_id: self.id
+      type_id: id
     )
 
-    self.increment!(:like_count)
+    increment!(:like_count)
   end
 
   def unliked_by!(user)
     Like.find_by(
       user_id: user.id,
       like_type: like_enum,
-      type_id: self.id
+      type_id: id
     ).destroy!
 
-    self.decrement!(:like_count)
+    decrement!(:like_count)
   end
 
-  module ClassMethods
-    def like_type
-      self.name.downcase
-    end
-  end
+  # module ClassMethods
+  # end
 
-  def self.included(including_class)
-    including_class.extend ClassMethods
-  end
+  # def self.included(including_class)
+  #   including_class.extend ClassMethods
+  # end
 
   private
+
   def like_enum
     Like.like_types[self.class.name.downcase]
   end

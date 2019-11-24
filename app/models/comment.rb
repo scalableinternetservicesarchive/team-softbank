@@ -18,7 +18,6 @@
 
 class Comment < ApplicationRecord
   include Likable
-  # acts_as_votable
   belongs_to :user
   belongs_to :post
   has_many :likes, -> { Like.comment }, foreign_key: :type_id, inverse_of: :comment

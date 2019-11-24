@@ -10,7 +10,7 @@
 
   <%= form_tag posts_path, :method => 'get' do %>
     Sort by:
-    <%= select_tag :sort, options_for_select({'Brewing Near You' => 'brewing', 'Spiciest' => 'spiciest', 'Freshest' => 'freshest'}, @sort), :onChange=>'this.form.submit();' %>
+    <%= select_tag :sort, options_for_select({'Closest' => 'closest', 'Spiciest' => 'spiciest', 'Freshest' => 'freshest'}, @sort), :onChange=>'this.form.submit();' %>
   <% end %>
 
   <div id="postcards">

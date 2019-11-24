@@ -24,6 +24,6 @@ class CommentsController < ApplicationController
     else
       @comment.liked_by! current_user
     end
-    redirect_to @comment.post
+    redirect_to("/posts/#{@comment.post_id}")
   end
 end

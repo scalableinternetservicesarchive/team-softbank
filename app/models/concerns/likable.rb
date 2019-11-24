@@ -1,4 +1,6 @@
 module Likable
+  extend ActiveSupport::Concern
+
   def liked_by!(user)
     Like.create!(
       user_id: user.id,
@@ -22,8 +24,8 @@ module Likable
   # module ClassMethods
   # end
 
-  # def self.included(including_class)
-  #   including_class.extend ClassMethods
+  # included do
+  #   # stuff
   # end
 
   private

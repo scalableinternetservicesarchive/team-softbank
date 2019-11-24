@@ -24,5 +24,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :posts
   has_many :comments
-  acts_as_voter
+  has_many :likes
+
+  def liked?(record)
+    record.likes.exists?(user_id: id)
+  end
 end

@@ -3,8 +3,8 @@
 <% if user_signed_in? %>
   <h1>Profile</h1>
   <div>
-    <h5>Total Given Spice: <%= current_user.votes.size %></h5>
-    <h5>Total Recieved Spice: <%= @total_recieved_spice %></h5>
+    <h5>Total Given Spice: <%= current_user.likes.count %></h5>
+    <h5>Total Received Spice: <%= @total_received_spice %></h5>
   </div>
   <div>
     <h2>Your Posts</h2>

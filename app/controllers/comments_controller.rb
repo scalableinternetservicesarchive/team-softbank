@@ -20,9 +20,9 @@ class CommentsController < ApplicationController
   def toggle_like_comment
     @comment = Comment.find(params[:comment_id])
     if current_user.liked? @comment
-      @comment.unliked_by current_user
+      @comment.unliked_by! current_user
     else
-      @comment.liked_by current_user
+      @comment.liked_by! current_user
     end
     redirect_to("/posts/#{@comment.post_id}")
   end

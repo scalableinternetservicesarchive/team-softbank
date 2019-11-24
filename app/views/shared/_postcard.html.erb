@@ -1,7 +1,9 @@
 <div class="card">
   <div class="card-header">
     <div class="card-title h5"><%= post.title %></div>
-    <div class="card-subtitle text-gray">location: <%= post.latitude %>, <%= post.longitude %></div>
+    <% if location.present? %>
+      <div class="card-subtitle text-gray">Distance: <%= number_with_precision post.distance_to(location), precision: 2 %>mi</div>
+    <% end %>
   </div>
   <% if post.image.attached? %>
     <div class="card-image">
@@ -14,6 +16,8 @@
   <% end %>
   <div class="card-body">
     <span>spice level: <%= post.likes.count %></span>
+    <br/>
+    <span><%= distance_of_time_in_words post.created_at, Time.now %> ago</span>
     <br/>
     <span><%= post.comments.size %> comment<%= 's' unless post.comments.size == 1 %></span>
   </div>

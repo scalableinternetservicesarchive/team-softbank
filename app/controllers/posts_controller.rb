@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     @sort = params[:sort]
     @posts = case @sort
              when 'spiciest'
-               Post.within_location(@location).order('likes DESC')
+               Post.within_location(@location).order('like_count DESC')
              when 'freshest'
                Post.within_location(@location).order('created_at DESC')
              else

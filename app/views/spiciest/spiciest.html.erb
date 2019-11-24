@@ -3,5 +3,5 @@
 <h1>Spiciest Posts</h1>
 
 <% @posts.each do |post| %>
-  <%= render partial: 'shared/postcard', locals: { post: post } %>
+  <%= render partial: 'shared/postcard', locals: { post: post, location: nil } %>
 <% end %>

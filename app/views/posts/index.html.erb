@@ -15,7 +15,7 @@
 
   <div id="postcards">
     <% @posts.each do |post| %>
-      <%= render partial: 'shared/postcard', locals: { post: post } %>
+      <%= render partial: 'shared/postcard', locals: { post: post, location: @location } %>
     <% end %>
   </div>
 <% else %>

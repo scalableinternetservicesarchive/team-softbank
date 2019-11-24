@@ -5,7 +5,9 @@
     <%= image_tag @post.image, class: 'img-responsive', alt: 'post image', style: "height: 300px" %>
   </div>
 <% end %>
-<h4><%= @post.latitude %>, <%= @post.longitude %></h4>
+<% if location.present? %>
+  <h4>Distance: <%= number_with_precision @post.distance_to(location), precision: 2 %>mi</h4>
+<% end %>
 <p><%= @post.body %></p>
 <h4>spice level: <%= @post.likes.count %></h4>
 

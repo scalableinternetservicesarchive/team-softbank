@@ -17,6 +17,7 @@
 #
 
 class Comment < ApplicationRecord
+  include Likable
   # acts_as_votable
   belongs_to :user
   belongs_to :post

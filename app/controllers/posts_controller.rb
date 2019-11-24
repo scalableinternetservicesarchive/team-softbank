@@ -35,20 +35,17 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
+    @post.destroy!
     redirect_to '/posts/'
   end
 
   def toggle_like_post
     @post = Post.find(params[:post_id])
     if current_user.liked? @post
-      @post.unliked_by current_user
-      @post.like_count -= 1
+      @post.unliked_by! current_user
     else
-      @post.liked_by current_user
-      @post.like_count += 1
+      @post.liked_by! current_user
     end
-    @post.save!
     redirect_to @post
   end
 

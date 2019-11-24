@@ -4,6 +4,6 @@ class ProfilesController < ApplicationController
     @user = current_user
     @posts = current_user.posts
     @comments = current_user.comments
-    @total_recieved_spice = @posts.sum { |p| p.likes.count } + @comments.sum { |c| c.likes.count }
+    @total_received_spice = @posts.sum { |p| p.likes.count } + @comments.sum { |c| c.likes.count }
   end
 end

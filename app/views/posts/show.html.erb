@@ -1,6 +1,17 @@
 <%= render 'shared/header' %>
 
-<% if @post.publicly_viewable? %>
+<% if @post.blank? %>
+  <div class="empty">
+    <div class="empty-icon">
+      <i class="icon icon-location"></i>
+    </div>
+    <p class="empty-title h5">This post doesn't exist!</p>
+    <p class="empty-subtitle">Sorry about that :(</p>
+    <div class="empty-action">
+      <%= link_to 'Back', '/posts', class: "btn btn-primary" %>
+    </div>
+  </div>
+<% elsif @post.publicly_viewable? %>
   <%= render partial: 'postbody', locals: { post: @post, comments: @comments, location: @location } %>
 <% elsif !user_signed_in? %>
   <%= render 'shared/notsignedin' %>

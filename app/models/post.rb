@@ -27,7 +27,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_many :comments
-  has_many :likes, -> { Like.post }, foreign_key: :type_id, inverse_of: :post
+  has_many :likes, -> { Like.post }, foreign_key: :type_id, inverse_of: :post, dependent: :destroy
   has_one_attached :image
 
   scope :spiciest, -> { order('like_count DESC').limit(50) }

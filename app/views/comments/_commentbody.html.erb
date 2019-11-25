@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-body">
+    <p><%= comment.body %></p>
+    <p><%= distance_of_time_in_words comment.created_at, Time.now %> ago</p>
+    <p>spice level: <%= comment.likes.count %></p>
+  </div>
+
+  <div class="card-footer">
+    <% if user_signed_in? %>
+      <% if is_card %>
+        <%= link_to 'Full Post', "/posts/#{comment.post_id}", class: "btn btn-primary" %>
+      <% else %>
+        <%= button_to (current_user.liked? comment) ? 'despice' : 'spice',
+          post_comment_toggle_like_comment_url(post_id: comment.post_id, comment_id: comment.id),
+          method: :post,
+          params: { comment_id: comment.id },
+          class: (current_user.liked? comment) ? 'btn btn-error' : 'btn btn-success' %>
+      <% end %>
+
+      <% if comment.user_id == current_user.id %>
+          <%= button_to 'Delete', "/posts/#{comment.post_id}/comments/#{comment.id}", method: :delete, class: 'btn btn-error' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

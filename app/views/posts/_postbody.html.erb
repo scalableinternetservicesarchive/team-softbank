@@ -19,6 +19,10 @@
       params: { post_id: @post.id },
       class: (current_user.liked? @post) ? 'btn btn-error' : 'btn btn-success' %>
 
+  <% if @post.user_id == current_user.id %>
+    <%= button_to 'Delete Post', post_url(post_id: @post.id), method: :delete, class: 'btn btn-error' %>
+  <% end %>
+
   <div>Write Comment: </div>
   <%= form_with method: "post", url: post_comments_path(post_id: @post.id), local: true do |form| %>
     <%= form.hidden_field :user_id, value: current_user.id %>
@@ -40,18 +44,7 @@
 <% else %>
   <div>Comments: </div>
   <% @comments.each do |comment| %>
-    <div class="card">
-      <div class="card-body">
-        <p><%= comment.body %></p>
-        <% if user_signed_in? %>
-          <%= button_to (current_user.liked? comment) ? "despice: #{comment.likes.count}" : "spice: #{comment.likes.count}",
-            post_comment_toggle_like_comment_url(post_id: @post.id, comment_id: comment.id),
-            method: :post,
-            params: { comment_id: comment.id },
-            class: (current_user.liked? comment) ? 'btn btn-error' : 'btn btn-success' %>
-        <% end %>
-      </div>
-    </div>
+    <%= render partial: 'comments/commentbody', locals: { comment: comment, is_card: false } %>
   <% end %>
 <% end %>
 

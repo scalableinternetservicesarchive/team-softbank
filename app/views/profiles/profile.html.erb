@@ -15,14 +15,7 @@
   <div>
     <h2>Your Comments</h2>
     <% @comments.each do |comment| %>
-      <div class="card">
-        <div class="card-body">
-          <%= comment.body %>
-        </div>
-        <div class="card-footer">
-          <%= link_to 'Full Post', "/posts/#{comment.post_id}", class: "btn btn-primary" %>
-        </div>
-      </div>
+      <%= render partial: 'comments/commentbody', locals: { comment: comment, is_card: true } %>
     <% end %>
   </div>
 <% else %>

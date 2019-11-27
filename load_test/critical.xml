@@ -8,7 +8,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="localhost:3000" port="8080" type="tcp"></server>
+    <server host="nov25-1042.68y62yyn3s.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
   </servers>
 
 
@@ -19,9 +19,9 @@
     <arrivalphase phase="2" duration="10" unit="second">
 		<users arrivalrate="4" unit="second"/>
     </arrivalphase>
-	<arrivalphase phase="3" duration="10" unit="second">
-		<users arrivalrate="16" unit="second"/>
-	</arrivalphase>
+    <arrivalphase phase="3" duration="10" unit="second">
+      <users arrivalrate="16" unit="second"/>
+    </arrivalphase>
   </load>
 
   <options>
@@ -44,6 +44,12 @@
       <!-- visit the posts page  -->
       <request>
         <http url='/posts/' version='1.1' method='GET'></http>
+      </request>
+      <!-- wait for up to 5 seconds, user is looking at posts -->
+      <thinktime value="10" random="true"></thinktime>
+      <!-- visit the spiciest Posts page-->
+      <request>
+        <http url='/spiciest/' version='1.1' method='GET'></http>
       </request>
       <!-- wait for up to 10 seconds, user is looking at posts -->
       <thinktime value="10" random="true"></thinktime>
@@ -82,27 +88,49 @@
             contents='user%5Bemail%5D=%%%%_random_username%%@gmail.com&amp;user%5Bpassword%5D=%%_random_password%%&amp;user%5Bpassword_confirmation%5D=%%_random_password%%&amp;commit=Sign+up'>
           </http>
       </request>
-      <!-- Wait for a bit, be impressed by the cool login page-->
+      <!-- Wait for a bit-->
       <thinktime value="2" random="true"></thinktime>
-      <!-- Wait for a bit, think about a comment to write -->
-      <thinktime value="3" random="true"></thinktime>
-      <!-- Write comment on the post-->
+      <!-- visit profile page  -->
+	 		<request>
+	 			<http url='/profile' version='1.1' method='GET'></http> 
+	 		</request>
+      <!-- Wait for a bit-->
+      <thinktime value="2" random="true"></thinktime>
+      <!-- Write the post-->
       <request subst="true">
         <dyn_variable name="new_post_url" re="[Ll]ocation: (http://.*)\r"/>
         <http
           url='/'
           version='1.1'
           method='POST'
-          contents='comment%5Bbody%5D=%%this-is-a-comment&amp;commit=Save'>
+          contents='post%5Btitle%5D=%%this-is-a-title&amp;post%5Bbody%5D=%%this-is-a-body&amp;commit=Make+Post'>
         </http>
       </request>
-      <!--wait for a bit, rethink the post -->
+      <!--wait for a bit -->
       <thinktime value="3" random="true"></thinktime>
       <!-- delete the post-->
       <request subst="true">
-        <http url="%%_created_submission_url%%" method="DELETE"></http>
+        <http url="%%_new_post_url%%" method="DELETE"></http>
       </request>
-      <!-- log out in shame-->
+      <!-- visit spiciest-->
+      <request subst="true">
+          <http
+            url='/posts'
+            version='1.1'
+            method='POST'
+            contents='?sort=spiciest'>
+          </http>
+      </request>
+      <!-- visit freshest-->
+      <request subst="true">
+          <http
+            url='/posts'
+            version='1.1'
+            method='POST'
+            contents='?sort=freshest'>
+          </http>
+      </request>
+      <!-- log out-->
       <request subst="true">
         <http
           url='/users/sign_out'

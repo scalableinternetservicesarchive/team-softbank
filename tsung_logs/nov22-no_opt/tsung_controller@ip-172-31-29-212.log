@@ -1,0 +1,1336 @@
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+    ts_config_server:(5:<0.102.0>) Config server started, logdir is "/home/ec2-user/.tsung/log/20191122-1930"
+ 
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+              ts_mon:(5:<0.83.0>) starting monitor, global 
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+           ts_config:(5:<0.102.0>) Reading config file: critical.xml
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+      ts_config_http:(4:<0.102.0>) Get user agent: 100 "Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4" 
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+           ts_config:(5:<0.102.0>) Session name for id 1 is "open-app-view-posts"
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+           ts_config:(5:<0.102.0>) Session name for id 2 is "http-example"
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+           ts_config:(5:<0.102.0>) Session name for id 3 is "sign-in"
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+    ts_config_server:(4:<0.102.0>) SYSINFO:Tsung version: 1.7.0
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+    ts_config_server:(4:<0.102.0>) SYSINFO:Erlang version: Erlang/OTP 20 [erts-9.1] [source] [64-bit] [smp:1:1] [ds:1:1:10] [async-threads:8] [hipe] [kernel-poll:true]
+
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+    ts_config_server:(4:<0.102.0>) SYSINFO:System architecture x86_64-unknown-linux-gnu
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+    ts_config_server:(4:<0.102.0>) SYSINFO:Current path: /usr/local/lib/tsung/tsung-1.7.0/ebin/tsung.beam
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+              ts_mon:(5:<0.103.0>) Activate clients with text backend
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+              ts_mon:(5:<0.103.0>) Starting tsung clients on hosts: [localhost]
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+    ts_config_server:(5:<0.102.0>) Start a launcher on the controller beam localhost
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+  ts_launcher_static:(5:<0.154.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+         ts_launcher:(5:<0.155.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+    ts_config_server:(5:<0.102.0>) New arrival phase 1 for client "localhost" (last ? true): will start 10 users
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+    ts_config_server:(5:<0.102.0>) New arrival phase 2 for client "localhost" (last ? true): will start 40 users
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+    ts_config_server:(5:<0.102.0>) New arrival phase 3 for client "localhost" (last ? true): will start 160 users
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+         ts_launcher:(5:<0.155.0>) Expected duration of first phase: 10.0 sec (10 users) 
+
+=INFO REPORT==== 22-Nov-2019::19:30:09 ===
+         ts_launcher:(5:<0.155.0>) Activate launcher (10 users) in 1125 msec 
+
+=INFO REPORT==== 22-Nov-2019::19:30:20 ===
+         ts_launcher:(4:<0.155.0>) Need to wait 0.23 sec before changing phase, going to sleep
+
+=INFO REPORT==== 22-Nov-2019::19:30:20 ===
+         ts_launcher:(5:<0.155.0>) Waking up
+
+=INFO REPORT==== 22-Nov-2019::19:30:20 ===
+         ts_launcher:(5:<0.155.0>) Start a new arrival phase (40 users, 0.004); expected duration=10.0 sec
+
+=INFO REPORT==== 22-Nov-2019::19:30:23 ===
+           ts_search:(5:<0.168.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:26 ===
+           ts_search:(4:<0.168.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:26 ===
+           ts_client:(5:<0.168.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:26 ===
+           ts_client:(5:<0.168.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:26 ===
+           ts_search:(5:<0.184.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:26 ===
+           ts_search:(5:<0.178.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:27 ===
+           ts_search:(5:<0.182.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:27 ===
+           ts_search:(5:<0.183.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:27 ===
+           ts_search:(4:<0.184.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:27 ===
+           ts_client:(5:<0.184.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:27 ===
+           ts_client:(5:<0.184.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:28 ===
+           ts_search:(4:<0.182.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:28 ===
+           ts_client:(5:<0.182.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:28 ===
+           ts_client:(5:<0.182.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:29 ===
+           ts_search:(5:<0.174.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:29 ===
+           ts_search:(4:<0.183.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:29 ===
+           ts_client:(5:<0.183.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:29 ===
+           ts_client:(5:<0.183.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:29 ===
+           ts_search:(4:<0.178.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:29 ===
+           ts_client:(5:<0.178.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:29 ===
+           ts_client:(5:<0.178.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:30 ===
+           ts_search:(4:<0.174.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:30 ===
+           ts_search:(5:<0.185.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:30 ===
+           ts_client:(5:<0.174.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:30 ===
+           ts_client:(5:<0.174.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:30 ===
+         ts_launcher:(5:<0.155.0>) Phase duration exceeded, but not all users were launched (10 users, 25.0% of phase)
+
+=INFO REPORT==== 22-Nov-2019::19:30:30 ===
+         ts_launcher:(5:<0.155.0>) Start a new arrival phase (160 users, 0.016); expected duration=10.0 sec
+
+=INFO REPORT==== 22-Nov-2019::19:30:30 ===
+           ts_search:(5:<0.188.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:31 ===
+           ts_search:(5:<0.179.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:31 ===
+           ts_search:(5:<0.175.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:31 ===
+           ts_search:(5:<0.191.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:31 ===
+           ts_search:(4:<0.188.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:31 ===
+           ts_client:(5:<0.188.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:31 ===
+           ts_client:(5:<0.188.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:32 ===
+           ts_search:(5:<0.186.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:32 ===
+           ts_search:(4:<0.191.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:32 ===
+           ts_client:(5:<0.191.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:32 ===
+           ts_client:(5:<0.191.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:32 ===
+           ts_search:(5:<0.206.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_search:(5:<0.187.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_search:(5:<0.231.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_search:(4:<0.179.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_client:(5:<0.179.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_client:(5:<0.179.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_search:(5:<0.214.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_search:(4:<0.186.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_client:(5:<0.186.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_client:(5:<0.186.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_search:(5:<0.232.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_search:(5:<0.211.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_search:(5:<0.212.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_search:(4:<0.211.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_client:(5:<0.211.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_client:(5:<0.211.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:33 ===
+           ts_search:(5:<0.213.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:34 ===
+           ts_search:(4:<0.175.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:34 ===
+           ts_client:(5:<0.175.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:34 ===
+           ts_client:(5:<0.175.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:34 ===
+           ts_search:(5:<0.230.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:34 ===
+           ts_search:(4:<0.185.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:34 ===
+           ts_client:(5:<0.185.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:34 ===
+           ts_client:(5:<0.185.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:34 ===
+           ts_search:(4:<0.212.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:34 ===
+           ts_client:(5:<0.212.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:34 ===
+           ts_client:(5:<0.212.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:34 ===
+           ts_search:(5:<0.226.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:34 ===
+           ts_search:(5:<0.209.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:34 ===
+           ts_search:(5:<0.233.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_search:(5:<0.236.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_search:(4:<0.206.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_client:(5:<0.206.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_client:(5:<0.206.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_search:(5:<0.248.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_search:(4:<0.236.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_client:(5:<0.236.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_client:(5:<0.236.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_search:(5:<0.243.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_search:(5:<0.208.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_search:(4:<0.209.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_client:(5:<0.209.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_client:(5:<0.209.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_search:(5:<0.256.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_search:(4:<0.233.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_client:(5:<0.233.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_client:(5:<0.233.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_search:(5:<0.238.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_search:(5:<0.203.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_search:(4:<0.226.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_client:(5:<0.226.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:35 ===
+           ts_client:(5:<0.226.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_search:(5:<0.217.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_search:(4:<0.214.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_client:(5:<0.214.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_client:(5:<0.214.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_search:(5:<0.200.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_search:(5:<0.279.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_search:(5:<0.289.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_search:(5:<0.190.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_search:(5:<0.255.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_search:(4:<0.231.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_client:(5:<0.231.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_client:(5:<0.231.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_search:(5:<0.201.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_search:(5:<0.215.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_search:(5:<0.194.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_search:(4:<0.256.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:36 ===
+           ts_search:(5:<0.261.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_search:(4:<0.243.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_client:(5:<0.243.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_client:(5:<0.243.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_search:(4:<0.261.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_client:(5:<0.261.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_client:(5:<0.261.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_search:(5:<0.223.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_search:(4:<0.230.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_client:(5:<0.230.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_client:(5:<0.230.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_search:(5:<0.286.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_search:(5:<0.281.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_search:(4:<0.232.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_client:(5:<0.232.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_client:(5:<0.232.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_search:(4:<0.215.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_client:(5:<0.215.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_client:(5:<0.215.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_search:(4:<0.213.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_search:(5:<0.240.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_client:(5:<0.213.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_client:(5:<0.213.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_search:(5:<0.292.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:37 ===
+           ts_search:(5:<0.268.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(5:<0.274.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(5:<0.210.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(5:<0.278.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(5:<0.316.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(5:<0.306.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(5:<0.309.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(4:<0.248.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_client:(5:<0.248.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_client:(5:<0.248.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(4:<0.187.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_client:(5:<0.187.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_client:(5:<0.187.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(4:<0.289.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_client:(5:<0.289.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_client:(5:<0.289.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(4:<0.279.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_client:(5:<0.279.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_client:(5:<0.279.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(5:<0.303.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(5:<0.287.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(5:<0.280.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(4:<0.217.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_client:(5:<0.217.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_client:(5:<0.217.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(5:<0.263.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(4:<0.263.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_client:(5:<0.263.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_client:(5:<0.263.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_search:(4:<0.292.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_client:(5:<0.292.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:38 ===
+           ts_client:(5:<0.292.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(4:<0.194.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_client:(5:<0.194.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_client:(5:<0.194.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(4:<0.286.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_client:(5:<0.286.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_client:(5:<0.286.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(5:<0.249.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(4:<0.208.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_client:(5:<0.208.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_client:(5:<0.208.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(5:<0.258.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(5:<0.242.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(4:<0.280.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_client:(5:<0.280.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_client:(5:<0.280.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+         ts_launcher:(5:<0.155.0>) This was the last phase, wait for connected users to finish their session
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(4:<0.278.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_client:(5:<0.278.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_client:(5:<0.278.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(5:<0.247.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(4:<0.268.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_client:(5:<0.268.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_client:(5:<0.268.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(5:<0.324.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(5:<0.313.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(4:<0.281.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_client:(5:<0.281.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_client:(5:<0.281.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(5:<0.331.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(5:<0.336.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:39 ===
+           ts_search:(5:<0.319.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:40 ===
+           ts_search:(4:<0.247.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:40 ===
+           ts_client:(5:<0.247.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:40 ===
+           ts_client:(5:<0.247.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:40 ===
+           ts_search:(5:<0.333.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:40 ===
+           ts_search:(5:<0.338.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:40 ===
+           ts_search:(4:<0.338.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:40 ===
+           ts_client:(5:<0.338.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:40 ===
+           ts_client:(5:<0.338.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:40 ===
+           ts_search:(4:<0.238.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:40 ===
+           ts_client:(5:<0.238.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:40 ===
+           ts_client:(5:<0.238.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:40 ===
+           ts_search:(5:<0.318.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:40 ===
+           ts_search:(5:<0.300.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:40 ===
+           ts_search:(5:<0.343.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:40 ===
+           ts_search:(5:<0.197.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(4:<0.319.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_client:(5:<0.319.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_client:(5:<0.319.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(4:<0.309.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_client:(5:<0.309.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_client:(5:<0.309.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(5:<0.348.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(5:<0.350.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(4:<0.249.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_client:(5:<0.249.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_client:(5:<0.249.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(5:<0.259.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(5:<0.320.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(4:<0.240.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_client:(5:<0.240.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_client:(5:<0.240.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(4:<0.255.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_client:(5:<0.255.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_client:(5:<0.255.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(5:<0.356.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(5:<0.354.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(5:<0.244.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(4:<0.259.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_client:(5:<0.259.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_client:(5:<0.259.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(5:<0.251.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(5:<0.288.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(4:<0.251.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_client:(5:<0.251.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_client:(5:<0.251.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:41 ===
+           ts_search:(5:<0.225.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(5:<0.353.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(4:<0.331.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.331.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.331.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(4:<0.200.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.200.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.200.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(5:<0.359.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(4:<0.333.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.333.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.333.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(4:<0.242.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(4:<0.348.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.348.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.348.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(4:<0.210.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.210.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.210.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(5:<0.273.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(5:<0.347.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(4:<0.354.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.354.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.354.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(4:<0.258.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.258.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.258.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(4:<0.343.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.343.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.343.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(4:<0.313.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(5:<0.335.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_search:(4:<0.316.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.316.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:42 ===
+           ts_client:(5:<0.316.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_search:(5:<0.360.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_search:(4:<0.320.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_client:(5:<0.320.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_client:(5:<0.320.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_search:(5:<0.325.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_search:(4:<0.287.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_client:(5:<0.287.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_client:(5:<0.287.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_search:(4:<0.201.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_client:(5:<0.201.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_client:(5:<0.201.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_search:(4:<0.203.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_client:(5:<0.203.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_client:(5:<0.203.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_search:(4:<0.325.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_client:(5:<0.325.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_client:(5:<0.325.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_search:(5:<0.355.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_search:(5:<0.296.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_search:(4:<0.197.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_client:(5:<0.197.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_client:(5:<0.197.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_search:(5:<0.322.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:43 ===
+           ts_search:(5:<0.222.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_search:(4:<0.318.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_client:(5:<0.318.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_client:(5:<0.318.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_search:(4:<0.356.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_client:(5:<0.356.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_client:(5:<0.356.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_search:(5:<0.332.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_search:(4:<0.350.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_search:(4:<0.225.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_client:(5:<0.225.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_client:(5:<0.225.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_search:(4:<0.336.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_client:(5:<0.336.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_client:(5:<0.336.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_search:(4:<0.347.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_client:(5:<0.347.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_client:(5:<0.347.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_search:(4:<0.190.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_client:(5:<0.190.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:44 ===
+           ts_client:(5:<0.190.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_search:(5:<0.302.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_search:(4:<0.322.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_client:(5:<0.322.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_client:(5:<0.322.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_search:(5:<0.228.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_search:(4:<0.228.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_client:(5:<0.228.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_client:(5:<0.228.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_search:(4:<0.360.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_client:(5:<0.360.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_client:(5:<0.360.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_search:(4:<0.244.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_client:(5:<0.244.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_client:(5:<0.244.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_search:(4:<0.296.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_client:(5:<0.296.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_client:(5:<0.296.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_search:(5:<0.351.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_search:(4:<0.335.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_client:(5:<0.335.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_client:(5:<0.335.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_search:(5:<0.298.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:45 ===
+           ts_search:(5:<0.334.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_search:(4:<0.306.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_client:(5:<0.306.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_client:(5:<0.306.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_search:(4:<0.355.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_client:(5:<0.355.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_client:(5:<0.355.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_search:(4:<0.353.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_client:(5:<0.353.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_client:(5:<0.353.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_search:(4:<0.302.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_client:(5:<0.302.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_client:(5:<0.302.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_search:(4:<0.303.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_client:(5:<0.303.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_client:(5:<0.303.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_search:(5:<0.357.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_search:(4:<0.298.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_client:(5:<0.298.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:46 ===
+           ts_client:(5:<0.298.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:47 ===
+           ts_search:(4:<0.300.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:47 ===
+           ts_client:(5:<0.300.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:47 ===
+           ts_client:(5:<0.300.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:47 ===
+           ts_search:(4:<0.222.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:47 ===
+           ts_client:(5:<0.222.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:47 ===
+           ts_client:(5:<0.222.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:47 ===
+           ts_search:(5:<0.346.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:47 ===
+           ts_search:(4:<0.274.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:47 ===
+           ts_client:(5:<0.274.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:47 ===
+           ts_client:(5:<0.274.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:47 ===
+           ts_search:(4:<0.288.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:47 ===
+           ts_client:(5:<0.288.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:47 ===
+           ts_client:(5:<0.288.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:48 ===
+           ts_search:(4:<0.223.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:48 ===
+           ts_client:(5:<0.223.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:48 ===
+           ts_client:(5:<0.223.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:48 ===
+           ts_search:(5:<0.341.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:48 ===
+           ts_search:(5:<0.349.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:48 ===
+           ts_search:(4:<0.334.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:48 ===
+           ts_client:(5:<0.334.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:48 ===
+           ts_client:(5:<0.334.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:48 ===
+           ts_search:(4:<0.351.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:48 ===
+           ts_client:(5:<0.351.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:48 ===
+           ts_client:(5:<0.351.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:48 ===
+           ts_search:(5:<0.284.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:49 ===
+           ts_search:(4:<0.332.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:49 ===
+           ts_client:(5:<0.332.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:49 ===
+           ts_client:(5:<0.332.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:51 ===
+           ts_search:(4:<0.357.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:51 ===
+           ts_client:(5:<0.357.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:51 ===
+           ts_client:(5:<0.357.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:52 ===
+           ts_search:(5:<0.275.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:52 ===
+           ts_search:(4:<0.324.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:52 ===
+           ts_client:(5:<0.324.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:52 ===
+           ts_client:(5:<0.324.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:52 ===
+           ts_search:(4:<0.341.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:52 ===
+           ts_client:(5:<0.341.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:52 ===
+           ts_client:(5:<0.341.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:53 ===
+           ts_search:(4:<0.284.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:53 ===
+           ts_client:(5:<0.284.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:53 ===
+           ts_client:(5:<0.284.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:54 ===
+           ts_search:(4:<0.346.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:54 ===
+           ts_search:(4:<0.359.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:54 ===
+           ts_client:(5:<0.346.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:54 ===
+           ts_client:(5:<0.346.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:54 ===
+           ts_client:(5:<0.359.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:54 ===
+           ts_client:(5:<0.359.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:56 ===
+           ts_search:(5:<0.220.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 22-Nov-2019::19:30:56 ===
+           ts_search:(4:<0.273.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:56 ===
+           ts_client:(5:<0.273.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:56 ===
+           ts_client:(5:<0.273.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:58 ===
+           ts_search:(4:<0.275.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:58 ===
+           ts_client:(5:<0.275.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:58 ===
+           ts_client:(5:<0.275.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:30:58 ===
+           ts_search:(4:<0.349.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:30:58 ===
+           ts_client:(5:<0.349.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:30:58 ===
+           ts_client:(5:<0.349.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:31:05 ===
+           ts_search:(4:<0.220.0>) DynVar: no value found for var created_submission_url
+
+=INFO REPORT==== 22-Nov-2019::19:31:05 ===
+           ts_client:(5:<0.220.0>) connection close while sending message!
+
+=INFO REPORT==== 22-Nov-2019::19:31:05 ===
+           ts_client:(5:<0.220.0>) Server must have closed connection upon us, waiting 10 msec
+
+=INFO REPORT==== 22-Nov-2019::19:31:39 ===
+     ts_launcher_mgr:(5:<0.149.0>) No more active users 'tsung_controller@ip-172-31-29-212' "3158"
+
+=INFO REPORT==== 22-Nov-2019::19:31:39 ===
+              ts_mon:(5:<0.103.0>) stopping monitor (normal)

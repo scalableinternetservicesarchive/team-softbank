@@ -1,0 +1,373 @@
+
+=INFO REPORT==== 26-Nov-2019::09:09:17 ===
+    ts_config_server:(5:<0.102.0>) Config server started, logdir is "/home/ec2-user/.tsung/log/20191126-0909"
+ 
+=INFO REPORT==== 26-Nov-2019::09:09:17 ===
+              ts_mon:(5:<0.83.0>) starting monitor, global 
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+           ts_config:(5:<0.102.0>) Reading config file: new.xml
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+      ts_config_http:(4:<0.102.0>) Get user agent: 100 "Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4" 
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+           ts_config:(5:<0.102.0>) Session name for id 1 is "open-app-view-posts"
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+           ts_config:(5:<0.102.0>) Session name for id 2 is "http-example"
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+           ts_config:(5:<0.102.0>) Session name for id 3 is "sign-in"
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+    ts_config_server:(4:<0.102.0>) SYSINFO:Tsung version: 1.7.0
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+    ts_config_server:(4:<0.102.0>) SYSINFO:Erlang version: Erlang/OTP 20 [erts-9.1] [source] [64-bit] [smp:1:1] [ds:1:1:10] [async-threads:8] [hipe] [kernel-poll:true]
+
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+    ts_config_server:(4:<0.102.0>) SYSINFO:System architecture x86_64-unknown-linux-gnu
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+    ts_config_server:(4:<0.102.0>) SYSINFO:Current path: /usr/local/lib/tsung/tsung-1.7.0/ebin/tsung.beam
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+              ts_mon:(5:<0.103.0>) Activate clients with text backend
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+              ts_mon:(5:<0.103.0>) Starting tsung clients on hosts: [localhost]
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+    ts_config_server:(5:<0.102.0>) Start a launcher on the controller beam localhost
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+  ts_launcher_static:(5:<0.154.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+         ts_launcher:(5:<0.155.0>) Launch msg receive ("localhost")
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+    ts_config_server:(5:<0.102.0>) New arrival phase 1 for client "localhost" (last ? true): will start 10 users
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+    ts_config_server:(5:<0.102.0>) New arrival phase 2 for client "localhost" (last ? true): will start 40 users
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+    ts_config_server:(5:<0.102.0>) New arrival phase 3 for client "localhost" (last ? true): will start 160 users
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+         ts_launcher:(5:<0.155.0>) Expected duration of first phase: 10.0 sec (10 users) 
+
+=INFO REPORT==== 26-Nov-2019::09:09:18 ===
+         ts_launcher:(5:<0.155.0>) Activate launcher (10 users) in 2353 msec 
+
+=INFO REPORT==== 26-Nov-2019::09:09:30 ===
+         ts_launcher:(5:<0.155.0>) Phase duration exceeded, but not all users were launched (3 users, 30.0% of phase)
+
+=INFO REPORT==== 26-Nov-2019::09:09:30 ===
+         ts_launcher:(5:<0.155.0>) Start a new arrival phase (40 users, 0.004); expected duration=10.0 sec
+
+=INFO REPORT==== 26-Nov-2019::09:09:30 ===
+           ts_search:(5:<0.162.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:33 ===
+           ts_search:(5:<0.172.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:33 ===
+           ts_search:(5:<0.173.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:34 ===
+           ts_search:(5:<0.176.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:36 ===
+           ts_search:(5:<0.184.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:36 ===
+           ts_search:(5:<0.180.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:37 ===
+           ts_search:(5:<0.195.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:38 ===
+           ts_search:(5:<0.191.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:38 ===
+           ts_search:(5:<0.189.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:38 ===
+           ts_search:(5:<0.178.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:39 ===
+         ts_launcher:(4:<0.155.0>) Need to wait 1.312 sec before changing phase, going to sleep
+
+=INFO REPORT==== 26-Nov-2019::09:09:39 ===
+           ts_search:(5:<0.187.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:39 ===
+           ts_search:(5:<0.203.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:39 ===
+           ts_search:(5:<0.206.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:40 ===
+           ts_search:(5:<0.169.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:40 ===
+           ts_search:(5:<0.182.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:40 ===
+           ts_search:(5:<0.181.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:40 ===
+         ts_launcher:(5:<0.155.0>) Waking up
+
+=INFO REPORT==== 26-Nov-2019::09:09:40 ===
+         ts_launcher:(5:<0.155.0>) Start a new arrival phase (160 users, 0.016); expected duration=10.0 sec
+
+=INFO REPORT==== 26-Nov-2019::09:09:41 ===
+           ts_search:(5:<0.197.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:41 ===
+           ts_search:(5:<0.200.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:41 ===
+           ts_search:(5:<0.216.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:41 ===
+           ts_search:(5:<0.192.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:42 ===
+           ts_search:(5:<0.201.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:42 ===
+           ts_search:(5:<0.205.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:42 ===
+           ts_search:(5:<0.207.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:42 ===
+           ts_search:(5:<0.219.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:43 ===
+           ts_search:(5:<0.225.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:43 ===
+           ts_search:(5:<0.247.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:43 ===
+           ts_search:(5:<0.215.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:43 ===
+           ts_search:(5:<0.251.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:43 ===
+           ts_search:(5:<0.252.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:43 ===
+           ts_search:(5:<0.214.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:44 ===
+           ts_search:(5:<0.257.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:44 ===
+           ts_search:(5:<0.231.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:44 ===
+           ts_search:(5:<0.259.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:44 ===
+           ts_search:(5:<0.243.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:45 ===
+           ts_search:(5:<0.267.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:45 ===
+           ts_search:(5:<0.220.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:45 ===
+           ts_search:(5:<0.262.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:45 ===
+           ts_search:(5:<0.239.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:45 ===
+           ts_search:(5:<0.260.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:46 ===
+           ts_search:(5:<0.208.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:46 ===
+           ts_search:(5:<0.212.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:46 ===
+           ts_search:(5:<0.240.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:46 ===
+           ts_search:(5:<0.241.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:46 ===
+           ts_search:(5:<0.270.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:46 ===
+           ts_search:(5:<0.226.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:46 ===
+           ts_search:(5:<0.283.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:46 ===
+           ts_search:(5:<0.276.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:46 ===
+           ts_search:(5:<0.293.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:47 ===
+           ts_search:(5:<0.211.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:47 ===
+           ts_search:(5:<0.232.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:47 ===
+           ts_search:(5:<0.236.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:47 ===
+           ts_search:(5:<0.284.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:48 ===
+           ts_search:(5:<0.296.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:48 ===
+           ts_search:(5:<0.310.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:48 ===
+           ts_search:(5:<0.317.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:48 ===
+           ts_search:(5:<0.254.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:48 ===
+           ts_search:(5:<0.279.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:48 ===
+           ts_search:(5:<0.266.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:48 ===
+           ts_search:(5:<0.325.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:49 ===
+           ts_search:(5:<0.319.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:49 ===
+           ts_search:(5:<0.309.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:49 ===
+           ts_search:(5:<0.318.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:49 ===
+           ts_search:(5:<0.305.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:50 ===
+           ts_search:(5:<0.300.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:50 ===
+           ts_search:(5:<0.294.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:50 ===
+           ts_search:(5:<0.272.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:50 ===
+         ts_launcher:(5:<0.155.0>) Phase duration exceeded, but not all users were launched (18 users, 11.3% of phase)
+
+=INFO REPORT==== 26-Nov-2019::09:09:50 ===
+         ts_launcher:(5:<0.155.0>) This was the last phase, wait for connected users to finish their session
+
+=INFO REPORT==== 26-Nov-2019::09:09:50 ===
+           ts_search:(5:<0.291.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:50 ===
+           ts_search:(5:<0.298.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:50 ===
+           ts_search:(5:<0.334.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:51 ===
+           ts_search:(5:<0.342.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:51 ===
+           ts_search:(5:<0.356.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:51 ===
+           ts_search:(5:<0.344.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:52 ===
+           ts_search:(5:<0.202.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:52 ===
+           ts_search:(5:<0.321.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:52 ===
+           ts_search:(5:<0.328.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:52 ===
+           ts_search:(5:<0.350.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:52 ===
+           ts_search:(5:<0.345.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:52 ===
+           ts_search:(5:<0.351.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:52 ===
+           ts_search:(5:<0.330.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:53 ===
+           ts_search:(5:<0.346.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:53 ===
+           ts_search:(5:<0.353.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:53 ===
+           ts_search:(5:<0.289.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:53 ===
+           ts_search:(5:<0.250.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:53 ===
+           ts_search:(5:<0.329.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:53 ===
+           ts_search:(5:<0.357.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:53 ===
+           ts_search:(5:<0.347.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:54 ===
+           ts_search:(5:<0.339.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:54 ===
+           ts_search:(5:<0.288.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:54 ===
+           ts_search:(5:<0.274.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:54 ===
+           ts_search:(5:<0.341.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:55 ===
+           ts_search:(5:<0.324.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:55 ===
+           ts_search:(5:<0.343.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:57 ===
+           ts_search:(5:<0.338.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:09:59 ===
+           ts_search:(5:<0.311.0>) Dyn Var (RE): no Match (varname=new_post_url), 
+
+=INFO REPORT==== 26-Nov-2019::09:10:45 ===
+     ts_launcher_mgr:(5:<0.149.0>) No more active users 'tsung_controller@ip-172-31-17-3' "8096"
+
+=INFO REPORT==== 26-Nov-2019::09:10:45 ===
+              ts_mon:(5:<0.103.0>) stopping monitor (normal)

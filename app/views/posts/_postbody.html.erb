@@ -16,7 +16,7 @@
   <%= button_to (current_user.liked? @post) ? 'despice' : 'spice',
       post_toggle_like_post_url(post_id: @post.id),
       method: :post,
-      params: { post_id: @post.id },
+      params: { post_id: @post.id, comments_page: comments_page },
       class: (current_user.liked? @post) ? 'btn btn-error' : 'btn btn-success' %>
 
   <% if @post.user_id == current_user.id %>
@@ -44,8 +44,16 @@
 <% else %>
   <div>Comments: </div>
   <% @comments.each do |comment| %>
-    <%= render partial: 'comments/commentbody', locals: { comment: comment, is_card: false } %>
+    <%= render partial: 'comments/commentbody', locals: { comment: comment, comments_page: @comments_page, is_card: false } %>
   <% end %>
+  <ul class="pagination">
+  <li class="<%= "page-item page-prev #{@comments_page > 1 ? "" : "disabled"}" %>">
+    <%= link_to "Previous comments", post_path(id: @post.id, comments_page: @comments_page - 1), class: "page-item-title h5" %>
+  </li>
+  <li class="<%= "page-item page-next #{@comments_page < @comments_page_max ? "" : "disabled"}" %>">
+    <%= link_to "Next comments", post_path(id: @post.id, comments_page: @comments_page + 1), class: "page-item-title h5" %>
+  </li>
+</ul>
 <% end %>
 
 <%= link_to 'Back', '/posts/' %>

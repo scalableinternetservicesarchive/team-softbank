@@ -12,11 +12,11 @@
     </div>
   </div>
 <% elsif @post.publicly_viewable? %>
-  <%= render partial: 'postbody', locals: { post: @post, comments: @comments, location: @location } %>
+  <%= render partial: 'postbody', locals: { post: @post, comments: @comments, comments_page: @comments_page, comments_page_max: @comments_page_max, location: @location } %>
 <% elsif !user_signed_in? %>
   <%= render 'shared/notsignedin' %>
 <% elsif @post.user_id == current_user.id || @post.within?(@location) %>
-  <%= render partial: 'postbody', locals: { post: @post, comments: @comments, location: @location } %>
+  <%= render partial: 'postbody', locals: { post: @post, comments: @comments, comments_page: @comments_page, comments_page_max: @comments_page_max, location: @location } %>
 <% else %>
   <%# fetch user loc? %>
   <%# or maybe we can just be lazy: user will sign in, get redirected to /posts, and obtain location %>

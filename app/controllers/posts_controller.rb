@@ -2,22 +2,29 @@ class PostsController < ApplicationController
   # before_action :check_logged_in, only: [:create]
   before_action :location, only: [:index, :show]
   respond_to :html, :js
+  POSTS_PER_PAGE = 25 # tried 50 and it's way too long imo
+  COMMENTS_PER_PAGE = 50
 
   def index
+    visible_posts = Post.within_location(@location)
     @sort = params[:sort]
+    @posts_page = (params[:posts_page] || 1).to_i
+    @posts_page_max = (visible_posts.size + (POSTS_PER_PAGE - 1)) / POSTS_PER_PAGE
     @posts = case @sort
              when 'spiciest'
-               Post.within_location(@location).order('like_count DESC')
+              visible_posts.order('like_count DESC').limit(POSTS_PER_PAGE).offset((@posts_page - 1) * POSTS_PER_PAGE)
              when 'freshest'
-               Post.within_location(@location).order('created_at DESC')
+              visible_posts.order('created_at DESC').limit(POSTS_PER_PAGE).offset((@posts_page - 1) * POSTS_PER_PAGE)
              else
-               Post.within_location(@location).by_distance(origin: @location)
+              visible_posts.by_distance(origin: @location).limit(POSTS_PER_PAGE).offset((@posts_page - 1) * POSTS_PER_PAGE)
              end
   end
 
   def show
     @post = Post.find_by(id: params[:id])
-    @comments = @post&.comments&.order('like_count DESC')
+    @comments_page = (params[:comments_page] || 1).to_i
+    @comments_page_max = (@post&.comments&.size + (COMMENTS_PER_PAGE - 1)) / COMMENTS_PER_PAGE
+    @comments = @post&.comments&.order('like_count DESC').limit(COMMENTS_PER_PAGE).offset((@comments_page - 1) * COMMENTS_PER_PAGE)
   end
 
   def create
@@ -41,12 +48,13 @@ class PostsController < ApplicationController
 
   def toggle_like_post
     @post = Post.find(params[:post_id])
+    @comments_page = (params[:comments_page] || 1).to_i
     if current_user.liked? @post
       @post.unliked_by! current_user
     else
       @post.liked_by! current_user
     end
-    redirect_to @post
+    redirect_to post_path(id: @post.id, comments_page: @comments_page)
   end
 
   def update_location

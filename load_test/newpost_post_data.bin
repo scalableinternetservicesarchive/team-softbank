@@ -1,0 +1,30 @@
+-----------------------------18558795211714620419542323040
+Content-Disposition: form-data; name="post[user_id]"
+
+%%_user_id%%
+-----------------------------18558795211714620419542323040
+Content-Disposition: form-data; name="post[title]"
+
+LOADTESTPOSTBODY
+-----------------------------18558795211714620419542323040
+Content-Disposition: form-data; name="post[body]"
+
+LOADTESTPOSTTITLE
+-----------------------------18558795211714620419542323040
+Content-Disposition: form-data; name="post[image]"; filename=""
+Content-Type: application/octet-stream
+
+
+-----------------------------18558795211714620419542323040
+Content-Disposition: form-data; name="post[latitude]"
+
+%%_random_latitude%%
+-----------------------------18558795211714620419542323040
+Content-Disposition: form-data; name="post[longitude]"
+
+%%_random_longitude%%
+-----------------------------18558795211714620419542323040
+Content-Disposition: form-data; name="commit"
+
+Make Post
+-----------------------------18558795211714620419542323040--

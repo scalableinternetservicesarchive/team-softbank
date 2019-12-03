@@ -62,17 +62,23 @@
       <request>
         <http url='/' version='1.1' method='GET'></http>
       </request>
-      <thinktime value="2" random="true"></thinktime>
+      <thinktime value="1" random="true"></thinktime>
+
       <!-- visit the spiciest posts page-->
       <request>
+        <dyn_variable name="spiciest_post_url" re="btn btn-primary&quot; href=&quot;/posts/(\d*)&quot;&gt;Full post"/>
         <http url='/spiciest/' version='1.1' method='GET'></http>
       </request>
+      <setdynvars sourcetype="eval" code="fun({Pid,DynVars})-> {ok,Val}=ts_dynvars:lookup(spiciest_post_url,DynVars), binary_to_list(Val) end.">
+        <var name="spicy_post_id"/>
+      </setdynvars>
       <thinktime value="5" random="true"></thinktime>
-      <!-- visit the first post in the list -->
-      <request>
 
+      <!-- visit the first post in the list -->
+      <request subst="true">
+        <http url='/posts/%%_spicy_post_id%%' version='1.1' method='GET'></http>
       </request>
-      <thinktime value="5" random="true"></thinktime>
+      <thinktime value="1" random="true"></thinktime>
     </session>
 
     <session name="logged-in-path" probability="100" type="ts_http">
@@ -80,12 +86,14 @@
       <request>
         <http url='/' version='1.1' method='GET'></http>
       </request>
-      <thinktime value="2" random="true"></thinktime>
+      <thinktime value="1" random="true"></thinktime>
+
       <!-- go to the sign up page -->
       <request>
         <http url='/users/sign_up' version='1.1' method='GET'></http>
       </request>
       <thinktime value='5' random='true'></thinktime>
+
       <!-- and sign up -->
       <setdynvars sourcetype="random_number" start="1000" end="9999999">
         <var name="random_username" />
@@ -99,7 +107,8 @@
       <request>
         <http url='/posts' version='1.1' method='GET'></http>
       </request>
-      <thinktime value="2" random="true"></thinktime>
+      <thinktime value="1" random="true"></thinktime>
+
       <!-- location gets found and updated: stay within LA-ish area -->
       <setdynvars sourcetype="eval" code="fun({Pid,DynVars})->
                         F = (rand:uniform() / 2) + 33.65,
@@ -117,6 +126,7 @@
         </http>
       </request>
       <thinktime value="5" random="true"></thinktime>
+
       <!-- sort by freshest and store freshest post -->
       <request>
         <dyn_variable name="freshest_post_url" re="btn btn-primary&quot; href=&quot;/posts/(\d*)&quot;&gt;Full post"/>
@@ -126,6 +136,7 @@
         <var name="first_post_id"/>
       </setdynvars>
       <thinktime value="5" random="true"></thinktime>
+
       <!-- go to a post -->
       <request subst="true">
         <dyn_variable name="xpath_user_id" xpath='//*[@id="user_id"]/@value' />
@@ -134,81 +145,91 @@
       <setdynvars sourcetype="eval" code="fun({Pid,DynVars})-> {ok,[Val]}=ts_dynvars:lookup(xpath_user_id,DynVars), binary_to_list(Val) end.">
         <var name="user_id"/>
       </setdynvars>
-      <!-- <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
-                    io:format([126, $p, 126, $n, 126, $n], [DynVars]),
-                    ok end.">
-        <var name="dump" />
-      </setdynvars> -->
-      <thinktime value="5" random="true"></thinktime>
+      <thinktime value="3" random="true"></thinktime>
 
       <!-- go to new post page -->
       <request>
         <http url='/posts/new' version='1.1' method='GET'></http>
       </request>
-      <thinktime value="5" random="true"></thinktime>
       <!-- and create a new post -->
-      <!-- <request subst="true">
-        <dyn_variable name="new_post_id" re="[Ll]ocation: (http://.*/posts/(.*)\r"/>
-        <http url='/posts' version='1.1' method='POST' contents='post%5Buser_id%5D=%%_random_username%%@example.com&amp;user%5Bpassword%5D=123456&amp;user%5Bpassword_confirmation%5D=123456&amp;commit=Sign+up'>
-        </http>
-      </request> -->
-      <request subst="all-except-body">
-        <http url='/posts' version='1.1' method='POST' contents_from_file='./image_loadtest.bin' content_type='multipart/form-data; boundary=------WebKitFormBoundaryVcpDEB7Rvf1y6B9B'>
-          <http_header name='Accept' value='text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3' />
+      <request subst="true">
+        <dyn_variable name="new_post_regex" re="[Ll]ocation: http://.*/posts/(\d*)\r"/>
+        <http url='/posts' version='1.1' contents_from_file='./newpost_post_data.bin' content_type='multipart/form-data; boundary=---------------------------18558795211714620419542323040' method='POST'>
+          <http_header name='Accept' value='text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' />
           <http_header name='Accept-Encoding' value='gzip, deflate' />
-          <http_header name='Accept-Language' value='en-US,en;q=0.9' />
+          <http_header name='Accept-Language' value='en-US,en;q=0.5' />
         </http>
       </request>
+      <setdynvars sourcetype="eval" code="fun({Pid,DynVars})-> {ok,Val}=ts_dynvars:lookup(new_post_regex,DynVars), binary_to_list(Val) end.">
+        <var name="new_post_id"/>
+      </setdynvars>
       <!-- go (redirected) to post page -->
-      <request>
+      <request subst="true">
         <http url='/posts/%%_new_post_id%%' version='1.1' method='GET'></http>
       </request>
-      <thinktime value="2" random="true"></thinktime>
+      <thinktime value="5" random="true"></thinktime>
+
       <!-- spice the post -->
       <request subst="true">
         <http url='/posts/%%_new_post_id%%/toggle_like_post' version='1.1' method='POST' contents='post_id=%%_new_post_id%%'></http>
       </request>
-      <thinktime value="2" random="true"></thinktime>
+      <thinktime value="1" random="true"></thinktime>
+
       <!-- create a new comment on the post -->
       <request subst="true">
-        <http url='posts/%%_new_post_id%%/comments' version='1.1' method='POST' contents='user_id=%%_user_id%%&amp;post_id=%%_new_post_id%%&amp;body=LOADTESTCOMMENT&amp;commit=Post+Comment'></http>
+        <http url='/posts/%%_new_post_id%%/comments' version='1.1' method='POST' contents='user_id=%%_user_id%%&amp;post_id=%%_new_post_id%%&amp;body=LOADTESTCOMMENT&amp;commit=Post+Comment'></http>
       </request>
       <!-- go (redirected) to same post page -->
-      <request>
-        <dyn_variable name="xpath_comment_id" xpath='/html/body/div[3]/div[2]/form[1]/input[3]' />
+      <request subst="true">
+        <dyn_variable name="xpath_comment_id" xpath='/html/body/div[3]/div[2]/form[1]/input[3]/@value' />
         <http url='/posts/%%_new_post_id%%' version='1.1' method='GET'></http>
       </request>
       <setdynvars sourcetype="eval" code="fun({Pid,DynVars})-> {ok,[Val]}=ts_dynvars:lookup(xpath_comment_id,DynVars), binary_to_list(Val) end.">
         <var name="comment_id"/>
       </setdynvars>
+      <thinktime value="2" random="true"></thinktime>
+
       <!-- spice the comment -->
       <request subst="true">
         <http url='/posts/%%_new_post_id%%/comments/%%_comment_id%%/toggle_like_comment' version='1.1' method='POST' contents='comment_id=%%_comment_id%%'></http>
       </request>
-      <thinktime value="2" random="true"></thinktime>
+      <thinktime value="1" random="true"></thinktime>
+
       <!-- go to profile page -->
+      <request>
+        <http url='/profile' version='1.1' method='GET'></http>
+      </request>
+      <thinktime value="2" random="true"></thinktime>
+
       <!-- delete the comment -->
+      <request subst="true">
+        <http url='/posts/%%_new_post_id%%/comments/%%_comment_id%%' version='1.1' method='DELETE'></http>
+      </request>
+      <!-- go (redirected) to post page -->
+      <request subst="true">
+        <http url='/posts/%%_new_post_id%%' version='1.1' method='GET'></http>
+      </request>
+      <thinktime value="1" random="true"></thinktime>
+
       <!-- delete the post -->
+      <request subst="true">
+        <http url='/posts/%%_new_post_id%%' version='1.1' method='DELETE'></http>
+      </request>
+      <!-- go (redirected) to post page -->
+      <request subst="true">
+        <http url='/posts' version='1.1' method='GET'></http>
+      </request>
+      <thinktime value="1" random="true"></thinktime>
+
       <!-- sign out -->
-
-      <!-- Write comment on the post-->
-
-      <!-- <request subst="true">
-        <dyn_variable name="new_post_url" re="[Ll]ocation: (http://.*)\r"/>
-        <http url='/' version='1.1' method='POST' contents='comment%5Bbody%5D=%%this-is-a-comment&amp;commit=Save'>
-        </http>
-      </request> -->
-      <!--wait for a bit -->
-      <!-- <thinktime value="3" random="true"></thinktime> -->
-      <!-- delete the post-->
-      <!-- <request subst="true">
-        <http url="%%_created_submission_url%%" method="DELETE"></http>
-      </request> -->
-      <!-- log out-->
-      <!-- <request subst="true">
-        <http url='/users/sign_out' version='1.1' method='DELETE'>
-        </http>
-      </request> -->
+      <request subst="true">
+        <http url='/users/sign_out' version='1.1' method='DELETE'></http>
+      </request>
     </session>
   </sessions>
 </tsung>
+<!-- <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
+              io:format([126, $p, 126, $n, 126, $n], [DynVars]),
+              ok end.">
+  <var name="dump" />
+</setdynvars> -->

@@ -11,12 +11,12 @@ class PostsController < ApplicationController
 
     @sort = params[:sort]
     @posts = (case @sort
-             when 'spiciest'
-              visible_posts.order('like_count DESC')
-             when 'freshest'
-              visible_posts.order('created_at DESC')
-             else
-              visible_posts.by_distance(origin: @location)
+              when 'spiciest'
+                visible_posts.order('like_count DESC')
+              when 'freshest'
+                visible_posts.order('created_at DESC')
+              else
+                visible_posts.by_distance(origin: @location)
              end).paginate(PAGE_LIMIT, @posts_page_num)
   end
 

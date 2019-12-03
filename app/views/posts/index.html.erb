@@ -19,10 +19,10 @@
     <% end %>
     <ul class="pagination">
       <li class="page-item page-prev <%= "#{@posts_page_num > 1 ? "" : "disabled"}" %>">
-        <%= link_to "Previous posts", posts_path(posts_page_num: @posts_page_num - 1), class: "page-item-title h5" %>
+        <%= link_to "Previous posts", posts_path(sort: @sort, posts_page_num: @posts_page_num - 1), class: "page-item-title h5" %>
       </li>
       <li class="page-item page-next <%= "#{@posts_page_num < @posts_page_num_max ? "" : "disabled"}" %>">
-        <%= link_to "Next posts", posts_path(posts_page_num: @posts_page_num + 1), class: "page-item-title h5" %>
+        <%= link_to "Next posts", posts_path(sort: @sort, posts_page_num: @posts_page_num + 1), class: "page-item-title h5" %>
       </li>
     </ul>
   </div>

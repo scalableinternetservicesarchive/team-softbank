@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/usr/local/share/tsung/tsung-1.0.dtd" [] >
+<tsung loglevel="notice">
+  <!-- Client side setup -->
+  <clients>
+    <client host="localhost" use_controller_vm="true" maxusers='15000'/>
+  </clients>
+
+  <!-- Server side setup -->
+  <servers>
+    <server host="localhost" port="3000" type="tcp"></server>
+  </servers>
+
+  <load>
+    <arrivalphase phase="1" duration="30" unit="second">
+      <users arrivalrate="1" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="2" duration="30" unit="second">
+      <users arrivalrate="2" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="3" duration="30" unit="second">
+      <users arrivalrate="4" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="4" duration="30" unit="second">
+      <users arrivalrate="8" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="5" duration="30" unit="second">
+      <users arrivalrate="16" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="6" duration="30" unit="second">
+      <users arrivalrate="32" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="7" duration="30" unit="second">
+      <users arrivalrate="64" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="8" duration="30" unit="second">
+      <users arrivalrate="128" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="9" duration="30" unit="second">
+      <users arrivalrate="256" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="10" duration="30" unit="second">
+      <users arrivalrate="512" unit="second"></users>
+    </arrivalphase>
+  </load>
+
+  <options>
+    <!-- Set connection timeout to 2 seconds -->
+    <option name="global_ack_timeout" value="2000"></option>
+
+    <option type="ts_http" name="user_agent">
+      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
+    </option>
+  </options>
+
+  <sessions>
+    <session name="not-logged-in-path" probability="0" type="ts_http">
+      <!-- start out at the homepage. -->
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+      <thinktime value="1" random="true"></thinktime>
+
+      <!-- visit the spiciest posts page-->
+      <request>
+        <dyn_variable name="spiciest_post_url" re="btn btn-primary&quot; href=&quot;/posts/(\d*)&quot;&gt;Full post"/>
+        <http url='/spiciest/' version='1.1' method='GET'></http>
+      </request>
+      <setdynvars sourcetype="eval" code="fun({Pid,DynVars})-> {ok,Val}=ts_dynvars:lookup(spiciest_post_url,DynVars), binary_to_list(Val) end.">
+        <var name="spicy_post_id"/>
+      </setdynvars>
+      <thinktime value="5" random="true"></thinktime>
+
+      <!-- visit the first post in the list -->
+      <request subst="true">
+        <http url='/posts/%%_spicy_post_id%%' version='1.1' method='GET'></http>
+      </request>
+      <thinktime value="1" random="true"></thinktime>
+    </session>
+
+    <session name="logged-in-path" probability="100" type="ts_http">
+      <!-- start out at the homepage. -->
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+      <thinktime value="1" random="true"></thinktime>
+
+      <!-- go to the sign up page -->
+      <request>
+        <http url='/users/sign_up' version='1.1' method='GET'></http>
+      </request>
+      <thinktime value='5' random='true'></thinktime>
+
+      <!-- and sign up -->
+      <setdynvars sourcetype="random_number" start="1000" end="9999999">
+        <var name="random_username" />
+      </setdynvars>
+      <request subst="true">
+        <!-- fix the password as 123456 ;) -->
+        <http url='/users' version='1.1' method='POST' contents='user%5Bemail%5D=%%_random_username%%@example.com&amp;user%5Bpassword%5D=123456&amp;user%5Bpassword_confirmation%5D=123456&amp;commit=Sign+up'>
+        </http>
+      </request>
+      <!-- go (redirected) to posts page! -->
+      <request>
+        <http url='/posts' version='1.1' method='GET'></http>
+      </request>
+      <thinktime value="1" random="true"></thinktime>
+
+      <!-- location gets found and updated: stay within LA-ish area -->
+      <setdynvars sourcetype="eval" code="fun({Pid,DynVars})->
+                        F = (rand:uniform() / 2) + 33.65,
+                        io_lib:format('~.6f',[F]) end.">
+        <var name="random_latitude"/>
+      </setdynvars>
+      <setdynvars sourcetype="eval" code="fun({Pid,DynVars})->
+                        F = (rand:uniform() / 2) - 118.5,
+                        io_lib:format('~.6f',[F]) end.">
+        <var name="random_longitude"/>
+      </setdynvars>
+      <request subst="true">
+        <http url='/posts/update_location' version='1.1' method='POST' contents='latitude=%%_random_latitude%%&amp;longitude=%%_random_longitude%%'>
+          <http_header name='Accept' value='*/*' />
+        </http>
+      </request>
+      <thinktime value="5" random="true"></thinktime>
+
+      <!-- sort by freshest and store freshest post -->
+      <request>
+        <dyn_variable name="freshest_post_url" re="btn btn-primary&quot; href=&quot;/posts/(\d*)&quot;&gt;Full post"/>
+        <http url='/posts?sort=freshest' version='1.1' method='GET'></http>
+      </request>
+      <setdynvars sourcetype="eval" code="fun({Pid,DynVars})-> {ok,Val}=ts_dynvars:lookup(freshest_post_url,DynVars), binary_to_list(Val) end.">
+        <var name="first_post_id"/>
+      </setdynvars>
+      <thinktime value="5" random="true"></thinktime>
+
+      <!-- go to a post -->
+      <request subst="true">
+        <dyn_variable name="xpath_user_id" xpath='//*[@id="user_id"]/@value' />
+        <http url='/posts/%%_first_post_id%%' version='1.1' method='GET'></http>
+      </request>
+      <setdynvars sourcetype="eval" code="fun({Pid,DynVars})-> {ok,[Val]}=ts_dynvars:lookup(xpath_user_id,DynVars), binary_to_list(Val) end.">
+        <var name="user_id"/>
+      </setdynvars>
+      <thinktime value="3" random="true"></thinktime>
+
+      <!-- go to new post page -->
+      <request>
+        <http url='/posts/new' version='1.1' method='GET'></http>
+      </request>
+      <!-- and create a new post -->
+      <request subst="true">
+        <dyn_variable name="new_post_regex" re="[Ll]ocation: http://.*/posts/(\d*)\r"/>
+        <http url='/posts' version='1.1' contents_from_file='./newpost_post_data.bin' content_type='multipart/form-data; boundary=---------------------------18558795211714620419542323040' method='POST'>
+          <http_header name='Accept' value='text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' />
+          <http_header name='Accept-Encoding' value='gzip, deflate' />
+          <http_header name='Accept-Language' value='en-US,en;q=0.5' />
+        </http>
+      </request>
+      <setdynvars sourcetype="eval" code="fun({Pid,DynVars})-> {ok,Val}=ts_dynvars:lookup(new_post_regex,DynVars), binary_to_list(Val) end.">
+        <var name="new_post_id"/>
+      </setdynvars>
+      <!-- go (redirected) to post page -->
+      <request subst="true">
+        <http url='/posts/%%_new_post_id%%' version='1.1' method='GET'></http>
+      </request>
+      <thinktime value="5" random="true"></thinktime>
+
+      <!-- spice the post -->
+      <request subst="true">
+        <http url='/posts/%%_new_post_id%%/toggle_like_post' version='1.1' method='POST' contents='post_id=%%_new_post_id%%'></http>
+      </request>
+      <thinktime value="1" random="true"></thinktime>
+
+      <!-- create a new comment on the post -->
+      <request subst="true">
+        <http url='/posts/%%_new_post_id%%/comments' version='1.1' method='POST' contents='user_id=%%_user_id%%&amp;post_id=%%_new_post_id%%&amp;body=LOADTESTCOMMENT&amp;commit=Post+Comment'></http>
+      </request>
+      <!-- go (redirected) to same post page -->
+      <request subst="true">
+        <dyn_variable name="xpath_comment_id" xpath='/html/body/div[3]/div[2]/form[1]/input[3]/@value' />
+        <http url='/posts/%%_new_post_id%%' version='1.1' method='GET'></http>
+      </request>
+      <setdynvars sourcetype="eval" code="fun({Pid,DynVars})-> {ok,[Val]}=ts_dynvars:lookup(xpath_comment_id,DynVars), binary_to_list(Val) end.">
+        <var name="comment_id"/>
+      </setdynvars>
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- spice the comment -->
+      <request subst="true">
+        <http url='/posts/%%_new_post_id%%/comments/%%_comment_id%%/toggle_like_comment' version='1.1' method='POST' contents='comment_id=%%_comment_id%%'></http>
+      </request>
+      <thinktime value="1" random="true"></thinktime>
+
+      <!-- go to profile page -->
+      <request>
+        <http url='/profile' version='1.1' method='GET'></http>
+      </request>
+      <thinktime value="2" random="true"></thinktime>
+
+      <!-- delete the comment -->
+      <request subst="true">
+        <http url='/posts/%%_new_post_id%%/comments/%%_comment_id%%' version='1.1' method='DELETE'></http>
+      </request>
+      <!-- go (redirected) to post page -->
+      <request subst="true">
+        <http url='/posts/%%_new_post_id%%' version='1.1' method='GET'></http>
+      </request>
+      <thinktime value="1" random="true"></thinktime>
+
+      <!-- delete the post -->
+      <request subst="true">
+        <http url='/posts/%%_new_post_id%%' version='1.1' method='DELETE'></http>
+      </request>
+      <!-- go (redirected) to post page -->
+      <request subst="true">
+        <http url='/posts' version='1.1' method='GET'></http>
+      </request>
+      <thinktime value="1" random="true"></thinktime>
+
+      <!-- sign out -->
+      <request subst="true">
+        <http url='/users/sign_out' version='1.1' method='DELETE'></http>
+      </request>
+    </session>
+  </sessions>
+</tsung>
+<!-- <setdynvars sourcetype="eval" code="fun( {Pid, DynVars} ) ->
+              io:format([126, $p, 126, $n, 126, $n], [DynVars]),
+              ok end.">
+  <var name="dump" />
+</setdynvars> -->

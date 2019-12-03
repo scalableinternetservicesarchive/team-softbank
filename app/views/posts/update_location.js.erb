@@ -1,7 +1,7 @@
 // note: $().html().text() allows for XSS but since this data comes from Rails it should be fine
 
 const decodedHtml = $('<div/>')
-  .html("<%= j (@posts.map { |post| render partial: 'shared/postcard', locals: { post: post } }.join()) %>")
+  .html("<%= j (@posts.map { |post| render partial: 'shared/postcard', locals: { post: post, location: @location } }.join()) %>")
   .text();
 
 $("#postcards").html(decodedHtml);

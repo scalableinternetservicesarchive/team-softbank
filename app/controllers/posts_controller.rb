@@ -2,34 +2,29 @@ class PostsController < ApplicationController
   # before_action :check_logged_in, only: [:create]
   before_action :location, only: [:index, :show]
   respond_to :html, :js
-  POSTS_PER_PAGE = 25 # tried 50 and it's way too long imo
-  COMMENTS_PER_PAGE = 50
+  PAGE_LIMIT = 25
 
   def index
     visible_posts = Post.within_location(@location)
-    @posts_page_num_max = (visible_posts.size + (POSTS_PER_PAGE - 1)) / POSTS_PER_PAGE
-    @posts_page_num = (params[:posts_page_num] || 1).to_i
-    @posts_page_num = [@posts_page_num, @posts_page_num_max].min
-    @posts_page_num = [1, @posts_page_num].max
+    @posts_page_num_max = (visible_posts.size + (PAGE_LIMIT - 1)) / PAGE_LIMIT
+    @posts_page_num = [1, [params[:posts_page_num].to_i, @posts_page_num_max].min].max
 
     @sort = params[:sort]
-    @posts = case @sort
-             when 'spiciest'
-              visible_posts.order('like_count DESC').paginate(POSTS_PER_PAGE, @posts_page_num)
-             when 'freshest'
-              visible_posts.order('created_at DESC').paginate(POSTS_PER_PAGE, @posts_page_num)
-             else
-              visible_posts.by_distance(origin: @location).paginate(POSTS_PER_PAGE, @posts_page_num)
-             end
+    @posts = (case @sort
+              when 'spiciest'
+                visible_posts.order('like_count DESC')
+              when 'freshest'
+                visible_posts.order('created_at DESC')
+              else
+                visible_posts.by_distance(origin: @location)
+              end).paginate(PAGE_LIMIT, @posts_page_num)
   end
 
   def show
     @post = Post.find_by(id: params[:id])
-    @comments_page_num_max = (@post&.comments&.size.to_i + (COMMENTS_PER_PAGE - 1)) / COMMENTS_PER_PAGE
-    @comments_page_num = (params[:comments_page_num] || 1).to_i
-    @comments_page_num = [@comments_page_num, @comments_page_num_max].min
-    @comments_page_num = [1, @comments_page_num].max
-    @comments = @post&.comments&.order('like_count DESC')&.paginate(COMMENTS_PER_PAGE, @comments_page_num)
+    @comments_page_num_max = (@post&.comments&.size.to_i + (PAGE_LIMIT - 1)) / PAGE_LIMIT
+    @comments_page_num = [1, [params[:comments_page_num].to_i, @comments_page_num_max].min].max
+    @comments = @post&.comments&.order('like_count DESC')&.paginate(PAGE_LIMIT, @comments_page_num)
   end
 
   def create

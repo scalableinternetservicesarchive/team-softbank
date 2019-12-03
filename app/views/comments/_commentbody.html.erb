@@ -13,7 +13,7 @@
         <%= button_to (current_user.liked? comment) ? 'despice' : 'spice',
           post_comment_toggle_like_comment_url(post_id: comment.post_id, comment_id: comment.id),
           method: :post,
-          params: { comment_id: comment.id },
+          params: { comment_id: comment.id, comments_page_num: @comments_page_num },
           class: (current_user.liked? comment) ? 'btn btn-error' : 'btn btn-success' %>
       <% end %>
 

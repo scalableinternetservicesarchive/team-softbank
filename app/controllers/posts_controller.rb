@@ -2,22 +2,34 @@ class PostsController < ApplicationController
   # before_action :check_logged_in, only: [:create]
   before_action :location, only: [:index, :show]
   respond_to :html, :js
+  POSTS_PER_PAGE = 25 # tried 50 and it's way too long imo
+  COMMENTS_PER_PAGE = 50
 
   def index
+    visible_posts = Post.within_location(@location)
+    @posts_page_num_max = (visible_posts.size + (POSTS_PER_PAGE - 1)) / POSTS_PER_PAGE
+    @posts_page_num = (params[:posts_page_num] || 1).to_i
+    @posts_page_num = [@posts_page_num, @posts_page_num_max].min
+    @posts_page_num = [1, @posts_page_num].max
+
     @sort = params[:sort]
     @posts = case @sort
              when 'spiciest'
-               Post.within_location(@location).order('like_count DESC')
+              visible_posts.order('like_count DESC').paginate(POSTS_PER_PAGE, @posts_page_num)
              when 'freshest'
-               Post.within_location(@location).order('created_at DESC')
+              visible_posts.order('created_at DESC').paginate(POSTS_PER_PAGE, @posts_page_num)
              else
-               Post.within_location(@location).by_distance(origin: @location)
+              visible_posts.by_distance(origin: @location).paginate(POSTS_PER_PAGE, @posts_page_num)
              end
   end
 
   def show
     @post = Post.find_by(id: params[:id])
-    @comments = @post&.comments&.order('like_count DESC')
+    @comments_page_num_max = (@post&.comments&.size.to_i + (COMMENTS_PER_PAGE - 1)) / COMMENTS_PER_PAGE
+    @comments_page_num = (params[:comments_page_num] || 1).to_i
+    @comments_page_num = [@comments_page_num, @comments_page_num_max].min
+    @comments_page_num = [1, @comments_page_num].max
+    @comments = @post&.comments&.order('like_count DESC')&.paginate(COMMENTS_PER_PAGE, @comments_page_num)
   end
 
   def create
@@ -41,12 +53,13 @@ class PostsController < ApplicationController
 
   def toggle_like_post
     @post = Post.find(params[:post_id])
+    @comments_page_num = (params[:comments_page_num] || 1).to_i
     if current_user.liked? @post
       @post.unliked_by! current_user
     else
       @post.liked_by! current_user
     end
-    redirect_to @post
+    redirect_to post_path(id: @post.id, comments_page_num: @comments_page_num)
   end
 
   def update_location

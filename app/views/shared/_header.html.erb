@@ -2,7 +2,7 @@
   <section class="navbar-section">
     <%= link_to 'TicTacTea', '/', class: "navbar-brand mr-2" %>
     <% if user_signed_in? %>
-      <%= link_to 'New Post', '/posts/new', class: "btn btn-link" %>
+      <%= link_to 'Spill The Tea', '/posts/new', class: "btn btn-link" %>
       <%= link_to 'Brewing Near You', '/posts', clas: 'btn btn-link' %>
     <% end %>
     <%= link_to 'Spiciest Posts', '/spiciest', class: 'btn btn-link' %>

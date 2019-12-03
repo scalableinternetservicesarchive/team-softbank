@@ -54,7 +54,7 @@
   </options>
 
   <sessions>
-    <session name="not-logged-in-path" probability="0" type="ts_http">
+    <session name="not-logged-in-path" probability="20" type="ts_http">
       <!-- start out at the homepage. -->
       <request>
         <http url='/' version='1.1' method='GET'></http>
@@ -78,7 +78,7 @@
       <thinktime value="1" random="true"></thinktime>
     </session>
 
-    <session name="logged-in-path" probability="100" type="ts_http">
+    <session name="logged-in-path" probability="80" type="ts_http">
       <!-- start out at the homepage. -->
       <request>
         <http url='/' version='1.1' method='GET'></http>

@@ -25,11 +25,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by(id: params[:id])
-    @comments_page_num_max = (@post&.comments&.size + (COMMENTS_PER_PAGE - 1)) / COMMENTS_PER_PAGE
+    @comments_page_num_max = (@post&.comments&.size.to_i + (COMMENTS_PER_PAGE - 1)) / COMMENTS_PER_PAGE
     @comments_page_num = (params[:comments_page_num] || 1).to_i
     @comments_page_num = [@comments_page_num, @comments_page_num_max].min
     @comments_page_num = [1, @comments_page_num].max
-    @comments = @post&.comments&.order('like_count DESC').paginate(COMMENTS_PER_PAGE, @comments_page_num)
+    @comments = @post&.comments&.order('like_count DESC')&.paginate(COMMENTS_PER_PAGE, @comments_page_num)
   end
 
   def create

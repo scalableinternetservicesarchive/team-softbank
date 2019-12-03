@@ -9,8 +9,9 @@ class PostsController < ApplicationController
     visible_posts = Post.within_location(@location)
     @posts_page_num_max = (visible_posts.size + (POSTS_PER_PAGE - 1)) / POSTS_PER_PAGE
     @posts_page_num = (params[:posts_page_num] || 1).to_i
-    @posts_page_num = [1, @posts_page_num].max
     @posts_page_num = [@posts_page_num, @posts_page_num_max].min
+    @posts_page_num = [1, @posts_page_num].max
+
     @sort = params[:sort]
     @posts = case @sort
              when 'spiciest'
@@ -26,8 +27,8 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @comments_page_num_max = (@post&.comments&.size + (COMMENTS_PER_PAGE - 1)) / COMMENTS_PER_PAGE
     @comments_page_num = (params[:comments_page_num] || 1).to_i
-    @comments_page_num = [1, @comments_page_num].max
     @comments_page_num = [@comments_page_num, @comments_page_num_max].min
+    @comments_page_num = [1, @comments_page_num].max
     @comments = @post&.comments&.order('like_count DESC').paginate(COMMENTS_PER_PAGE, @comments_page_num)
   end
 

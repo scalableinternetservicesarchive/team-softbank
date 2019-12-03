@@ -17,7 +17,7 @@ class PostsController < ApplicationController
                 visible_posts.order('created_at DESC')
               else
                 visible_posts.by_distance(origin: @location)
-             end).paginate(PAGE_LIMIT, @posts_page_num)
+              end).paginate(PAGE_LIMIT, @posts_page_num)
   end
 
   def show

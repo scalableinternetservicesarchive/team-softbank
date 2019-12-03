@@ -7,24 +7,28 @@ class PostsController < ApplicationController
 
   def index
     visible_posts = Post.within_location(@location)
+    @posts_page_num_max = (visible_posts.size + (POSTS_PER_PAGE - 1)) / POSTS_PER_PAGE
+    @posts_page_num = (params[:posts_page_num] || 1).to_i
+    @posts_page_num = [1, @posts_page_num].max
+    @posts_page_num = [@posts_page_num, @posts_page_num_max].min
     @sort = params[:sort]
-    @posts_page = (params[:posts_page] || 1).to_i
-    @posts_page_max = (visible_posts.size + (POSTS_PER_PAGE - 1)) / POSTS_PER_PAGE
     @posts = case @sort
              when 'spiciest'
-              visible_posts.order('like_count DESC').limit(POSTS_PER_PAGE).offset((@posts_page - 1) * POSTS_PER_PAGE)
+              visible_posts.order('like_count DESC').paginate(POSTS_PER_PAGE, @posts_page_num)
              when 'freshest'
-              visible_posts.order('created_at DESC').limit(POSTS_PER_PAGE).offset((@posts_page - 1) * POSTS_PER_PAGE)
+              visible_posts.order('created_at DESC').paginate(POSTS_PER_PAGE, @posts_page_num)
              else
-              visible_posts.by_distance(origin: @location).limit(POSTS_PER_PAGE).offset((@posts_page - 1) * POSTS_PER_PAGE)
+              visible_posts.by_distance(origin: @location).paginate(POSTS_PER_PAGE, @posts_page_num)
              end
   end
 
   def show
     @post = Post.find_by(id: params[:id])
-    @comments_page = (params[:comments_page] || 1).to_i
-    @comments_page_max = (@post&.comments&.size + (COMMENTS_PER_PAGE - 1)) / COMMENTS_PER_PAGE
-    @comments = @post&.comments&.order('like_count DESC').limit(COMMENTS_PER_PAGE).offset((@comments_page - 1) * COMMENTS_PER_PAGE)
+    @comments_page_num_max = (@post&.comments&.size + (COMMENTS_PER_PAGE - 1)) / COMMENTS_PER_PAGE
+    @comments_page_num = (params[:comments_page_num] || 1).to_i
+    @comments_page_num = [1, @comments_page_num].max
+    @comments_page_num = [@comments_page_num, @comments_page_num_max].min
+    @comments = @post&.comments&.order('like_count DESC').paginate(COMMENTS_PER_PAGE, @comments_page_num)
   end
 
   def create
@@ -48,13 +52,13 @@ class PostsController < ApplicationController
 
   def toggle_like_post
     @post = Post.find(params[:post_id])
-    @comments_page = (params[:comments_page] || 1).to_i
+    @comments_page_num = (params[:comments_page_num] || 1).to_i
     if current_user.liked? @post
       @post.unliked_by! current_user
     else
       @post.liked_by! current_user
     end
-    redirect_to post_path(id: @post.id, comments_page: @comments_page)
+    redirect_to post_path(id: @post.id, comments_page_num: @comments_page_num)
   end
 
   def update_location

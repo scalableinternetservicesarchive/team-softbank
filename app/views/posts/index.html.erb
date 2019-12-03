@@ -18,11 +18,11 @@
       <%= render partial: 'shared/postcard', locals: { post: post, location: @location } %>
     <% end %>
     <ul class="pagination">
-      <li class="<%= "page-item page-prev #{@posts_page > 1 ? "" : "disabled"}" %>">
-        <%= link_to "Previous posts", posts_path(posts_page: @posts_page - 1), class: "page-item-title h5" %>
+      <li class="page-item page-prev <%= "#{@posts_page_num > 1 ? "" : "disabled"}" %>">
+        <%= link_to "Previous posts", posts_path(posts_page_num: @posts_page_num - 1), class: "page-item-title h5" %>
       </li>
-      <li class="<%= "page-item page-next #{@posts_page < @posts_page_max ? "" : "disabled"}" %>">
-        <%= link_to "Next posts", posts_path(posts_page: @posts_page + 1), class: "page-item-title h5" %>
+      <li class="page-item page-next <%= "#{@posts_page_num < @posts_page_num_max ? "" : "disabled"}" %>">
+        <%= link_to "Next posts", posts_path(posts_page_num: @posts_page_num + 1), class: "page-item-title h5" %>
       </li>
     </ul>
   </div>

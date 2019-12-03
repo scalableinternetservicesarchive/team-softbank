@@ -13,12 +13,12 @@ class CommentsController < ApplicationController
 
   def toggle_like_comment
     @comment = Comment.find(params[:comment_id])
-    @comments_page = (params[:comments_page] || 1).to_i
+    @comments_page_num = (params[:comments_page_num] || 1).to_i
     if current_user.liked? @comment
       @comment.unliked_by! current_user
     else
       @comment.liked_by! current_user
     end
-    redirect_to post_path(id: @comment.post_id, comments_page: @comments_page)
+    redirect_to post_path(id: @comment.post_id, comments_page_num: @comments_page_num)
   end
 end

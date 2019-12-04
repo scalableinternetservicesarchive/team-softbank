@@ -10,7 +10,7 @@ module Likable
 
     # increment_counter(:like_count, id, touch: true)
     self.like_count += 1
-    self.save!
+    save!
   end
 
   def unliked_by!(user)
@@ -22,7 +22,7 @@ module Likable
 
     # decrement_counter(:like_count, id, touch: true)
     self.like_count -= 1
-    self.save!
+    save!
   end
 
   # module ClassMethods

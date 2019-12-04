@@ -5,11 +5,9 @@ class PostsController < ApplicationController
   PAGE_LIMIT = 25
 
   def index
-    # if stale?([Post.within_location(@location), @sort])
     visible_posts = Post.within_location(@location)
     @posts_page_num_max = (visible_posts.size + (PAGE_LIMIT - 1)) / PAGE_LIMIT
     @posts_page_num = [1, [params[:posts_page_num].to_i, @posts_page_num_max].min].max
-
     @sort = params[:sort]
     @posts = (case @sort
               when 'spiciest'
@@ -19,6 +17,7 @@ class PostsController < ApplicationController
               else
                 visible_posts.by_distance(origin: @location)
               end).paginate(PAGE_LIMIT, @posts_page_num)
+    fresh_when(strong_etag: [@sort, @posts_page_num, @visible_posts])
   end
 
   def show
@@ -26,6 +25,7 @@ class PostsController < ApplicationController
     @comments_page_num_max = (@post&.comments&.size.to_i + (PAGE_LIMIT - 1)) / PAGE_LIMIT
     @comments_page_num = [1, [params[:comments_page_num].to_i, @comments_page_num_max].min].max
     @comments = @post&.comments&.order('like_count DESC')&.paginate(PAGE_LIMIT, @comments_page_num)
+    fresh_when(strong_etag: [@post, @comments_page_num, @comments])
   end
 
   def create

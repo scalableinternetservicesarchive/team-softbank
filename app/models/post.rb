@@ -2,15 +2,16 @@
 #
 # Table name: posts
 #
-#  id         :integer          not null, primary key
-#  body       :text
-#  like_count :integer          default("0")
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  title      :string
-#  user_id    :integer
-#  latitude   :decimal(10, 6)
-#  longitude  :decimal(10, 6)
+#  id             :integer          not null, primary key
+#  body           :text
+#  like_count     :integer          default("0")
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  title          :string
+#  user_id        :integer
+#  latitude       :decimal(10, 6)
+#  longitude      :decimal(10, 6)
+#  comments_count :integer
 #
 # Indexes
 #
@@ -33,6 +34,7 @@ class Post < ApplicationRecord
   scope :spiciest, -> { order('like_count DESC').limit(50) }
   scope :within_location, ->(location) { within(5, units: :miles, origin: location) }
   scope :paginate, ->(per_page, page_num) { limit(per_page).offset((page_num - 1) * per_page) }
+  
   def publicly_viewable?
     Post.spiciest.include?(self)
   end

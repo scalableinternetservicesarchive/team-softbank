@@ -19,7 +19,7 @@
 class Comment < ApplicationRecord
   include Likable
   belongs_to :user
-  belongs_to :post
+  belongs_to :post, counter_cache: true
   has_many :likes, -> { Like.comment }, foreign_key: :type_id, inverse_of: :comment, dependent: :destroy
   scope :paginate, ->(per_page, page_num) { limit(per_page).offset((page_num - 1) * per_page) }
 end

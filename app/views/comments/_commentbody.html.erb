@@ -2,7 +2,7 @@
   <div class="card-body">
     <p><%= comment.body %></p>
     <p><%= distance_of_time_in_words comment.created_at, Time.now %> ago</p>
-    <p>spice level: <%= comment.likes.count %></p>
+    <p>spice level: <%= comment.like_count %></p>
   </div>
 
   <div class="card-footer">

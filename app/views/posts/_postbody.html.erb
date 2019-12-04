@@ -1,16 +1,19 @@
 
-<h1><%= @post.title %></h1>
-<% if @post.image.attached? %>
-  <div class="card-image">
-    <%= image_tag @post.image, class: 'img-responsive', alt: 'post image', style: "height: 300px" %>
-  </div>
-<% end %>
 <% if location.present? %>
   <h4>Distance: <%= number_with_precision @post.distance_to(location), precision: 2 %>mi</h4>
 <% end %>
-<h4><%= distance_of_time_in_words @post.created_at, Time.now %> ago</h4>
-<p><%= @post.body %></p>
-<h4>spice level: <%= @post.likes.count %></h4>
+
+<% cache(cache_key_for_post_body(@post)) do %>
+  <h1><%= @post.title %></h1>
+  <% if @post.image.attached? %>
+    <div class="card-image">
+      <%= image_tag @post.image, class: 'img-responsive', alt: 'post image', style: "height: 300px" %>
+    </div>
+  <% end %>
+  <h4><%= distance_of_time_in_words @post.created_at, Time.now %> ago</h4>
+  <p><%= @post.body %></p>
+  <h4>spice level: <%= @post.likes.count %></h4>
+<% end %>
 
 <% if user_signed_in? %>
   <%= button_to (current_user.liked? @post) ? 'despice' : 'spice',
@@ -43,9 +46,11 @@
   <div>No comments...</div>
 <% else %>
   <div>Comments: </div>
-  <% @comments.each do |comment| %>
-    <% cache(cache_key_for_comment(comment, current_user)) do %>
-      <%= render partial: 'comments/commentbody', locals: { comment: comment, is_card: false } %>
+  <% cache(cache_key_for_comment_table(@comments, @comments_page_num)) do %>
+    <% @comments.each do |comment| %>
+      <% cache(cache_key_for_comment(comment, current_user.id)) do %>
+        <%= render partial: 'comments/commentbody', locals: { comment: comment, is_card: false } %>
+      <% end %>
     <% end %>
   <% end %>
   <%# <%= render partial: 'comments/commentbody', collection: @comments, as: :comment, locals: { is_card: false }, cached: true %>

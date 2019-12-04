@@ -4,18 +4,18 @@
       <div class="card-subtitle text-gray">Distance: <%= number_with_precision post.distance_to(location), precision: 2 %>mi</div>
     <% end %>
   </div>
-  <div class="card-header" style="padding-top: 0">
-    <div class="card-title h5"><%= post.title %></div>
-  </div>
 
   <% cache(cache_key_for_postcard_body(post)) do %>
+    <div class="card-header" style="padding-top: 0">
+      <div class="card-title h5"><%= post.title %></div>
+    </div>
     <% if post.image.attached? %>
       <div class="card-image">
-        <%= image_tag post.image, class: 'img-responsive', alt: 'post image', style:"height: 100px"  %>
+        <%= image_tag post.image, class: 'img-responsive', alt: 'post image', style:"height: 100px" %>
       </div>
     <% else %>
       <div class="card-image">
-        <%= image_tag "teapoticon.png", class: 'img-responsive', alt: 'post image', style:"height: 100px"  %>
+        <%= image_tag "teapoticon.png", class: 'img-responsive', alt: 'post image', style:"height: 100px" %>
       </div>
     <% end %>
     <div class="card-body">

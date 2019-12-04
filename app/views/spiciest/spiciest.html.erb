@@ -2,9 +2,11 @@
 
 <h1>Spiciest Posts</h1>
 
-<% @posts.each do |post| %>
-  <% cache(cache_key_for_noloc_postcard(post)) do %>
-    <%= render partial: 'shared/postcard', locals: { post: post, location: nil } %>
+<% cache(cache_key_for_noloc_post_table(@posts, @spiciest_page_num)) do %>
+  <% @posts.each do |post| %>
+    <% cache(cache_key_for_noloc_postcard(post)) do %>
+      <%= render partial: 'shared/postcard', locals: { post: post, location: nil } %>
+    <% end %>
   <% end %>
 <% end %>
 

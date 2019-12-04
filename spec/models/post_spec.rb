@@ -16,6 +16,7 @@
 # Indexes
 #
 #  index_posts_on_latitude_and_longitude  (latitude,longitude)
+#  index_posts_on_user_id                 (user_id)
 #
 
 require 'rails_helper'

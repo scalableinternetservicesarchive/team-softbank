@@ -15,7 +15,9 @@
   <div>
     <h2>Your Comments</h2>
     <% @comments.each do |comment| %>
-      <%= render partial: 'comments/commentbody', locals: { comment: comment, is_card: true } %>
+      <% cache(cache_key_for_comment_card(comment, current_user)) do %>
+        <%= render partial: 'comments/commentbody', locals: { comment: comment, is_card: true } %>
+      <% end %>
     <% end %>
   </div>
 <% else %>

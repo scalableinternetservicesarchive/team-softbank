@@ -8,15 +8,21 @@
   </div>
   <div>
     <h2>Your Posts</h2>
-    <% @posts.each do |post| %>
-      <%= render partial: 'shared/postcard', locals: { post: post, location: @location } %>
+    <% cache(cache_key_for_profile_post_table(@posts)) do %>
+      <% @posts.each do |post| %>
+        <% cache(cache_key_for_noloc_postcard(post)) do %>
+          <%= render partial: 'shared/postcard', locals: { post: post, location: nil } %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
   <div>
     <h2>Your Comments</h2>
-    <% @comments.each do |comment| %>
-      <% cache(cache_key_for_comment_card(comment, current_user)) do %>
-        <%= render partial: 'comments/commentbody', locals: { comment: comment, is_card: true } %>
+    <% cache(cache_key_for_comment_card_table(@comments)) do %>
+      <% @comments.each do |comment| %>
+        <% cache(cache_key_for_comment_card(comment, current_user.id)) do %>
+          <%= render partial: 'comments/commentbody', locals: { comment: comment, is_card: true } %>
+        <% end %>
       <% end %>
     <% end %>
   </div>

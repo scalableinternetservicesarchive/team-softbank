@@ -68,10 +68,10 @@ class PostsController < ApplicationController
     session[:html5_geoloc] = [params[:latitude], params[:longitude]].map { |p| p.to_d.round(6).to_s }
     @location = session[:html5_geoloc]
     @posts = Post.within_location(@location).by_distance(origin: @location)
-    if stale?(@posts.all)
-      respond_to do |format|
-        format.js { render layout: false }
-      end
+    return unless stale?(@posts.all)
+
+    respond_to do |format|
+      format.js { render layout: false }
     end
   end
 

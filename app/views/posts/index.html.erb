@@ -14,18 +14,23 @@
   <% end %>
 
   <div id="postcards">
-    <% @posts.each do |post| %>
-      <%= render partial: 'shared/postcard', locals: { post: post, location: @location } %>
+    <% cache(cache_key_for_postcard_table(@posts, @location, @posts_page_num, @sort)) do %>
+      <% @posts.each do |post| %>
+        <% cache(cache_key_for_postcard(post, @location)) do %>
+          <%= render partial: 'shared/postcard', locals: { post: post, location: @location } %>
+        <% end %>
+      <% end %>
     <% end %>
-    <ul class="pagination">
-      <li class="page-item page-prev <%= "disabled" unless @posts_page_num > 1 %>">
-        <%= link_to "Previous posts", posts_path(sort: @sort, posts_page_num: @posts_page_num - 1), class: "page-item-title h5" %>
-      </li>
-      <li class="page-item page-next <%= "disabled" unless @posts_page_num < @posts_page_num_max %>">
-        <%= link_to "Next posts", posts_path(sort: @sort, posts_page_num: @posts_page_num + 1), class: "page-item-title h5" %>
-      </li>
-    </ul>
   </div>
+
+  <ul class="pagination">
+    <li class="page-item page-prev <%= "disabled" unless @posts_page_num > 1 %>">
+      <%= link_to "Previous posts", posts_path(sort: @sort, posts_page_num: @posts_page_num - 1), class: "page-item-title h5" %>
+    </li>
+    <li class="page-item page-next <%= "disabled" unless @posts_page_num < @posts_page_num_max %>">
+      <%= link_to "Next posts", posts_path(sort: @sort, posts_page_num: @posts_page_num + 1), class: "page-item-title h5" %>
+    </li>
+  </ul>
 <% else %>
   <%= render 'shared/notsignedin' %>
 <% end %>

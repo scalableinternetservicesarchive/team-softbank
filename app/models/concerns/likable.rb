@@ -8,7 +8,8 @@ module Likable
       type_id: id
     )
 
-    increment!(:like_count)
+    self.like_count += 1
+    save!
   end
 
   def unliked_by!(user)
@@ -18,7 +19,8 @@ module Likable
       type_id: id
     ).destroy!
 
-    decrement!(:like_count)
+    self.like_count -= 1
+    save!
   end
 
   # module ClassMethods

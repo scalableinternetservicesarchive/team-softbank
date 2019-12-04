@@ -8,7 +8,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="localhost" port="80" type="tcp"></server>
+    <server host="[NAME].68y62yyn3s.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
   </servers>
 
   <load>

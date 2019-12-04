@@ -17,7 +17,11 @@ class PostsController < ApplicationController
               else
                 visible_posts.by_distance(origin: @location)
               end).paginate(PAGE_LIMIT, @posts_page_num)
-    fresh_when([@posts.all, @posts.map(&:like_count), @posts.map{|p| p.comments.size}, @posts.map{|p| helpers.distance_of_time_in_words(p.created_at, Time.now)}])
+    fresh_when([@posts.all, @posts.sum(&:like_count), @posts.sum { |p| p.comments.size }, @posts.map { |p| helpers.distance_of_time_in_words(p.created_at, Time.now) }, @location])
+  end
+
+  def new
+    fresh_when(current_user)
   end
 
   def show
@@ -25,7 +29,7 @@ class PostsController < ApplicationController
     @comments_page_num_max = (@post&.comments&.size.to_i + (PAGE_LIMIT - 1)) / PAGE_LIMIT
     @comments_page_num = [1, [params[:comments_page_num].to_i, @comments_page_num_max].min].max
     @comments = @post&.comments&.order('like_count DESC')&.paginate(PAGE_LIMIT, @comments_page_num)
-    fresh_when([@post, @post.like_count, @post&.comments&.all, @post&.comments&.map{|c| c.likes.count }])
+    fresh_when([@post, @post.like_count, helpers.distance_of_time_in_words(@post.created_at, Time.now), @comments.all, @comments.sum(&:like_count), @location])
   end
 
   def create
@@ -55,17 +59,19 @@ class PostsController < ApplicationController
     else
       @post.liked_by! current_user
     end
-    redirect_to post_path(id: @post.id, comments_page_num: @comments_page_num)
+    redirect_to @comments_page_num == 1 ? post_path(id: @post.id) : post_path(id: @post.id, comments_page_num: @comments_page_num)
   end
 
   def update_location
     # TODO: check if session is identical
     # TODO: add a cookie and a check jquery-side for scaling
-    session[:html5_geoloc] = [params[:latitude], params[:longitude]]
+    session[:html5_geoloc] = [params[:latitude], params[:longitude]].map { |p| p.to_d.round(6).to_s }
     @location = session[:html5_geoloc]
     @posts = Post.within_location(@location).by_distance(origin: @location)
-    respond_to do |format|
-      format.js { render layout: false }
+    if stale?(@posts.all)
+      respond_to do |format|
+        format.js { render layout: false }
+      end
     end
   end
 

@@ -1,6 +1,6 @@
 
 <% if location.present? %>
-  <h4>Distance: <%= number_with_precision @post.distance_to(location), precision: 2 %>mi</h4>
+  <h4>Distance: <%= session[:post_loc_cache].present? ? session[:post_loc_cache][@post.id.to_s] : @post.distance_manual(location) %>mi</h4>
 <% end %>
 
 <% cache(cache_key_for_post_body(@post)) do %>
@@ -10,17 +10,18 @@
       <%= image_tag @post.image, class: 'img-responsive', alt: 'post image', style: "height: 300px" %>
     </div>
   <% end %>
-  <h4><%= distance_of_time_in_words @post.created_at, Time.now %> ago</h4>
+  <h4>Posted <%= distance_of_time_in_words @post.created_at, Time.now %> ago</h4>
   <p><%= @post.body %></p>
-  <h4>spice level: <%= @post.likes.count %></h4>
+  <h4 id="spice-level">Spice level: <%= @post.like_count %></h4>
 <% end %>
 
 <% if user_signed_in? %>
-  <%= button_to (current_user.liked? @post) ? 'despice' : 'spice',
-      post_toggle_like_post_url(post_id: @post.id),
-      method: :post,
-      params: { post_id: @post.id, comments_page_num: comments_page_num },
-      class: (current_user.liked? @post) ? 'btn btn-error' : 'btn btn-success' %>
+  <%= button_to (current_user.liked? @post) ? 'Despice' : 'Spice',
+    post_toggle_like_post_url(post_id: @post.id),
+    method: :post,
+    id: 'spice-post-btn',
+    class: (current_user.liked? @post) ? 'btn btn-error' : 'btn btn-success',
+    remote: true %>
 
   <% if @post.user_id == current_user.id %>
     <%= button_to 'Delete Post', post_url(post_id: @post.id), method: :delete, class: 'btn btn-error' %>
@@ -57,7 +58,7 @@
 
   <ul class="pagination">
     <li class="page-item page-prev <%= "disabled" unless @comments_page_num > 1 %>">
-      <%= link_to "Previous comments", post_path(id: @post.id, comments_page_num: @comments_page_num - 1), class: "page-item-title h5" %>
+      <%= link_to "Previous comments", @comments_page_num == 2 ? post_path(id: @post.id) : post_path(id: @post.id, comments_page_num: @comments_page_num - 1), class: "page-item-title h5" %>
     </li>
     <li class="page-item page-next <%= "disabled" unless @comments_page_num < @comments_page_num_max %>">
       <%= link_to "Next comments", post_path(id: @post.id, comments_page_num: @comments_page_num + 1), class: "page-item-title h5" %>

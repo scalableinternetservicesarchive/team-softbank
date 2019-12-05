@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
   <h1>Profile</h1>
   <div>
-    <h5>Total Given Spice: <%= current_user.likes.count %></h5>
-    <h5>Total Received Spice: <%= @total_received_spice %></h5>
+    <h5>Total Given Spice: <%= current_user.likes_count || 0 %></h5>
+    <h5>Total Received Spice: <%= @posts.sum(&:like_count) + @comments.sum(&:like_count) %></h5>
   </div>
   <div>
     <h2>Your Posts</h2>

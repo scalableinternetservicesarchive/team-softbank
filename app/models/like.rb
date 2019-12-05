@@ -21,7 +21,7 @@ class Like < ApplicationRecord
 
   belongs_to :post, foreign_key: :type_id, inverse_of: :likes, optional: true
   belongs_to :comment, foreign_key: :type_id, inverse_of: :likes, optional: true
-  belongs_to :user
+  belongs_to :user, counter_cache: true
 
   validates :post, presence: true, if: :post?
   validates :comment, presence: true, if: :comment?

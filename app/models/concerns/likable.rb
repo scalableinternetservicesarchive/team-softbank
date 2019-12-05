@@ -8,7 +8,6 @@ module Likable
       type_id: id
     )
 
-    # increment_counter(:like_count, id, touch: true)
     self.like_count += 1
     save!
   end
@@ -20,7 +19,6 @@ module Likable
       type_id: id
     ).destroy!
 
-    # decrement_counter(:like_count, id, touch: true)
     self.like_count -= 1
     save!
   end

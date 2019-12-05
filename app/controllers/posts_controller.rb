@@ -73,7 +73,7 @@ class PostsController < ApplicationController
     # TODO: add a cookie and a check jquery-side for scaling
     session[:html5_geoloc] = [params[:latitude], params[:longitude]].map { |p| p.to_d.round(6).to_s }
     @location = session[:html5_geoloc]
-    @posts = Post.with_attached_image.within_location(@location).by_distance
+    @posts = Post.within_location(@location).by_distance
 
     return unless stale?(@posts.all)
 
@@ -81,7 +81,7 @@ class PostsController < ApplicationController
     @posts.each { |p| hash[p.id] = p.distance_to }
     session[:post_loc_cache] = hash
 
-    @posts = @posts.limit(PAGE_LIMIT)
+    @posts = @posts.with_attached_image.limit(PAGE_LIMIT)
 
     respond_to do |format|
       format.js { render layout: false }

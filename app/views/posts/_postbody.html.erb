@@ -48,7 +48,7 @@
 <% else %>
   <div>Comments: </div>
   <% cache(cache_key_for_comment_table(@comments, @comments_page_num)) do %>
-    <%= render partial: 'comments/commentbody', collection: @comments, as: :comment, locals: { is_card: false }, cached: -> comment { cache_key_for_comment(comment, current_user.id) } %>
+    <%= render partial: 'comments/commentbody', collection: @comments, as: :comment, locals: { is_card: false }, cached: -> comment { cache_key_for_comment(comment, current_user&.id) } %>
   <% end %>
 
   <ul class="pagination">

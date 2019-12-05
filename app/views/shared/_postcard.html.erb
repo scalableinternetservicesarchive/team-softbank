@@ -23,7 +23,7 @@
       <br/>
       <span>Posted <%= distance_of_time_in_words post.created_at, Time.now %> ago</span>
       <br/>
-      <span><%= post.comments_count.present? || 0 %> comment<%= 's' unless post.comments_count == 1 %></span>
+      <span><%= post.comments_count.present? ? post.comments_count : 0 %> comment<%= 's' unless post.comments_count == 1 %></span>
     </div>
     <div class="card-footer">
       <%= link_to 'Full post', post_path(post), class: "btn btn-primary" %>

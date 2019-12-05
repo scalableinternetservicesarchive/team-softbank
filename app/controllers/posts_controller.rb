@@ -17,7 +17,7 @@ class PostsController < ApplicationController
               else
                 visible_posts.by_distance
               end).paginate(PAGE_LIMIT, @posts_page_num)
-    fresh_when([@posts.all, @posts.sum(&:like_count), @posts.sum { |p| p.comments.size }, @posts.map { |p| helpers.distance_of_time_in_words(p.created_at, Time.now) }, @location])
+    fresh_when([@posts.all, @posts.sum(&:like_count), @posts.sum { |p| p.comments_count.to_i }, @posts.map { |p| helpers.distance_of_time_in_words(p.created_at, Time.now) }, @location])
   end
 
   def new
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     @post = Post.with_attached_image.includes(:comments).find_by(id: params[:id])
     return unless @post.present?
 
-    @comments_page_num_max = (@post.comments.size.to_i + (PAGE_LIMIT - 1)) / PAGE_LIMIT
+    @comments_page_num_max = (@post.comments_count.to_i + (PAGE_LIMIT - 1)) / PAGE_LIMIT
     @comments_page_num = [1, [params[:comments_page_num].to_i, @comments_page_num_max].min].max
     @comments = @post.comments.order('like_count DESC').paginate(PAGE_LIMIT, @comments_page_num)
     fresh_when([@post, @post.like_count, helpers.distance_of_time_in_words(@post.created_at, Time.now), @comments.all, @comments.sum(&:like_count), @location])

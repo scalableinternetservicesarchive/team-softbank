@@ -12,11 +12,11 @@
       <% if is_card %>
         <%= link_to 'Full Post', "/posts/#{comment.post_id}", class: "btn btn-primary" %>
       <% else %>
-        <%= button_to (current_user.liked? comment) ? 'Despice' : 'Spice',
+        <%= button_to (session[:comment_likes].include?(comment.id) || current_user.liked?(comment)) ? 'Despice' : 'Spice',
           post_comment_toggle_like_comment_url(post_id: comment.post_id, comment_id: comment.id),
           method: :post,
           id: "spice-comment-btn-#{comment.id}",
-          class: (current_user.liked? comment) ? 'btn btn-error' : 'btn btn-success',
+          class: (session[:comment_likes].include?(comment.id) || current_user.liked?(comment)) ? 'btn btn-error' : 'btn btn-success',
           remote: true %>
 
         <% if comment.user_id == current_user.id %>

@@ -17,10 +17,13 @@ class CommentsController < ApplicationController
 
   def toggle_like_comment
     @comment = Comment.find(params[:comment_id])
-    if current_user.liked? @comment
+    session[:comment_likes] ||= []
+    if session[:comment_likes].include?(@comment.id) || current_user.liked?(@comment)
       @comment.unliked_by! current_user
+      session[:comment_likes].delete(@comment.id)
     else
       @comment.liked_by! current_user
+      session[:comment_likes].append(@comment.id)
     end
     @likecount = @comment.like_count
     respond_to do |format|

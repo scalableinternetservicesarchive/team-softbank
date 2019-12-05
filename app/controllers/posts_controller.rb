@@ -52,10 +52,13 @@ class PostsController < ApplicationController
 
   def toggle_like_post
     @post = Post.find(params[:post_id])
-    if current_user.liked? @post
+    session[:post_likes] ||= []
+    if session[:post_likes].include?(@post.id) || current_user.liked?(@post)
       @post.unliked_by! current_user
+      session[:post_likes].delete(@post.id)
     else
       @post.liked_by! current_user
+      session[:post_likes].append(@post.id)
     end
     @likecount = @post.like_count
     respond_to do |format|

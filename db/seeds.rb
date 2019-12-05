@@ -23,8 +23,7 @@ comments = []
       user_id: u.id,
       title: Faker::TvShows::SiliconValley.quote,
       body: Faker::Hipster.paragraph(sentence_count: 5),
-      latitude: rand(33.69..34.12),
-      longitude: rand(-118.55..-118.08)
+      lonlat: "POINT(#{rand(-118.55..-118.08)} #{rand(33.69..34.12)})"
     )
     posts.push(p.id)
   end

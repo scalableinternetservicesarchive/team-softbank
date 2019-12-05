@@ -2,7 +2,7 @@
   <div class="card-header">
     <div class="card-title h5"><%= post.title %></div>
     <% if location.present? %>
-      <div class="card-subtitle text-gray">Distance: <%= number_with_precision post.distance_to(location), precision: 2 %>mi</div>
+      <div class="card-subtitle text-gray">Distance: <%= post.distance_to %>mi</div>
     <% end %>
   </div>
   <% if post.image.attached? %>

@@ -16,7 +16,7 @@ class PostsController < ApplicationController
               when 'freshest'
                 visible_posts.order('created_at DESC')
               else
-                visible_posts.by_distance(origin: @location)
+                visible_posts.by_distance
               end).paginate(PAGE_LIMIT, @posts_page_num)
   end
 
@@ -30,13 +30,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    create_params = post_params
+    create_params[:lonlat] = "POINT(#{create_params[:longitude]} #{create_params[:latitude]})"
+    @post = Post.new(create_params.except(:latitude, :longitude))
     @post.user_id = current_user.id
-
-    # NOTE: we assume lat/long are always present due to the stub!
-    # TODO: store in session and cookie
-    # this we can hold off until we scale
-
     @post.save!
 
     redirect_to @post
@@ -66,7 +63,7 @@ class PostsController < ApplicationController
     # TODO: add a cookie and a check jquery-side for scaling
     session[:html5_geoloc] = [params[:latitude], params[:longitude]]
     @location = session[:html5_geoloc]
-    @posts = Post.within_location(@location).by_distance(origin: @location)
+    @posts = Post.within_location(@location).by_distance
     respond_to do |format|
       format.js { render layout: false }
     end

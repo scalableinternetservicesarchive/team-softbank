@@ -9,14 +9,13 @@
 #  updated_at     :datetime         not null
 #  title          :string
 #  user_id        :integer
-#  latitude       :decimal(10, 6)
-#  longitude      :decimal(10, 6)
+#  lonlat         :geography({:srid point, 4326
 #  comments_count :integer
 #
 # Indexes
 #
-#  index_posts_on_latitude_and_longitude  (latitude,longitude)
-#  index_posts_on_user_id                 (user_id)
+#  index_posts_on_lonlat   (lonlat)
+#  index_posts_on_user_id  (user_id)
 #
 
 require 'rails_helper'

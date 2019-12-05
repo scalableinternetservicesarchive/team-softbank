@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_05_003039) do
+ActiveRecord::Schema.define(version: 2019_12_05_115206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_003039) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
     t.integer "user_id"
+    t.integer "comments_count"
     t.geography "lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
     t.index ["lonlat"], name: "index_posts_on_lonlat", using: :gist
     t.index ["user_id"], name: "index_posts_on_user_id"
@@ -79,6 +80,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_003039) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "likes_count"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

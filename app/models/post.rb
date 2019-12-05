@@ -10,6 +10,7 @@
 #  title          :string
 #  user_id        :integer
 #  lonlat         :geography({:srid point, 4326
+#  comments_count :integer
 #
 # Indexes
 #

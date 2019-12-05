@@ -22,9 +22,11 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.with_attached_image.includes(:comments).find_by(id: params[:id])
-    @comments_page_num_max = (@post&.comments&.size.to_i + (PAGE_LIMIT - 1)) / PAGE_LIMIT
-    @comments_page_num = [1, [params[:comments_page_num].to_i, @comments_page_num_max].min].max
-    @comments = @post&.comments&.order('like_count DESC')&.paginate(PAGE_LIMIT, @comments_page_num)
+    if @post.present?
+      @comments_page_num_max = (@post.comments&.size.to_i + (PAGE_LIMIT - 1)) / PAGE_LIMIT
+      @comments_page_num = [1, [params[:comments_page_num].to_i, @comments_page_num_max].min].max
+      @comments = @post.comments&.order('like_count DESC')&.paginate(PAGE_LIMIT, @comments_page_num)
+    end
   end
 
   def create

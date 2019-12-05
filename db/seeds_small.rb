@@ -11,14 +11,14 @@ posts = []
 comments = []
 
 # create 25 users, each with 25 posts
-25.times do
+2.times do
   u = User.create!(
     email: Faker::Internet.unique.email,
     password: '123456'
   )
   users.push(u.id)
 
-  25.times do
+  5.times do
     p = Post.create!(
       user_id: u.id,
       title: Faker::TvShows::SiliconValley.quote,
@@ -31,7 +31,7 @@ comments = []
 end
 
 # create 1250 random comments across all posts
-1250.times do
+10.times do
   c = Comment.create!(
     user_id: users.sample,
     post_id: posts.sample,
@@ -41,15 +41,3 @@ end
 end
 
 # create 2500 random likes across posts and comments
-2500.times do
-  type = [0, 1].sample
-  id = [posts, comments][type].sample
-  Like.create!(
-    user_id: users.sample,
-    like_type: type,
-    type_id: id
-  )
-  r = type == 0 ? Post.find(id) : Comment.find(id)
-  r.like_count += 1
-  r.save!
-end

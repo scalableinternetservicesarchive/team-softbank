@@ -15,7 +15,7 @@
   <%= render partial: 'postbody', locals: { post: @post, comments: @comments, comments_page_num: @comments_page_num, comments_page_num_max: @comments_page_num_max, location: @location } %>
 <% elsif !user_signed_in? %>
   <%= render 'shared/notsignedin' %>
-<% elsif @post.user_id == current_user.id || @post.within?(@location) %>
+<% elsif @post.user_id == current_user.id || (session[:post_loc_cache] && session[:post_loc_cache][@post.id]) || @post.within?(@location) %>
   <%= render partial: 'postbody', locals: { post: @post, comments: @comments, comments_page_num: @comments_page_num, comments_page_num_max: @comments_page_num_max, location: @location } %>
 <% else %>
   <%# fetch user loc? %>

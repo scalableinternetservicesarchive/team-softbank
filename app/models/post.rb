@@ -20,7 +20,6 @@
 class Post < ApplicationRecord
   include Likable
   attribute :distance, :float
-  attribute :distance_miles, :float
 
   belongs_to :user
   has_many :comments

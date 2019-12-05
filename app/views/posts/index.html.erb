@@ -13,11 +13,7 @@
 
   <div id="postcards">
     <% cache(cache_key_for_postcard_table(@posts, @location, @posts_page_num, @sort)) do %>
-      <% @posts.each do |post| %>
-        <% cache(cache_key_for_postcard(post, @location)) do %>
-          <%= render partial: 'shared/postcard', locals: { post: post, location: @location } %>
-        <% end %>
-      <% end %>
+      <%= render partial: 'shared/postcard', collection: @posts, as: :post, locals: { location: @location }, cached: -> post { cache_key_for_postcard(post, @location) } %>
     <% end %>
   </div>
 

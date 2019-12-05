@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 
   def create
     create_params = post_params
-    create_params[:lonlat] = "POINT(#{create_params[:longitude]} #{create_params[:latitude]})"
+    create_params[:lonlat] = "POINT(#{create_params[:longitude] || 0} #{create_params[:latitude] || 0})"
     @post = Post.new(create_params.except(:latitude, :longitude))
     @post.user_id = current_user.id
     @post.save!

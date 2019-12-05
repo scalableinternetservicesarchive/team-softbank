@@ -9,7 +9,6 @@
 #  updated_at     :datetime         not null
 #  title          :string
 #  user_id        :integer
-#  comments_count :integer
 #  lonlat         :geography({:srid point, 4326
 #
 # Indexes

@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 2019_12_05_003039) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
     t.integer "user_id"
-    t.integer "comments_count"
     t.geography "lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
     t.index ["lonlat"], name: "index_posts_on_lonlat", using: :gist
     t.index ["user_id"], name: "index_posts_on_user_id"

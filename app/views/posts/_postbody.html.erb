@@ -6,7 +6,7 @@
   </div>
 <% end %>
 <% if location.present? %>
-  <h4>Distance: <%= number_with_precision @post.distance_to(location), precision: 2 %>mi</h4>
+  <h4>Distance: <%= @post.distance_manual(location) %>mi</h4>
 <% end %>
 <h4><%= distance_of_time_in_words @post.created_at, Time.now %> ago</h4>
 <p><%= @post.body %></p>

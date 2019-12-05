@@ -41,6 +41,8 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     @post.save!
 
+    session[:post_loc_cache][@post.id] = @post.lonlat.distance(RGeo::Geographic.spherical_factory.point(create_params[:longitude], create_params[:latitude]))
+
     redirect_to @post
   end
 
@@ -71,7 +73,7 @@ class PostsController < ApplicationController
     # TODO: add a cookie and a check jquery-side for scaling
     session[:html5_geoloc] = [params[:latitude], params[:longitude]].map { |p| p.to_d.round(6).to_s }
     @location = session[:html5_geoloc]
-    @posts = Post.within_location(@location).by_distance
+    @posts = Post.with_attached_image.within_location(@location).by_distance
 
     return unless stale?(@posts.all)
 

@@ -60,7 +60,7 @@ class PostsController < ApplicationController
     session[:html5_geoloc] = [params[:latitude], params[:longitude]]
     @location = session[:html5_geoloc]
     @posts = Post.within_location(@location).by_distance
-    @posts.each {|p| session[p.id] = p.distance_to}
+    @posts.each {|p| session["post-loc-cache-#{self.id}"] = p.distance_to}
     respond_to do |format|
       format.js { render layout: false }
     end

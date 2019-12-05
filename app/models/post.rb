@@ -39,7 +39,7 @@ class Post < ApplicationRecord
   end
 
   def within?(location)
-    session["post-loc-cache-#{self.id}"] || Post.within_location(location).include?(self)
+    session[:post_loc_cache][self.id] || Post.within_location(location).include?(self)
   end
 
   def distance_to
@@ -47,8 +47,8 @@ class Post < ApplicationRecord
   end
 
   def distance_manual(location)
-    if(session["post-loc-cache-#{self.id}"])
-      distance = session[self.id]
+    if(session[:post_loc_cache][self.id])
+      distance = session[:post_loc_cache][self.id]
     else
       distance = ActiveRecord::Base.connection.execute("SELECT ST_Distance(f.lonlat, ST_MakePoint(#{location.last},#{location.first})::geography) FROM (SELECT lonlat FROM posts WHERE id = #{id} LIMIT 1) AS f").first['st_distance']
     distance.present? ? (distance / 1609.34).round(2) : 0

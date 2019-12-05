@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  respond_to :html, :js
+
   def create
     @comment = Comment.create!(post_id: params[:post_id], user_id: params[:user_id], body: params[:body])
     redirect_to(@comment.post)
@@ -13,12 +15,14 @@ class CommentsController < ApplicationController
 
   def toggle_like_comment
     @comment = Comment.find(params[:comment_id])
-    @comments_page_num = (params[:comments_page_num] || 1).to_i
     if current_user.liked? @comment
       @comment.unliked_by! current_user
     else
       @comment.liked_by! current_user
     end
-    redirect_to post_path(id: @comment.post_id, comments_page_num: @comments_page_num)
+    @likecount = @comment.like_count
+    respond_to do |format|
+      format.js { render layout: false }
+    end
   end
 end

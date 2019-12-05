@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   PAGE_LIMIT = 25
 
   def index
-    visible_posts = Post.within_location(@location)
+    visible_posts = Post.with_attached_image.within_location(@location)
     @posts_page_num_max = (visible_posts.size + (PAGE_LIMIT - 1)) / PAGE_LIMIT
     @posts_page_num = [1, [params[:posts_page_num].to_i, @posts_page_num_max].min].max
 
@@ -21,10 +21,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by(id: params[:id])
-    @comments_page_num_max = (@post&.comments&.size.to_i + (PAGE_LIMIT - 1)) / PAGE_LIMIT
+    @post = Post.with_attached_image.includes(:comments).find_by(id: params[:id])
+    return unless @post.present?
+
+    @comments_page_num_max = (@post.comments.size.to_i + (PAGE_LIMIT - 1)) / PAGE_LIMIT
     @comments_page_num = [1, [params[:comments_page_num].to_i, @comments_page_num_max].min].max
-    @comments = @post&.comments&.order('like_count DESC')&.paginate(PAGE_LIMIT, @comments_page_num)
+    @comments = @post.comments.order('like_count DESC').paginate(PAGE_LIMIT, @comments_page_num)
   end
 
   def create

@@ -10,7 +10,7 @@
 <% end %>
 <h4>Posted <%= distance_of_time_in_words @post.created_at, Time.now %> ago</h4>
 <p><%= @post.body %></p>
-<h4 id="spice-level">Spice level: <%= @post.likes.count %></h4>
+<h4 id="spice-level">Spice level: <%= @post.like_count %></h4>
 
 <% if user_signed_in? %>
   <%= button_to (current_user.liked? @post) ? 'Despice' : 'Spice',

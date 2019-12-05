@@ -15,7 +15,7 @@
     </div>
   <% end %>
   <div class="card-body">
-    <span>Spice level: <%= post.likes.count %></span>
+    <span>Spice level: <%= post.like_count %></span>
     <br/>
     <span>Posted <%= distance_of_time_in_words post.created_at, Time.now %> ago</span>
     <br/>

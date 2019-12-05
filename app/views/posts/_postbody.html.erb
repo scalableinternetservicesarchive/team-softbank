@@ -6,7 +6,7 @@
   </div>
 <% end %>
 <% if location.present? %>
-  <h4>Distance: <%= @post.distance_manual(location) %>mi</h4>
+  <h4>Distance: <%= session[:post_loc_cache].present? ? session[:post_loc_cache][@post.id.to_s] : @post.distance_manual(location) %>mi</h4>
 <% end %>
 <h4>Posted <%= distance_of_time_in_words @post.created_at, Time.now %> ago</h4>
 <p><%= @post.body %></p>

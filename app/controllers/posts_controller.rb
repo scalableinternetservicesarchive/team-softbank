@@ -69,7 +69,14 @@ class PostsController < ApplicationController
     session[:html5_geoloc] = [params[:latitude], params[:longitude]].map { |p| p.to_d.round(6).to_s }
     @location = session[:html5_geoloc]
     @posts = Post.within_location(@location).by_distance
+
     return unless stale?(@posts.all)
+
+    hash = {}
+    @posts.each { |p| hash[p.id] = p.distance_to }
+    session[:post_loc_cache] = hash
+
+    @posts = @posts.limit(PAGE_LIMIT)
 
     respond_to do |format|
       format.js { render layout: false }

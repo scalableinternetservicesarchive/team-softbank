@@ -1,5 +1,3 @@
-<%= render 'shared/header' %>
-
 <% if user_signed_in? %>
   <% if @location == [0, 0] %>
     <p id="curloc">Computing location...</p>
@@ -14,8 +12,12 @@
   <% end %>
 
   <div id="postcards">
-    <% @posts.each do |post| %>
-      <%= render partial: 'shared/postcard', locals: { post: post, location: @location } %>
+    <% cache(cache_key_for_postcard_table(@posts, @location, @posts_page_num, @sort)) do %>
+      <% @posts.each do |post| %>
+        <% cache(cache_key_for_postcard(post, @location)) do %>
+          <%= render partial: 'shared/postcard', locals: { post: post, location: @location } %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 

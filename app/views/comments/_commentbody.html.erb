@@ -1,9 +1,11 @@
 <div class="card" id="comment-<%= comment.id %>">
-  <div class="card-body">
-    <p><%= comment.body %></p>
-    <p>Posted <%= distance_of_time_in_words comment.created_at, Time.now %> ago</p>
-    <p id="spice-level-<%= comment.id %>">Spice level: <%= comment.like_count %></p>
-  </div>
+  <% cache(cache_key_for_comment_body(comment)) do %>
+    <div class="card-body">
+      <p><%= comment.body %></p>
+      <p>Posted <%= distance_of_time_in_words comment.created_at, Time.now %> ago</p>
+      <p id="spice-level-<%= comment.id %>">Spice level: <%= comment.like_count %></p>
+    </div>
+  <% end %>
 
   <div class="card-footer">
     <% if user_signed_in? %>

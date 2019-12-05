@@ -11,8 +11,17 @@
   </head>
 
   <body>
-    <span class='notice'><%= notice %></span>
-    <span class='alert'><%= alert %></span>
+    <% cache(cache_key_for_header(current_user)) do %>
+      <%= render 'shared/header' %>
+    <% end %>
+    <% if notice.present? %>
+      <%= notice %>
+      <div class="divider"></div>
+    <% end %>
+    <% if alert.present? %>
+      <%= alert %>
+      <div class="divider"></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

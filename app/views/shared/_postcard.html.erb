@@ -15,9 +15,9 @@
     </div>
   <% end %>
   <div class="card-body">
-    <span>spice level: <%= post.like_count %></span>
+    <span>Spice level: <%= post.like_count %></span>
     <br/>
-    <span><%= distance_of_time_in_words post.created_at, Time.now %> ago</span>
+    <span>Posted <%= distance_of_time_in_words post.created_at, Time.now %> ago</span>
     <br/>
     <span><%= post.comments.size %> comment<%= 's' unless post.comments.size == 1 %></span>
   </div>

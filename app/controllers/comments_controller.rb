@@ -9,7 +9,6 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @commentid = @comment.id
-    post_path = "/posts/#{@comment.post_id}"
     @comment.destroy!
     respond_to do |format|
       format.js { render layout: false }

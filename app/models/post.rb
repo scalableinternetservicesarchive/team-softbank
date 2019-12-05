@@ -37,7 +37,13 @@ class Post < ApplicationRecord
     Post.spiciest.include?(self)
   end
 
+  def cache_distance_to(latlng)
+    Rails.cache.fetch("post-distance-#{self.id}-#{latlng}") do
+      distance_to(latlng)
+    end
+  end
+
   def within?(latlng)
-    distance_to(latlng) < 5.0
+    cache_distance_to(latlng) < 5.0
   end
 end

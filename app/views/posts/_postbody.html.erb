@@ -16,11 +16,11 @@
 <% end %>
 
 <% if user_signed_in? %>
-  <%= button_to (current_user.liked? @post) ? 'Despice' : 'Spice',
+  <%= button_to (session[:post_likes].include?(@post.id) || current_user.liked?(@post)) ? 'Despice' : 'Spice',
     post_toggle_like_post_url(post_id: @post.id),
     method: :post,
     id: 'spice-post-btn',
-    class: (current_user.liked? @post) ? 'btn btn-error' : 'btn btn-success',
+    class: (session[:post_likes].include?(@post.id) || current_user.liked?(@post)) ? 'btn btn-error' : 'btn btn-success',
     remote: true %>
 
   <% if @post.user_id == current_user.id %>

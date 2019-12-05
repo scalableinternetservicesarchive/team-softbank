@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" id="comment-<%= comment.id %>">
   <div class="card-body">
     <p><%= comment.body %></p>
     <p>Posted <%= distance_of_time_in_words comment.created_at, Time.now %> ago</p>
@@ -16,10 +16,10 @@
           id: "spice-comment-btn-#{comment.id}",
           class: (current_user.liked? comment) ? 'btn btn-error' : 'btn btn-success',
           remote: true %>
-      <% end %>
 
-      <% if comment.user_id == current_user.id %>
-          <%= button_to 'Delete', "/posts/#{comment.post_id}/comments/#{comment.id}", method: :delete, class: 'btn btn-error' %>
+        <% if comment.user_id == current_user.id %>
+          <%= button_to 'Delete', "/posts/#{comment.post_id}/comments/#{comment.id}", method: :delete, class: 'btn btn-error', remote: true %>
+        <% end %>
       <% end %>
     <% end %>
   </div>

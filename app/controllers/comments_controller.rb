@@ -8,9 +8,12 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    @commentid = @comment.id
     post_path = "/posts/#{@comment.post_id}"
     @comment.destroy!
-    redirect_to(post_path)
+    respond_to do |format|
+      format.js { render layout: false }
+    end
   end
 
   def toggle_like_comment

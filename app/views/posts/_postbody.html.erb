@@ -47,11 +47,7 @@
 <% else %>
   <div>Comments: </div>
   <% cache(cache_key_for_comment_table(@comments, @comments_page_num)) do %>
-    <% @comments.each do |comment| %>
-      <% cache(cache_key_for_comment(comment, current_user.id)) do %>
-        <%= render partial: 'comments/commentbody', locals: { comment: comment, is_card: false } %>
-      <% end %>
-    <% end %>
+    <%= render partial: 'comments/commentbody', collection: @comments, as: :comment, locals: { is_card: false }, cached: -> comment { cache_key_for_comment(comment, current_user.id) } %>
   <% end %>
   <%# <%= render partial: 'comments/commentbody', collection: @comments, as: :comment, locals: { is_card: false }, cached: true %>
 

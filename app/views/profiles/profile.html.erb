@@ -6,12 +6,7 @@
   </div>
   <div>
     <h2>Your Posts</h2>
-    <% @posts.each do |post| %>
-      <% cache(cache_key_for_noloc_postcard(post)) do %>
-        <%= render partial: 'shared/postcard', locals: { post: post, location: nil } %>
-      <% end %>
-    <% end %>
-    <%# <%= render partial: 'shared/postcard', collection: @posts, as: :post, locals: { location: nil }, cached: -> post { cache_key_for_noloc_postcard(post) } %>
+    <%= render partial: 'shared/postcard', collection: @posts, as: :post, locals: { location: nil }, cached: -> post { cache_key_for_noloc_postcard(post) } %>
   </div>
   <div>
     <h2>Your Comments</h2>

@@ -15,7 +15,7 @@
 # gem 'pg'
 #
 default: &default
-  adapter: postgresql
+  adapter: postgis
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
@@ -78,7 +78,7 @@ production:
   # database: tictactea_production
   # username: tictactea
   # password: <%= ENV['tictactea_DATABASE_PASSWORD'] %>
-  adapter: postgresql
+  adapter: postgis
   database: <%= ENV['RDS_DB_NAME'] %>
   encoding: UTF8
   host: <%= ENV['RDS_HOSTNAME'] %>

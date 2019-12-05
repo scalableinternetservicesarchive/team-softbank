@@ -48,13 +48,15 @@ class PostsController < ApplicationController
 
   def toggle_like_post
     @post = Post.find(params[:post_id])
-    @comments_page_num = (params[:comments_page_num] || 1).to_i
     if current_user.liked? @post
       @post.unliked_by! current_user
     else
       @post.liked_by! current_user
     end
-    redirect_to post_path(id: @post.id, comments_page_num: @comments_page_num)
+    @likecount = @post.like_count
+    respond_to do |format|
+      format.js { render layout: false }
+    end
   end
 
   def update_location

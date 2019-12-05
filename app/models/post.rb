@@ -28,11 +28,11 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   scope :spiciest, -> { order('like_count DESC').limit(50) }
-  scope :within_location, -> (location) {
-    where("ST_DWithin(lonlat, ST_MakePoint(?,?)::geography, 8000)", location.last, location.first) # 5 mi = 8.04672 km
-      .select("\"posts\".*", "ST_Distance(lonlat, ST_MakePoint(#{location.last},#{location.first})::geography) AS distance")
+  scope :within_location, lambda { |location|
+    where('ST_DWithin(lonlat, ST_MakePoint(?,?)::geography, 8000)', location.last, location.first) # 5 mi = 8.04672 km
+      .select('"posts".*', "ST_Distance(lonlat, ST_MakePoint(#{location.last},#{location.first})::geography) AS distance")
   }
-  scope :by_distance, -> { order("distance") }
+  scope :by_distance, -> { order('distance') }
   scope :paginate, ->(per_page, page_num) { limit(per_page).offset((page_num - 1) * per_page) }
 
   def publicly_viewable?

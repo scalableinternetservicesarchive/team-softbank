@@ -14,7 +14,7 @@
         <%= link_to 'Profile', '/profile' %>
       </span>
       <!-- eventually add a link to the map -->
-      <%= link_to 'Sign out', '/users/sign_out', :method => :delete, class: "btn btn-link" %>
+      <%= link_to 'Sign Out', '/users/sign_out', :method => :delete, class: "btn btn-link" %>
     <% end %>
     <% if not user_signed_in? %>
       <%= link_to 'Sign In', '/users/sign_in', class: "btn btn-link" %>

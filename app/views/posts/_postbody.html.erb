@@ -50,7 +50,7 @@
 
   <ul class="pagination">
     <li class="page-item page-prev <%= "disabled" unless @comments_page_num > 1 %>">
-      <%= link_to "Previous comments", post_path(id: @post.id, comments_page_num: @comments_page_num - 1), class: "page-item-title h5" %>
+      <%= link_to "Previous comments", @comments_page_num == 2 ? post_path(id: @post.id) : post_path(id: @post.id, comments_page_num: @comments_page_num - 1), class: "page-item-title h5" %>
     </li>
     <li class="page-item page-next <%= "disabled" unless @comments_page_num < @comments_page_num_max %>">
       <%= link_to "Next comments", post_path(id: @post.id, comments_page_num: @comments_page_num + 1), class: "page-item-title h5" %>
